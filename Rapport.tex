@@ -1,0 +1,66 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage[French]{babel}
+
+\title{PROJ: DeepVoice}
+
+\author{Rémi Hutin \and Rémy Sun \and Raphael Truffet}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\section{Sound signals}
+
+\subsection{Cepstral analysis}
+
+\subsection{GMMs}
+
+\subsection{Supervectors and i-vectors}
+
+\section{Use of neuronal networks}
+
+\subsection{Formal neuron}
+
+\paragraph{Neuron?}
+A neuron can be thought of as a function which takes an $n$-dimensional vector $A$ as input and returns a scalar $e$ as output. This function typically has two internal parameters which are a bias $b$ and a weight-matrix $W$. The function starts by calculating $WA+b$ before using a non-linear activation function (such as sigmoid or tanh): $e=f(WA+b)$.
+
+\paragraph{Adjusting the function}
+
+[Explanation of the backpropagation with a very simple example, insist on the relation to a predetermined objective]
+
+\paragraph{Neuronal network?}
+
+[Explanation as to the organization in layers and the hierarchical distinctions learned through deep learning]
+
+\subsection{Autoencoders}
+
+\paragraph{A default goal}
+[We bypass the need for labels by defaulting to an objective that does not require additional information on the input]
+
+\paragraph{Structure}
+[Basic canvas of what an autoencoder might look like]
+
+\paragraph{Why use autoencoders?}
+[Discussion on generalization processes and denoising autoencoders, explanation of our basic idea and tying it up with the projection issue we are tackling]
+
+\subsection{Tied weight autoencoder}
+
+\paragraph{Architecture}
+[Explanation]
+
+\paragraph{Good results}
+[Vedran's paper?]
+
+\section{Previous works}
+
+[I am not quite sure this is needed, we can probably cram this in the previous sections]
+ 
+
+
+
+\end{document}
