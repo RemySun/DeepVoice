@@ -5,8 +5,8 @@ import random
 #import pandas as pd
 #import sys
 
-A = [[random.randint(0, 10) for j in range(4)] for i in range(1000)]
-B = [[sum(a)] for a in A]
+A = [[random.randint(0, 10) for j in range(1)] for i in range(1000)]
+B = [[42] for a in A]
 
 print(A)
 print(B)
@@ -53,7 +53,7 @@ init = tf.initialize_all_variables()
 sess = tf.Session()
 sess.run(init)
 
-n_rounds = 10000
+n_rounds = 1000
 batch_size = min(50, n_samp)
 
 for i in range(n_rounds):
@@ -83,4 +83,10 @@ print np.mean([b[0] for b in B])
 
 
 print "Test:"
+<<<<<<< HEAD
 print sess.run(y, feed_dict={x: [[1, 5, 6, 9]]})
+=======
+print sess.run(y, feed_dict={x: [[10]]})
+print sess.run(y, feed_dict={x: [[20]]})
+print sess.run(y, feed_dict={x: [[30]]})
+>>>>>>> 6dc97ec67d007a61c674e10181d8be5b977a3686

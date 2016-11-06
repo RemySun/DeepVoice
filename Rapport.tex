@@ -1,8 +1,10 @@
-\documentclass{article}
-
+\documentclass[a4paper,french,11pt]{article}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+
 \usepackage{fullpage}
-\usepackage[French]{babel}
+\usepackage[french]{babel}
+\usepackage{graphicx}
 
 \title{PROJ: DeepVoice}
 
@@ -11,6 +13,12 @@
 \begin{document}
 
 \maketitle
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=2]{squelette.jpg}
+\end{figure}
 
 \section{Introduction}
 
@@ -21,6 +29,8 @@
 \subsection{GMMs}
 
 \subsection{Supervectors and i-vectors}
+
+\subsection{Previous works}
 
 \section{Use of neuronal networks}
 
@@ -48,6 +58,8 @@ A neuron can be thought of as a function which takes an $n$-dimensional vector $
 \paragraph{Why use autoencoders?}
 [Discussion on generalization processes and denoising autoencoders, explanation of our basic idea and tying it up with the projection issue we are tackling]
 
+\subsection{Existing application}
+
 \subsection{Tied weight autoencoder}
 
 \paragraph{Architecture}
@@ -56,10 +68,8 @@ A neuron can be thought of as a function which takes an $n$-dimensional vector $
 \paragraph{Good results}
 [Vedran's paper?]
 
-\section{Previous works}
+\section{Method}
 
-[I am not quite sure this is needed, we can probably cram this in the previous sections]
- 
 
 
 
