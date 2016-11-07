@@ -20,7 +20,7 @@ pairs = []
 for i in range(data.shape[0]-1):
     for j in range(data.shape[0]-i-1):
         if labels[i] == labels[i+j+1]:
-            pairs.append[data[i],data[i+j+1]]
+            pairs.append([data[i],data[i+j+1]])
 
 # Code here for importing data from file
 
@@ -28,8 +28,8 @@ input = [p[0] for p in pairs] + [p[1] for p in pairs]
 
 output = [p[1] for p in pairs] + [p[0] for p in pairs]
 
-input_data = input
-output_data = output
+input_data = np.array(input)
+output_data = np.array(output)
 
 print("Generating neuronal network...")
 
@@ -109,7 +109,7 @@ init = tf.initialize_all_variables()
 sess = tf.Session()
 sess.run(init)
 
-n_rounds = 100
+n_rounds = 30
 batch_size = min(50, n_samp)
 
 print("Training...")
