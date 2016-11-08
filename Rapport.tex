@@ -1,4 +1,4 @@
-\documentclass[a4paper,french,11pt]{article}
+\documentclass[conference]{IEEEtran}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
@@ -40,9 +40,22 @@
 A neuron can be thought of as a function which takes an $n$-dimensional vector $A$ as input and returns a scalar $e$ as output. This function typically has two internal parameters which are a bias $b$ and a weight-matrix $W$. The function starts by calculating $WA+b$ before using a non-linear activation function (such as sigmoid or tanh): $e=f(WA+b)$.
 
 \paragraph{Adjusting the function}
+Our endgoal is to have the neuron, and by extension the neural network, perform
+a certain task. The formal neuron \og learns\fg by adjusting its function to perform better on
+this designated task.
 
-[Explanation of the backpropagation with a very simple example, insist on the relation to a predetermined objective]
+For instance, suppose we have a bi-dimensional vector given as input and that we
+want our neuron to return 1 if its two coordinates are the identical and -1 if
+it is not. A natural way to evaluate how accurate our neuron is by looking at the
+distance between its output $e$ and the desired result r : d(e)=|e-r|.
 
+We want to modify our neuron/function to minimize this distance. That means
+changing $e$, typically by gradient descent on function $d$ derivative. Here,
+$d'(e) = r-e$, which means we want to \og move\fg{} $e$ in this
+direction. To this end, we modify our function's two internal parameters $W$ and
+$b$. $e$, and by extension can actually be seen as a function of those two
+parameters: $d(W,b)=|e(W,b)-r|$. Therefore $\frac{\partial d}{\partial W}
+   = \frac{\partial d}{\partial e}\frac{\partial e}{\partial W}$
 \paragraph{Neuronal network?}
 
 [Explanation as to the organization in layers and the hierarchical distinctions learned through deep learning]
@@ -57,8 +70,6 @@ A neuron can be thought of as a function which takes an $n$-dimensional vector $
 
 \paragraph{Why use autoencoders?}
 [Discussion on generalization processes and denoising autoencoders, explanation of our basic idea and tying it up with the projection issue we are tackling]
-
-\subsection{Existing application}
 
 \subsection{Tied weight autoencoder}
 
