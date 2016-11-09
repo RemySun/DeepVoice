@@ -62,14 +62,31 @@ parameters: $d(W,b)=|e(W,b)-r|$. Therefore $\frac{\partial d}{\partial W}
 
 \subsection{Autoencoders}
 
+An autoencoder is a neuronal network with a particular architecture which is defined below.
+
 \paragraph{A default goal}
-[We bypass the need for labels by defaulting to an objective that does not require additional information on the input]
+Basically, in order to learn a neuronal network, we need to affect to each input of the learning set a label, that is the output we want to enclose, the desired result. However, autoencoders bypass this need by defaulting to an objective that does not require additional information on the input. In fact, the desired result is the input itself.
 
 \paragraph{Structure}
-[Basic canvas of what an autoencoder might look like]
+A neuronal network that tries to reconstruct the input may learn the identity. But an autoencoder has a structure the makes it impossible. In fact, an autoencoder has at least one hidden layer that is smaller than the input. So an autoencoder can be decomposed as an encoder that transform the input to a smaller represatation, called latent representation or code, and a decoder that reconstruct the input from the latent representation.
+
+\begin{figure}[!h]
+    \centering
+    \caption{Structure of an autoencoder}
+    \includegraphics[width=7cm]{Autoencoder_structure.png}
+    \label{autoencoder_structure}
+\end{figure}
+
 
 \paragraph{Why use autoencoders?}
-[Discussion on generalization processes and denoising autoencoders, explanation of our basic idea and tying it up with the projection issue we are tackling]
+
+Autoencoders can be used for denoising, using corrupted data as input and the original data as objective.
+
+Autoencoders may also be very useful to learn a representation. In fact, the latent represention contains enough information to reconstruct the data.
+
+In our context, autoencoders could be used to find a representation of a speaker, by giving to the autoencoder an i-vector from a speaker as input, and an another i-vector from the same speaker as objective. This idea is based on considerating the withoin-speaker variability as a noise, and using a denoising autoencoder. Repeating this with several pairs of i-vectors, we may learn a representation of the speaker. 
+
+
 
 \subsection{Tied weight autoencoder}
 
