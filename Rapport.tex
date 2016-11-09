@@ -51,11 +51,16 @@ distance between its output $e$ and the desired result r : d(e)=|e-r|.
 
 We want to modify our neuron/function to minimize this distance. That means
 changing $e$, typically by gradient descent on function $d$ derivative. Here,
-$d'(e) = r-e$, which means we want to \og move\fg{} $e$ in this
+$\frac{\partial d}{\partial e} = r-e$, which means we want to \og move\fg{} $e$ in this
 direction. To this end, we modify our function's two internal parameters $W$ and
 $b$. $e$, and by extension can actually be seen as a function of those two
 parameters: $d(W,b)=|e(W,b)-r|$. Therefore $\frac{\partial d}{\partial W}
-   = \frac{\partial d}{\partial e}\frac{\partial e}{\partial W}$
+   = \frac{\partial d}{\partial e}\frac{\partial e}{\partial W}$,
+$\frac{\partial d}{\partial b}
+   = \frac{\partial d}{\partial e}\frac{\partial e}{\partial b}$. Il suffit
+   d'ajuster $W$ et $b$ en $W'=W + s\frac{\partial d}{\partial W}$ et $b'=b +
+   s\frac{\partial d}{\partial b}$ où $s$ correspond au pas d'apprentissage.
+
 \paragraph{Neuronal network?}
 
 [Explanation as to the organization in layers and the hierarchical distinctions learned through deep learning]
