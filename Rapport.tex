@@ -49,7 +49,8 @@ A neuron can be thought of as a function which takes an $n$-dimensional vector $
 \paragraph{Adjusting the function}
 Our endgoal is to have the neuron, and by extension the neural network, perform
 a certain task. The formal neuron \og learns\fg by adjusting its function to perform better on
-this designated task.
+this designated task. For simplicity's sake, we will first explain how this
+process - called \og backpropagation\fg{} - works with a single neuron.
 
 For instance, suppose we have a bi-dimensional vector given as input and that we
 want our neuron to return 1 if its two coordinates are the identical and -1 if
@@ -60,18 +61,41 @@ We want to modify our neuron/function to minimize this distance. That means
 changing $e$, typically by gradient descent on function $d$ derivative. Here,
 $\frac{\partial d}{\partial e} = r-e$, which means we want to \og move\fg{} $e$ in this
 direction. To this end, we modify our function's two internal parameters $W$ and
-$b$. $e$, and by extension can actually be seen as a function of those two
+$b$. $e$, and by extension $d$, can actually be seen as a function of those two
 parameters: $d(W,b)=|e(W,b)-r|$. Therefore $\frac{\partial d}{\partial W}
    = \frac{\partial d}{\partial e}\frac{\partial e}{\partial W}$,
 $\frac{\partial d}{\partial b}
-   = \frac{\partial d}{\partial e}\frac{\partial e}{\partial b}$. Il suffit
-   d'ajuster $W$ et $b$ en $W'=W + s\frac{\partial d}{\partial W}$ et $b'=b +
-   s\frac{\partial d}{\partial b}$ où $s$ correspond au pas d'apprentissage.
+   = \frac{\partial d}{\partial e}\frac{\partial e}{\partial b}$. We then only
+   need to compute new internal parameters $W'$ and $b'$ with 
+
+\begin{equation}
+     W'=W + s\frac{\partial d}{\partial W}=W-s\frac{\partial d}{\partial e}\frac{\partial e}{\partial W}
+\end{equation}
+
+\begin{equation}
+     b'=b + s\frac{\partial d}{\partial b}=b-s\frac{\partial d}{\partial e}\frac{\partial e}{\partial b}
+\end{equation}
+
+What we just demonstrated was a simple backpropagation algorithm called gradient
+descent. This method is deeply flawed, but most state of the art backpropagation
+methods find their origins in this humble algorithm.
 
 \paragraph{Neuronal network?}
 
-[Explanation as to the organization in layers and the hierarchical distinctions learned through deep learning]
+Typically, a neural \textbf{network} is made up of more than a single neuron. A
+neural layer refers to multiple neurons working on the same input (or parts of
+the same input) and producing an output that can be construed as some form of
+concatenation of their respective outputs. This output can be in turn regarded
+as an alternate representation of the input. Backpropagation for each neuron
+works the same way as it would if it were the only neuron calculating.
 
+The notion of \textbf{deep} learning comes from the fact that the alternate
+reprensentation computed by one layer $A$ can be fed as input to another layer $B$.
+This allows networks to infer multiple levels of representation, same as one
+first processes simple geometrical forms before recognizing more complex
+compositions. Backpropagation is straight-forwardly computed on layer $B$. It is
+computed on layer $A$ by looking at $\frac{\partial d}{\partial input_B}$
+instead of $\frac{\partial d}{\partial e}$
 \subsection{Autoencoders}
 
 \paragraph{A default goal}
