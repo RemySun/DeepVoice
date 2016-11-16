@@ -5,6 +5,7 @@
 \usepackage{fullpage}
 \usepackage[french]{babel}
 \usepackage{graphicx}
+\usepackage{todonotes}
 
 \title{PROJ: DeepVoice}
 
@@ -25,11 +26,24 @@ In order to obtain a representation which is more compact and less redundant, we
 
 The cepstrum of a signal $x(t)$ is defined by :
 
-$$C(x(t)) = F^{-1}(\ln(|F(x(t))|)$$
+$$C(x(t)) = \mathcal{F}^{-1}(\ln(|\mathcal{F}(x(t))|)$$
 
-\subsection{GMMs}
+where $\mathcal{F}$ is the Fourier transform.
 
-\subsection{Supervectors and i-vectors}
+
+
+We can analyze a signal locally by applying a window, whose duration is shorter than the signal. Then, we exctract a vector of cepstral coefficents of this part of signal. We repeat it for several windows, until the end of the signal is reached.
+
+\todo[inline]{distance}
+
+
+\subsection{Gaussian Mixture Model (GMM) and supervectors}
+
+A Gaussian Mixture Model (GMM) is a probabilistic model used to approximate a distribution of random variables as a sum of normal distributions. 
+Here, we suppose that cepstral vectors of a signal follow a probality distribution that is specific to the given signal. This distribution is the one that we try to approximate with the GMM using a reference model. The supervector is the vector that gather means of all the normal distributions of the GMM.
+
+
+\subsection{I-vectors}
 
 \subsection{Previous works}
 
@@ -114,9 +128,9 @@ Autoencoders can be used for denoising, using corrupted data as input and the or
 
 Autoencoders may also be very useful to learn a representation. In fact, the latent represention contains enough information to reconstruct the data.
 
-In our context, autoencoders could be used to find a representation of a speaker, by giving to the autoencoder a i-vector from a speaker as input, and an another i-vector from the same speaker as objective. This idea is based on considerating the within-speaker variability as a noise, and using a denoising autoencoder. Repeating this with several pairs of i-vectors, we may learn a representation of the speaker. 
+In our context, autoencoders could be used to find a representation of a speaker, by giving to the autoencoder a supervector from a speaker as input, and an another supervector from the same speaker as objective. This idea is based on considerating the within-speaker variability as a noise, and using a denoising autoencoder. Repeating this with several pairs of supervectors, we may learn a representation of the speaker. 
 
-Since the problem is symmetrical, we can perform the learning in both directions. One way to perform this training is to use an autoencoder
+Since the problem is symmetrical, we can perform the learning in both directions. One way to perform this training is to use an autoencoder that reconstruct each supervector from the other using tied weights.
 
 \subsection{Tied weight autoencoder}
 
