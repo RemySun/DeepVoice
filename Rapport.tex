@@ -5,6 +5,7 @@
 \usepackage{fullpage}
 \usepackage[french]{babel}
 \usepackage{graphicx}
+\usepackage{todonotes}
 
 \title{PROJ: DeepVoice}
 
@@ -31,9 +32,22 @@ In order to obtain a representation which is more compact and less redundant, we
 
 The cepstrum of a signal $x(t)$ is defined by :
 
-$$C(x(t)) = F^{-1}(\ln(|F(x(t))|)$$
+$$C(x(t)) = \mathcal{F}^{-1}(\ln(|\mathcal{F}(x(t))|)$$
 
-\subsection{GMMs}
+where $\mathcal{F}$ is the Fourier transform.
+
+
+
+We can analyze a signal locally by applying a window, whose duration is shorter than the signal. Then, we exctract a vector of cepstral coefficents of this part of signal. We repeat it for several windows, until the end of the signal is reached.
+
+\todo[inline]{distance}
+
+
+\subsection{Gaussian Mixture Model (GMM)}
+
+A Gaussian Mixture Model (GMM) is probabilistic model used to approximate a distribution of random variables as a sum of normal distributions. Here, we are trying to represent the distribution of the cepstral vectors of a signal as a sum of normal distributions using a reference model.
+
+
 
 \subsection{Supervectors and i-vectors}
 
