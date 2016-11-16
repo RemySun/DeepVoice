@@ -12,10 +12,14 @@ data = []
 
 print("Extracting data...")
 
-for s in Files:
+nb_files = len(Files)
+
+for i, s in enumerate(Files):
     # Handling name recognition
     labels.append(s.split(".")[1])
+    
 
+    print("File "+str(i+1)+"/"+str(nb_files))
 
     # Creating supervector
 

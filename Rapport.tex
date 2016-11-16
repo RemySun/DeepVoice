@@ -14,12 +14,6 @@
 
 \maketitle
 
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[scale=2]{squelette.jpg}
-\end{figure}
-
 \section{Introduction}
 
 \section{Sound signals}
@@ -120,9 +114,9 @@ Autoencoders can be used for denoising, using corrupted data as input and the or
 
 Autoencoders may also be very useful to learn a representation. In fact, the latent represention contains enough information to reconstruct the data.
 
-In our context, autoencoders could be used to find a representation of a speaker, by giving to the autoencoder an i-vector from a speaker as input, and an another i-vector from the same speaker as objective. This idea is based on considerating the withoin-speaker variability as a noise, and using a denoising autoencoder. Repeating this with several pairs of i-vectors, we may learn a representation of the speaker. 
+In our context, autoencoders could be used to find a representation of a speaker, by giving to the autoencoder a i-vector from a speaker as input, and an another i-vector from the same speaker as objective. This idea is based on considerating the within-speaker variability as a noise, and using a denoising autoencoder. Repeating this with several pairs of i-vectors, we may learn a representation of the speaker. 
 
-
+Since the problem is symmetrical, we can perform the learning in both directions. One way to perform this training is to use an autoencoder
 
 \subsection{Tied weight autoencoder}
 
