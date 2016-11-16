@@ -8,17 +8,19 @@
 
 \title{PROJ: DeepVoice}
 
-\author{Rémi Hutin \and Rémy Sun \and Raphael Truffet}
-
+\author{Remi Hutin, Rémy Sun, Raphael Truffet \\
+  \{Remi.Hutin, Remy.Sun, Raphael.Truffet\}@ens-rennes.fr \\
+  Département informatique, ENS Rennes \\
+  Campus de Ker lann, Bruz, France
+\and
+  Guillaume Gravier \\
+  guig@guig.fr\\
+  Medialink project, INRIA \\
+  Campus de Beaulieu, Rennes, France
+ }
 \begin{document}
 
 \maketitle
-
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[scale=2]{squelette.jpg}
-\end{figure}
 
 \section{Introduction}
 
@@ -47,6 +49,7 @@ $$C(x(t)) = F^{-1}(\ln(|F(x(t))|)$$
 A neuron can be thought of as a function which takes an $n$-dimensional vector $A$ as input and returns a scalar $e$ as output. This function typically has two internal parameters which are a bias $b$ and a weight-matrix $W$. The function starts by calculating $WA+b$ before using a non-linear activation function (such as sigmoid or tanh): $e=f(WA+b)$.
 
 \paragraph{Adjusting the function}
+
 Our endgoal is to have the neuron, and by extension the neural network, perform
 a certain task. The formal neuron \og learns\fg by adjusting its function to perform better on
 this designated task. For simplicity's sake, we will first explain how this
@@ -133,6 +136,64 @@ In our context, autoencoders could be used to find a representation of a speaker
 [Vedran's paper?]
 
 \section{Method}
+
+As explained earlier, supervectors computed from Gaussian Mixture Models provide
+useful features of a given signal. i-vectors have built upon this representation
+to extract a more compact reprensentation that better reprensent the
+specificities of the signal.
+
+One task that naturally comes to mind is deciding whether two signals have been
+said by the same person. Unfortunately, computing euclidian distance between the signals'
+respective supervector or i-vector does not yield satisfactory results.
+Therefore, we will use neural networks to extract an intermediate representation
+of each signal that might be better suited to this particular problem.
+
+\subsection{Prospective methodology}
+
+\paragraph{Phasing out non-speaker dependant noise}
+
+In order to extract a representation of supervectors that makes speaker
+dependent features of the given signal more salient, we use a model derived from
+the design of a denoising autoencoder. Indeed, we have no need for any
+information pertaining to what is actually being said or what kind of microphone
+was used: this is all noise to us. Therefore, if two supervectors originate from
+the same speaker, it seems reasonnable to think of them as the same original \og
+speaker\fg{} sound vector which has polluted by non-speaker dependant noise.
+
+The latent representation thusly extracted should present salient features
+specific to the studied speaker. An autoencoder trained that way could allow for
+a sort of projection that we wish to study.
+
+\paragraph{Prospective general model}
+
+We will therefore train an autoencoder on supervectors. Given good results of
+[Vedran's paper], we will tie all but the extreme weights to reflect the
+symmetrical nature of the task at hand.
+
+\subsection{Preliminary results}
+
+In light of the difficulties inherent to the training of large neural networks,
+a preliminary study on a small dataset has been conducted.
+
+\subsubsection{Dataset}
+
+\paragraph{Processing raw data}
+
+15311 audio signals were extracted from BFMTV's various programs and labeled
+with the name of their respective speaker. Those soundfiles were then processed
+into 15311 supervectors of length 9311 (?) with the \texttt{AudioSeg} tool.
+We then create 1800000 pairs of supervectors that originate from the same
+speaker.
+
+\paragraph{Input}
+
+For each computed pair, we feed both of its suervectors to the neural network as
+input. Therefore, we train the network on 3 600 000 supervectors of size 9311.
+
+\paragraph{Output and task}
+
+The neural network outputs a vector of size 9311 that we try to match as closely
+as possible to the supervector the original input was paired with.
 
 
 
