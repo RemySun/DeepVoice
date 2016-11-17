@@ -3,13 +3,16 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{fullpage}
-\usepackage[french]{babel}
+\usepackage[french, english]{babel}
 \usepackage{graphicx}
 \usepackage{todonotes}
 
+\usepackage[backend=biber]{biblatex}
+\bibliography{Biblio}{}
+
 \title{PROJ: DeepVoice}
 
-\author{Remi Hutin, Rémy Sun, Raphael Truffet \\
+\author{Remi Hutin, Remy Sun, Raphael Truffet \\
   \{Remi.Hutin, Remy.Sun, Raphael.Truffet\}@ens-rennes.fr \\
   Département informatique, ENS Rennes \\
   Campus de Ker lann, Bruz, France
@@ -114,13 +117,38 @@ computed on layer $A$ by looking at $\frac{\partial d}{\partial input_B}$
 instead of $\frac{\partial d}{\partial e}$
 \subsection{Autoencoders}
 
-An autoencoder is a neuronal network with a particular architecture which is defined below.
+An autoencoder (\cite{Hinton504}) is a neuronal network with a particular architecture which is defined below.
 
-\paragraph{A default goal}
-Basically, in order to learn a neuronal network, we need to affect to each input of the learning set a label, that is the output we want to enclose, the desired result. However, autoencoders bypass this need by defaulting to an objective that does not require additional information on the input. In fact, the desired result is the input itself.
+\paragraph{A default task for a different goal}
+
+Neural networks' ability to extract internal meaningful representation from the
+original raw data is very enticing. Indeed, providing a meaningful
+representation of the initial data is one of the biggest hurdles of classical
+machine learning. However, neural networks need to be trained on a task, and
+require labeled data to that end. 
+
+Since we are no longer interested in the specific task needed to train the
+network, it is possible to default to a task that is not interesting in itself
+but might require the network to learn salient features of the data in order to
+be completed. A very natural one is to match the output to the input, which
+would not require man made labeling. Hopefully, the learned representation will
+capture features specific to the input so that it may be reconstructed.
 
 \paragraph{Structure}
-A neuronal network that tries to reconstruct the input may learn the identity. But an autoencoder has a structure the makes it impossible. In fact, an autoencoder has at least one hidden layer that is smaller than the input. So an autoencoder can be decomposed as an encoder that transform the input to a smaller represatation, called latent representation or code, and a decoder that reconstruct the input from the latent representation.
+
+Typically, the \textbf{input} is \textit{encoded} into a \textbf{latent
+  representation} which is then \textit{decoded} into an \textbf{output} that
+should match the input as closely as possible, hence the autoencoder
+denomination. The main danger of such an approach is having the networks that
+does not transform the input at all and yields a latent representation that is
+no different to the raw input data. 
+
+% A neuronal network that tries to reconstruct the input may learn the identity.
+% But an autoencoder has a structure the makes it impossible. In fact, an
+% autoencoder has at least one hidden layer that is smaller than the input. So an
+% autoencoder can be decomposed as an encoder that transform the input to a
+% smaller represatation, called latent representation or code, and a decoder that
+% reconstruct the input from the latent representation.
 
 \begin{figure}[!h]
     \centering
@@ -162,6 +190,10 @@ Therefore, we will use neural networks to extract an intermediate representation
 of each signal that might be better suited to this particular problem.
 
 \subsection{Prospective methodology}
+
+\paragraph{Evaluating speaker-dependant similarities}
+
+\todo[inline]{Talk about evaluation with guig. SVM? Neural classifier?}
 
 \paragraph{Phasing out non-speaker dependant noise}
 
@@ -207,6 +239,10 @@ input. Therefore, we train the network on 3 600 000 supervectors of size 9311.
 
 The neural network outputs a vector of size 9311 that we try to match as closely
 as possible to the supervector the original input was paired with.
+
+\appendix
+
+\printbibliography
 
 
 
