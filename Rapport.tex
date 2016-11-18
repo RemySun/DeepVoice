@@ -171,10 +171,17 @@ Since the problem is symmetrical, we can perform the learning in both directions
 \subsection{Tied weight autoencoder}
 
 \paragraph{Architecture}
-[Explanation]
 
-\paragraph{Good results}
-[Vedran's paper?]
+We talk about tied weight autoencoder when the same weights appears in two different places in the autoencoder. For example, in the architecture proposed by \cite{vukotic:hal-01314302} (Fig. \ref{archi_vedran}), the weights in light blue in the upper part of the autoencoder are the same as the weights in light blue in the lower part. So, if the function that transform the upper first hidden layer to the upper part of the representation is $h_1(x) = f(W \times x + b_1)$, then  the function that transform the lower part of the representation to the next layer is $h_2(x) = f(W^T \times x + b_2)$. In this architecture, the pink weights are also tied.
+
+\begin{figure}[!h]
+    \centering
+    \caption{Symmetrical and bidirectional learning architecture using tied weights}
+    \includegraphics[width=5cm]{archi-vedran.pdf}
+    \label{archi_vedran}
+\end{figure}
+
+& \paragraph{Good results}
 
 \section{Method}
 
