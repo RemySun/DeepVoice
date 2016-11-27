@@ -2,7 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-%\usepackage{fullpage}           %
+%\usepackage{fullpage}           
 \usepackage[french, english]{babel}
 \usepackage{graphicx}
 \usepackage{todonotes}
@@ -82,7 +82,10 @@ use a cepstral representation of the speech.
 
 The cepstrum of a signal $x(t)$ is defined by :
 
-$$C(x(t)) = \mathcal{F}^{-1}(\ln(|\mathcal{F}(x(t))|)$$
+\begin{equation}
+C(x(t)) = \mathcal{F}^{-1}(\ln(|\mathcal{F}(x(t))|)  
+\end{equation}
+
 where $\mathcal{F}$ is the Fourier transform.
 
 
@@ -111,7 +114,7 @@ all the normal distributions of the GMM.  \\
 
 \begin{figure}[!h]
     \centering
-    \caption{Gaussian Mixture Model (GMM)}
+    \caption{Gaussian Mixture Model with 4 gaussian distributions (GMM)}
     \includegraphics[width=7cm]{GMM.jpg}
     \label{gmm}
 \end{figure}
@@ -133,14 +136,20 @@ Let $M$ be the supervector, obtained as explained previously. $M$ depends on the
 %\item $c$ is the channel dependant supervector
 %\end{itemize}
 
-We want to express $M$ as $M = m + Tw$, where
+We want to express $M$ as
+
+\begin{equation}
+M = m + Tw
+\end{equation}
+
+where
 \begin{itemize}
 \item $m$ is a speaker and channel independent supervector
 \item $T$ is a rectangular matrix, called \emph{Total-variability matrix}
 \item $w$ is a an intermediate vector, or \emph{i-vector}
 \end{itemize}
 
-These i-vectors provide lighter, and therefore more usable, data for application tasks.
+These \texttt{i-vectors} provide lighter, and therefore more usable, data for application tasks.
 
 \subsection{Previous works}
 
@@ -165,14 +174,14 @@ meaningful intermediate representation of supervectors through the use of deep a
 
 \begin{figure}[!tbp]
 \centering  
-  \begin{minipage}[b]{0.2\textwidth}
+  \begin{minipage}[b]{0.225\textwidth}
     \includegraphics[width=0.9\textwidth]{Neuron}
-    \caption{Exemple de neurone formel}
+    \caption{Formal neuron}
   \end{minipage}
   \hfill
-  \begin{minipage}[b]{0.2\textwidth}
+  \begin{minipage}[b]{0.225\textwidth}
     \includegraphics[width=\textwidth]{Deep}
-    \caption{Réseau de neurones profond}
+    \caption{Deep neural network}
   \end{minipage}
 \end{figure}
 
@@ -193,7 +202,11 @@ process - called \og backpropagation\fg{} - works with a single neuron.
 For instance, suppose we have a bi-dimensional vector given as input and that we
 want our neuron to return 1 if its two coordinates are the identical and -1 if
 it is not. A natural way to evaluate how accurate our neuron is by looking at the
-distance between its output $e$ and the desired result r : d(e)=|e-r|.
+distance between its output $e$ and the desired result r :
+
+\begin{equation}
+d(e)=|e-r|  
+\end{equation}
 
 We want to modify our neuron/function to minimize this distance. That means
 changing $e$, typically by gradient descent on function $d$ derivative. Here,
@@ -233,11 +246,17 @@ This allows networks to infer multiple levels of representation, same as one
 first processes simple geometrical forms before recognizing more complex
 compositions. Backpropagation is straight-forwardly computed on layer $B$. It is
 computed on layer $A$ by looking at $\frac{\partial d}{\partial input_B}$
-instead of $\frac{\partial d}{\partial e}$
+instead of $\frac{\partial d}{\partial e}$ which is simply calculated using the
+rule of chain derivation:
+
+\begin{equation}
+  \frac{\partial f}{\partial x}=\frac{\partial f}{\partial x_1}...\frac{\partial x_k}{\partial x}
+\end{equation}
+
 \subsection{Autoencoders}
 
-An autoencoder (\cite{Hinton504}
-) is a neuronal network with a particular architecture which is defined below.
+An autoencoder (\cite{Hinton504}) is a neuronal network with a particular
+architecture which is defined below.
 
 \paragraph{A default task for a different goal}
 
@@ -321,7 +340,15 @@ of each signal that might be better suited to this particular problem.
 
 \paragraph{Evaluating speaker-dependant similarities}
 
-\todo[inline]{Talk about evaluation with guig. SVM? Neural classifier?}
+We wish to acquire intermediate representations that draws different signals
+spoken by the same locutor closer together according to some measure of
+distance, therefore allowing for an easy classification. The distance we will
+mostly consider during our study will be angular distance and euclidian
+distance.
+
+To this end, we will have to carefully chose the distance function used to
+evaluate the \og quality\fg{} of our output in order to make sure we will be
+optimizing this particular aspect of the acquisition.
 
 \paragraph{Phasing out non-speaker dependant noise}
 
@@ -340,7 +367,7 @@ a sort of projection that we wish to study.
 \paragraph{Prospective general model}
 
 We will therefore train an autoencoder on supervectors. Given good results of
-[Vedran's paper], we will tie all but the extreme weights to reflect the
+\cite{vukotic:hal-01314302}, we will tie all but the extreme weights to reflect the
 symmetrical nature of the task at hand.
 
 \subsection{First experimentation}
@@ -360,7 +387,7 @@ speaker.
 
 \paragraph{Input}
 
-For each computed pair, we feed both of its suervectors to the neural network as
+For each computed pair, we feed both of its supervectors to the neural network as
 input. Therefore, we train the network on 3 600 000 supervectors of size 9311.
 
 \paragraph{Output and task}
@@ -369,6 +396,23 @@ The neural network outputs a vector of size 9311 that we try to match as closely
 as possible to the supervector the original input was paired with.
 
 \subsubsection{Neural approach}
+
+We will start by training a 7-hidden layer auto-encoder.
+
+The encoder is 3 layer
+deep and encodes the input of size 9311 into a latent representation of size 40.
+This is done by successively compressing into representations of size 5000
+(first layer), 500 (second layer) and 100 (third layer).
+
+The decoder is 3 layer deep and inflates the 40 dimensional latent
+representation back into a 9311 dimensional supervector by successively
+inflating into representations of size 100 (fifth layer), 500 (sixth layer) and
+5000 (seventh layer). The weights used to inflate from the latent layer to the
+fifth and the fifth to sixth are tied to those used to compress from the second
+layer to the third and from the first
+layer to the second.
+
+\todo[inline]{figure}
 
 \subsubsection{Evaluating results}
 
@@ -392,6 +436,8 @@ as a classification method.
  To substantiate our claim that i-vector extraction does not lead to a
  clustering of same speaker vectors, we will apply our method to both our
  extracted intermmediate vectors and standard \texttt{i-vectors}
+
+\subsection{Anticipated issues}
 
 
 
