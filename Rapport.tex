@@ -97,6 +97,11 @@ Here, we suppose that cepstral vectors of a signal follow a probality distributi
 
 \todo[inline]{Ajouter les références}
 
+A supervector presents a probabilistic representation of a signal's spectral features. 
+However, these supervectors are enormous, which makes them unfit for applications.
+That's why we want a more condensed version a these supervectors.
+
+
 Let $M$ be the supervector, obtained as explained previously. $M$ depends on the speaker and on the channel. 
 
 %We want to split this vector into two components, $s$ and $v$ such as $M = s + c$ with :
@@ -108,9 +113,11 @@ Let $M$ be the supervector, obtained as explained previously. $M$ depends on the
 We want to express $M$ as $M = m + Tw$, where
 \begin{itemize}
 \item $m$ is a speaker and channel independent supervector
-\item $T$ is a rectangular matrix
+\item $T$ is a rectangular matrix, called \emph{Total-variability matrix}
 \item $w$ is a an intermediate vector, or \emph{i-vector}
 \end{itemize}
+
+These i-vectors provide lighter, and therefore more usable, data for application tasks.
 
 \subsection{Previous works}
 
