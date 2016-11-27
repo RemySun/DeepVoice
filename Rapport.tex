@@ -44,7 +44,8 @@ where $\mathcal{F}$ is the Fourier transform.
 
 We can analyze a signal locally by applying a window, whose duration is shorter than the signal. Then, we exctract a vector of cepstral coefficents of this part of signal. We repeat it for several windows, until the end of the signal is reached.
 
-\todo[inline]{distance}
+In the cepstral domain, the distance between two speech signals may be easily computed, using the Euclidean distance.
+
 
 
 \subsection{Gaussian Mixture Model (GMM) and supervectors}
@@ -52,6 +53,8 @@ We can analyze a signal locally by applying a window, whose duration is shorter 
 A Gaussian Mixture Model (GMM) is a probabilistic model used to approximate a distribution of random variables as a sum of normal distributions. 
 Here, we suppose that cepstral vectors of a signal follow a probality distribution that is specific to the given signal. This distribution is the one that we try to approximate with the GMM using a reference model. The supervector is the vector that gather means of all the normal distributions of the GMM.
 
+
+\todo[inline]{Insert a figure}
 
 \subsection{I-vectors}
 
@@ -181,7 +184,7 @@ We talk about tied weight autoencoder when the same weights appears in two diffe
     \label{archi_vedran}
 \end{figure}
 
-& \paragraph{Good results}
+ \paragraph{Good results}
 
 \section{Method}
 
