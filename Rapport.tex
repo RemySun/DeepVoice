@@ -51,7 +51,19 @@ signal, fourrier transform, spectral representation?
 
 Years of reasearch into the issue have yielded a solution called
 \texttt{supervectors} which provide a probabilistic representation of the
-numeric signal's spectral features
+numeric signal's spectral features. Those supervectors however present the
+significant downside of being enormous and therefore evolving in a very sparse
+representation space, which makes them unfit for applications. What recent works
+have had success with is the extraction of more condensed representations from
+those supervectors named \texttt{i-vectors}.
+
+Deep Learning techniques have had tremendous success in a number of fields
+ranginf from computer vision (\cite{lecun1998gradient}) to natural language
+processing (\cite{bordes2012joint}) by building upon successive layers of data
+representation and inferring hierachical dependencies within the data. It seems
+to us that such architectures would be especially adapted to the extraction of
+intermediate representations from \texttt{supervectors} and might provide
+representations that outperform the current state of the art \texttt{i-vectors}.
 
 \section{Sound signals}
 
@@ -98,7 +110,7 @@ Networks (\cite{DBLP:journals/corr/SaonSRK16}) or even a mix of
 Deep neural networks and Support Vector machines (\cite{richardson2015deep}) have been tested and yielded
 better results than previous techniques, though - to the best of our knowledge -
 none directly tackled the issue of supervectors' intermediate representation.
-Instead, all fo the aforementionned work relied on pre-existing i-vector
+Instead, all of the aforementionned work relied on pre-existing i-vector
 extraction techniques. We will explore the possibility of extracting a
 meaningful intermediate representation of supervectors through the use of deep architectures.
 
