@@ -58,15 +58,20 @@ have had success with is the extraction of more condensed representations from
 those supervectors named \texttt{i-vectors}.
 
 Deep Learning techniques have had tremendous success in a number of fields
-ranginf from computer vision (\cite{lecun1998gradient}) to natural language
+ranging from computer vision (\cite{lecun1998gradient}) to natural language
 processing (\cite{bordes2012joint}) by building upon successive layers of data
 representation and inferring hierachical dependencies within the data. It seems
 to us that such architectures would be especially adapted to the extraction of
 intermediate representations from \texttt{supervectors} and might provide
 representations that outperform the current state of the art \texttt{i-vectors}.
 
-\section{Sound signals}
+To begin with, we will give a brief exposition of signal representations used
+up until now \ref{sec:signal}. Afterwards, a brief explanation of the Deep
+Learning techniques we will need will be provided \ref{sec:Deep}. Finally, we
+will give an overview of the study we plan to conduct \ref{sec:Method}
 
+\section{Sound signals}
+\label{sec:signal}
 An audio signal used for Speaker recognition tasks is technically an analogical
 signal. To allow computer pocessing, those signals are sampled into a numeric
 signal (discrete set of measures that can a discrete set of values). Such a
@@ -154,7 +159,7 @@ These \texttt{i-vectors} provide lighter, and therefore more usable, data for ap
 \subsection{Previous works}
 
 \section{Use of neuronal networks}
-
+\label{sec:Deep}
 The recent success of deep learning techniques in various fields such as
 computer vision (\cite{lecun1998gradient}) and natural language processing (\cite{bordes2012joint}) has sparked
 many explorations of their usefulness in classification tasks on
@@ -323,6 +328,7 @@ We talk about tied weight autoencoder when the same weights appears in two diffe
 This architecture learns a joint representation of the two modalities which gives encouraging results multimodal query expansion \cite{vukotic:hal-01314302}. In our context, the two modalities will be two supervectors from the same speaker.
 
 \section{Method}
+\label{sec:Method}
 
 As explained earlier, supervectors computed from Gaussian Mixture Models provide
 useful features of a given signal. i-vectors have built upon this representation
@@ -381,18 +387,18 @@ a preliminary study on a small dataset will first be conducted.
 
 15311 audio signals were extracted from BFMTV's various programs and labeled
 with the name of their respective speaker. Those soundfiles were then processed
-into 15311 supervectors of length 9311 (?) with the \texttt{AudioSeg} tool.
-We then create 1800000 pairs of supervectors that originate from the same
+into 15311 supervectors of length 9216 with the \texttt{AudioSeg} tool.
+We then create 1 839 235 pairs of supervectors that originate from the same
 speaker.
 
 \paragraph{Input}
 
 For each computed pair, we feed both of its supervectors to the neural network as
-input. Therefore, we train the network on 3 600 000 supervectors of size 9311.
+input. Therefore, we train the network on 3 678 470 supervectors of size 9216.
 
 \paragraph{Output and task}
 
-The neural network outputs a vector of size 9311 that we try to match as closely
+The neural network outputs a vector of size 9216 that we try to match as closely
 as possible to the supervector the original input was paired with.
 
 \subsubsection{Neural approach}
@@ -400,12 +406,12 @@ as possible to the supervector the original input was paired with.
 We will start by training a 7-hidden layer auto-encoder.
 
 The encoder is 3 layer
-deep and encodes the input of size 9311 into a latent representation of size 40.
+deep and encodes the input of size 9216 into a latent representation of size 40.
 This is done by successively compressing into representations of size 5000
 (first layer), 500 (second layer) and 100 (third layer).
 
 The decoder is 3 layer deep and inflates the 40 dimensional latent
-representation back into a 9311 dimensional supervector by successively
+representation back into a 9216 dimensional supervector by successively
 inflating into representations of size 100 (fifth layer), 500 (sixth layer) and
 5000 (seventh layer). The weights used to inflate from the latent layer to the
 fifth and the fifth to sixth are tied to those used to compress from the second
@@ -435,14 +441,38 @@ as a classification method.
 
  To substantiate our claim that i-vector extraction does not lead to a
  clustering of same speaker vectors, we will apply our method to both our
- extracted intermmediate vectors and standard \texttt{i-vectors}
+ extracted intermmediate vectors and standard \texttt{i-vectors}. Those
+ intermediate representations will be extracted from source files using the tool
+ ALIZE (\cite{larcher2013alize})
 
 \subsection{Anticipated issues}
 
+\paragraph{Optimization function}
 
+It is likely we will end up tweaking the optimization function over the course
+of our study, be it by using a linear combination of the functions we already
+brought up or by using a completely different function.
 
+\paragraph{Training set}
 
+We intentionnally started out with a fairly small training set in order to be
+able to put forth some preliminary results faster so that early decisions can be
+made. It is possible we will not have enough training examples to train very
+deep architectures and will end up using bigger training set.
 
+\paragraph{Evaluation method}
+
+The evaluation method detailed above is fairly clumsy in that it is extremely
+vulnerable to outliers. Various improvements on it could be explored if we
+notice that we consistently have some outliers that artificially skew the
+results in favour of one type of intermediate representation.
+
+\paragraph{Network hyper-parameters}
+
+The above hyper-parameters (number of layers, dimension of each layer, ...) have
+mostly been chosen arbitrarily. The values chosen seemed reasonnable in light of
+the pursued goal and the task at hand, but will most likely evolve depending on
+experiments' results.
 
 \appendix
 
