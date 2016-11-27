@@ -51,12 +51,29 @@ In the cepstral domain, the distance between two speech signals may be easily co
 \subsection{Gaussian Mixture Model (GMM) and supervectors}
 
 A Gaussian Mixture Model (GMM) is a probabilistic model used to approximate a distribution of random variables as a sum of normal distributions. 
-Here, we suppose that cepstral vectors of a signal follow a probality distribution that is specific to the given signal. This distribution is the one that we try to approximate with the GMM using a reference model. The supervector is the vector that gather means of all the normal distributions of the GMM.
+Here, we suppose that cepstral vectors of a signal follow a probality distribution that is specific to the given signal. This distribution is the one that we try to approximate with the GMM using a reference model. The supervector is the vector that gather means of all the normal distributions of the GMM. \\
 
 
 \todo[inline]{Insert a figure}
 
 \subsection{I-vectors}
+
+\todo[inline]{Ajouter les références}
+
+Let $M$ be the supervector, obtained as explained previously. $M$ depends on the speaker and on the channel. 
+
+%We want to split this vector into two components, $s$ and $v$ such as $M = s + c$ with :
+%\begin{itemize}
+%\item $s$ is the speaker dependant supervector
+%\item $c$ is the channel dependant supervector
+%\end{itemize}
+
+We want to express $M$ as $M = m + Tw$, where
+\begin{itemize}
+\item $m$ is a speaker and channel independent supervector
+\item $T$ is a rectangular matrix
+\item $w$ is a an intermediate vector, or \emph{i-vector}
+\end{itemize}
 
 \subsection{Previous works}
 
