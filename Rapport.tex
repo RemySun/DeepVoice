@@ -99,15 +99,45 @@ computed, using the Euclidean distance.
 \subsection{Gaussian Mixture Model (GMM) and supervectors}
 
 A Gaussian Mixture Model (GMM) is a probabilistic model used to approximate a distribution of random variables as a sum of normal distributions. 
+
 Here, we suppose that cepstral vectors of a signal follow a probality
 distribution that is specific to the given signal. This distribution is the one
 that we try to approximate with the GMM using a reference model. The supervector
-is the vector that gather means of all the normal distributions of the GMM. 
+is the vector that gather means of all the normal distributions of the GMM.  \\
 
 
-\todo[inline]{Insert a figure}
+\begin{figure}[!h]
+    \centering
+    \caption{Gaussian Mixture Model (GMM)}
+    \includegraphics[width=7cm]{GMM.jpg}
+    \label{gmm}
+\end{figure}
 
 \subsection{I-vectors}
+
+\todo[inline]{Ajouter les références}
+
+A supervector presents a probabilistic representation of a signal's spectral features. 
+However, these supervectors are enormous, which makes them unfit for applications.
+That's why we want a more condensed version a these supervectors.
+
+
+Let $M$ be the supervector, obtained as explained previously. $M$ depends on the speaker and on the channel. 
+
+%We want to split this vector into two components, $s$ and $v$ such as $M = s + c$ with :
+%\begin{itemize}
+%\item $s$ is the speaker dependant supervector
+%\item $c$ is the channel dependant supervector
+%\end{itemize}
+
+We want to express $M$ as $M = m + Tw$, where
+\begin{itemize}
+\item $m$ is a speaker and channel independent supervector
+\item $T$ is a rectangular matrix, called \emph{Total-variability matrix}
+\item $w$ is a an intermediate vector, or \emph{i-vector}
+\end{itemize}
+
+These i-vectors provide lighter, and therefore more usable, data for application tasks.
 
 \subsection{Previous works}
 
