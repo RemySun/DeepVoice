@@ -67,10 +67,18 @@ representations that outperform the current state of the art \texttt{i-vectors}.
 
 \section{Sound signals}
 
+An audio signal used for Speaker recognition tasks is technically an analogical
+signal. To allow computer pocessing, those signals are sampled into a numeric
+signal (discrete set of measures that can a discrete set of values). Such a
+representation is highly vulnerable to noise and and transformations however,
+and more developped means are usually used.
+
 \subsection{Cepstral analysis}
 
-The speech signal of a locutor is hardly suitable for statistical modeling or the calculation of a distance.
-In order to obtain a representation which is more compact and less redundant, we use a cepstral representation of the speech.
+The speech signal of a locutor is hardly suitable for statistical modeling or
+the calculation of a distance.
+In order to obtain a representation which is more compact and less redundant, we
+use a cepstral representation of the speech. 
 
 The cepstrum of a signal $x(t)$ is defined by :
 
@@ -79,16 +87,22 @@ $$C(x(t)) = \mathcal{F}^{-1}(\ln(|\mathcal{F}(x(t))|)$$
 where $\mathcal{F}$ is the Fourier transform.
 
 
-We can analyze a signal locally by applying a window, whose duration is shorter than the signal. Then, we exctract a vector of cepstral coefficents of this part of signal. We repeat it for several windows, until the end of the signal is reached.
+We can analyze a signal locally by applying a window, whose duration is shorter
+than the signal. Then, we exctract a vector of cepstral coefficents of this part
+of signal. We repeat it for several windows, until the end of the signal is
+reached. 
 
-In the cepstral domain, the distance between two speech signals may be easily computed, using the Euclidean distance.
-
+In the cepstral domain, the distance between two speech signals may be easily
+computed, using the Euclidean distance. 
 
 
 \subsection{Gaussian Mixture Model (GMM) and supervectors}
 
 A Gaussian Mixture Model (GMM) is a probabilistic model used to approximate a distribution of random variables as a sum of normal distributions. 
-Here, we suppose that cepstral vectors of a signal follow a probality distribution that is specific to the given signal. This distribution is the one that we try to approximate with the GMM using a reference model. The supervector is the vector that gather means of all the normal distributions of the GMM.
+Here, we suppose that cepstral vectors of a signal follow a probality
+distribution that is specific to the given signal. This distribution is the one
+that we try to approximate with the GMM using a reference model. The supervector
+is the vector that gather means of all the normal distributions of the GMM. 
 
 
 \todo[inline]{Insert a figure}
@@ -257,6 +271,7 @@ Therefore, we will use neural networks to extract an intermediate representation
 of each signal that might be better suited to this particular problem.
 
 \subsection{Prospective methodology}
+\label{subsec:prosp}
 
 \paragraph{Evaluating speaker-dependant similarities}
 
@@ -282,10 +297,10 @@ We will therefore train an autoencoder on supervectors. Given good results of
 [Vedran's paper], we will tie all but the extreme weights to reflect the
 symmetrical nature of the task at hand.
 
-\subsection{Preliminary results}
+\subsection{First experimentation}
 
 In light of the difficulties inherent to the training of large neural networks,
-a preliminary study on a small dataset has been conducted.
+a preliminary study on a small dataset will first be conducted.
 
 \subsubsection{Dataset}
 
@@ -306,6 +321,36 @@ input. Therefore, we train the network on 3 600 000 supervectors of size 9311.
 
 The neural network outputs a vector of size 9311 that we try to match as closely
 as possible to the supervector the original input was paired with.
+
+\subsubsection{Neural approach}
+
+\subsubsection{Evaluating results}
+
+\paragraph{Evaluation method}
+
+We will first try to to pinpoint a threshold on the distance
+between two vectors which separates pairs of vectors labeled to the same locutor
+and labeled to two separate locutors. To this end, we will compute the distance
+(discussed in \ref{subsec:prosp}) between every pair of vectors labeled to the
+same locutor. The maximum of those distances is then computed and chosen as our
+\textbf{threshold}.
+
+We know by construction that every pair labeled to the same locutor is below the
+chosen threshold. To evaluate the relevance of the studied representation we
+then count the number of pairs of unmatched vectors whose corresponding distance
+is below our threshold. and would be misclassified if our threshold is was used
+as a classification method.
+
+\paragraph{Comparing to i-vectors}
+
+ To substantiate our claim that i-vector extraction does not lead to a
+ clustering of same speaker vectors, we will apply our method to both our
+ extracted intermmediate vectors and standard \texttt{i-vectors}
+
+
+
+
+
 
 \appendix
 
