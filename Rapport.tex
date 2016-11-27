@@ -83,7 +83,6 @@ use a cepstral representation of the speech.
 The cepstrum of a signal $x(t)$ is defined by :
 
 $$C(x(t)) = \mathcal{F}^{-1}(\ln(|\mathcal{F}(x(t))|)$$
-
 where $\mathcal{F}$ is the Fourier transform.
 
 
@@ -98,12 +97,16 @@ computed, using the Euclidean distance.
 
 \subsection{Gaussian Mixture Model (GMM) and supervectors}
 
-A Gaussian Mixture Model (GMM) is a probabilistic model used to approximate a distribution of random variables as a sum of normal distributions. 
+A Gaussian Mixture Model (GMM) is a probabilistic model used to approximate a 
+distribution of random variables as a sum of normal distributions. 
 
 Here, we suppose that cepstral vectors of a signal follow a probality
 distribution that is specific to the given signal. This distribution is the one
-that we try to approximate with the GMM using a reference model. The supervector
-is the vector that gather means of all the normal distributions of the GMM.  \\
+that we try to approximate with the GMM using a reference model. In fact, even 
+if the distribution is specific to the given signal, the form of the 
+distribution is universal for the natural language and called the Universal 
+Background Model (UBM). The supervector is the vector that gather means of 
+all the normal distributions of the GMM.  \\
 
 
 \begin{figure}[!h]
@@ -267,16 +270,15 @@ Autoencoders can be used for denoising, using corrupted data as input and the or
 
 Autoencoders may also be very useful to learn a representation. In fact, the latent represention contains enough information to reconstruct the data.
 
-In our context, autoencoders could be used to find a representation of a speaker, by giving to the autoencoder a supervector from a speaker as input, and an another supervector from the same speaker as objective. This idea is based on considerating the within-speaker variability as a noise, and using a denoising autoencoder. Repeating this with several pairs of supervectors, we may learn a representation of the speaker. 
+In our context, autoencoders could be used to find a representation of a speaker, by giving to the autoencoder a supervector from a speaker as input, and an another supervector from the same speaker as objective. This idea is based on considerating the within-speaker variability as a noise, and using a denoising autoencoder. Repeating this with several pairs of supervectors, we may learn a representation of the speaker. This new representation, as well as i-vectors, is more condensed than supervectors.
 
 Since the problem is symmetrical, we can perform the learning in both directions. One way to perform this training is to use an autoencoder that reconstruct each supervector from the other using tied weights.
 
 \subsection{Tied weight autoencoder}
 
-\paragraph{Architecture}
 
 We talk about tied weight autoencoder when the same weights appears in two different places in the autoencoder. For example, in the architecture proposed in \cite{vukotic:hal-01314302}
-(Fig. \ref{archi_vedran}), the weights in light blue in the upper part of the autoencoder are the same as the weights in light blue in the lower part. So, if the function that transform the upper first hidden layer to the upper part of the representation is $h_1(x) = f(W \times x + b_1)$, then  the function that transform the lower part of the representation to the next layer is $h_2(x) = f(W^T \times x + b_2)$. In this architecture, the pink weights are also tied.
+(Fig. \ref{archi_vedran}), the weights in light blue in the upper part of the autoencoder are the same as the weights in light blue in the lower part. So, if the function that transform the upper first hidden layer to the upper part of the representation is $h_1(x) = f(W \times x + b_1)$, then  the function that transform the lower part of the representation to the next layer is $h_2(x) = f(W^T \times x + b_2)$. In this architecture, the pink weights are also tied. 
 
 \begin{figure}[!h]
     \centering
@@ -285,7 +287,7 @@ We talk about tied weight autoencoder when the same weights appears in two diffe
     \label{archi_vedran}
 \end{figure}
 
-\paragraph{Good results}
+This architecture learns a joint representation for the locutor which gives encouraging results.
 
 \section{Method}
 
