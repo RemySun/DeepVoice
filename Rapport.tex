@@ -2,7 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-\usepackage{fullpage}
+%\usepackage{fullpage}           %
 \usepackage[french, english]{babel}
 \usepackage{graphicx}
 \usepackage{todonotes}
@@ -18,15 +18,52 @@
   Campus de Ker lann, Bruz, France
 \and
   Guillaume Gravier \\
-  guig@guig.fr\\
-  Medialink project, INRIA \\
+  guig@irisa.fr\\
+  Linkmedia project, INRIA \\
   Campus de Beaulieu, Rennes, France
  }
 \begin{document}
 
 \maketitle
 
+\begin{abstract}
+  To carry out a speaker recognition task, ie to identify the locutor in an
+audio signal, one must first obtain a serviceable representation
+of said signal. Improvements upon the raw numeric signal have been made over the years, one
+of which is the creation of a Gaussian Mixture Model supervector modeling the
+probabilistic distribution of the signal's
+spectral features. Due to the enormous size of such supervectors, condensed
+forms such as i-vectors have been created to provide usable data for application
+tasks. Deep learning techniques have seen significant success in many
+classification tasks due to their ability to
+build upon successive layers of data representation. We will
+strive to explore the possibility of using such techniques to acquire a
+representation of supervectors that is at least competitive with i-vectors.
+\end{abstract}
+
 \section{Introduction}
+
+Speaker recognition refers to the all too important identification of a locutor
+from an unlabeled audio signal. However, the resolution of this essential issue
+is no trivial matter as it raises a number of questions along the way. The most
+immediate one, is the manner in which the data will be represented: raw numeric
+signal, fourrier transform, spectral representation? 
+
+Years of reasearch into the issue have yielded a solution called
+\texttt{supervectors} which provide a probabilistic representation of the
+numeric signal's spectral features. Those supervectors however present the
+significant downside of being enormous and therefore evolving in a very sparse
+representation space, which makes them unfit for applications. What recent works
+have had success with is the extraction of more condensed representations from
+those supervectors named \texttt{i-vectors}.
+
+Deep Learning techniques have had tremendous success in a number of fields
+ranginf from computer vision (\cite{lecun1998gradient}) to natural language
+processing (\cite{bordes2012joint}) by building upon successive layers of data
+representation and inferring hierachical dependencies within the data. It seems
+to us that such architectures would be especially adapted to the extraction of
+intermediate representations from \texttt{supervectors} and might provide
+representations that outperform the current state of the art \texttt{i-vectors}.
 
 \section{Sound signals}
 
@@ -79,10 +116,28 @@ We want to express $M$ as $M = m + Tw$, where
 
 \section{Use of neuronal networks}
 
+The recent success of deep learning techniques in various fields such as
+computer vision (\cite{lecun1998gradient}) and natural language processing (\cite{bordes2012joint}) has sparked
+many explorations of their usefulness in classification tasks on
+\texttt{i-vectors} such as speaker recognition. Many architectures such as Deep
+Belief Networks(\cite{DBLP:journals/corr/GhahabiH15},\cite{ghahabi2014deep}),
+Deep Neural Networks
+(\cite{DBLP:journals/corr/GhahabiH15},\cite{ghahabi2014deep}), Recurrent
+Networks (\cite{DBLP:journals/corr/SaonSRK16}) or even a mix of
+Deep neural networks and Support Vector machines (\cite{richardson2015deep}) have been tested and yielded
+better results than previous techniques, though - to the best of our knowledge -
+none directly tackled the issue of supervectors' intermediate representation.
+Instead, all of the aforementionned work relied on pre-existing i-vector
+extraction techniques. We will explore the possibility of extracting a
+meaningful intermediate representation of supervectors through the use of deep architectures.
+
 \subsection{Formal neuron}
 
 \paragraph{Neuron?}
-A neuron can be thought of as a function which takes an $n$-dimensional vector $A$ as input and returns a scalar $e$ as output. This function typically has two internal parameters which are a bias $b$ and a weight-matrix $W$. The function starts by calculating $WA+b$ before using a non-linear activation function (such as sigmoid or tanh): $e=f(WA+b)$.
+A neuron can be thought of as a function which takes an $n$-dimensional vector
+$A$ as input and returns a scalar $e$ as output. This function typically has two
+internal parameters which are a bias $b$ and a weight-matrix $W$. The function
+starts by calculating $WA+b$ before using a non-linear activation function (such as sigmoid or tanh): $e=f(WA+b)$.
 
 \paragraph{Adjusting the function}
 
@@ -137,7 +192,8 @@ computed on layer $A$ by looking at $\frac{\partial d}{\partial input_B}$
 instead of $\frac{\partial d}{\partial e}$
 \subsection{Autoencoders}
 
-An autoencoder (\cite{Hinton504}) is a neuronal network with a particular architecture which is defined below.
+An autoencoder (\cite{Hinton504}
+) is a neuronal network with a particular architecture which is defined below.
 
 \paragraph{A default task for a different goal}
 
@@ -192,7 +248,8 @@ Since the problem is symmetrical, we can perform the learning in both directions
 
 \paragraph{Architecture}
 
-We talk about tied weight autoencoder when the same weights appears in two different places in the autoencoder. For example, in the architecture proposed by \cite{vukotic:hal-01314302} (Fig. \ref{archi_vedran}), the weights in light blue in the upper part of the autoencoder are the same as the weights in light blue in the lower part. So, if the function that transform the upper first hidden layer to the upper part of the representation is $h_1(x) = f(W \times x + b_1)$, then  the function that transform the lower part of the representation to the next layer is $h_2(x) = f(W^T \times x + b_2)$. In this architecture, the pink weights are also tied.
+We talk about tied weight autoencoder when the same weights appears in two different places in the autoencoder. For example, in the architecture proposed in \cite{vukotic:hal-01314302}
+(Fig. \ref{archi_vedran}), the weights in light blue in the upper part of the autoencoder are the same as the weights in light blue in the lower part. So, if the function that transform the upper first hidden layer to the upper part of the representation is $h_1(x) = f(W \times x + b_1)$, then  the function that transform the lower part of the representation to the next layer is $h_2(x) = f(W^T \times x + b_2)$. In this architecture, the pink weights are also tied.
 
 \begin{figure}[!h]
     \centering
@@ -201,7 +258,7 @@ We talk about tied weight autoencoder when the same weights appears in two diffe
     \label{archi_vedran}
 \end{figure}
 
- \paragraph{Good results}
+\paragraph{Good results}
 
 \section{Method}
 
