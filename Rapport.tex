@@ -50,23 +50,28 @@ immediate one, is the manner in which the data will be represented: raw numeric
 signal, fourrier transform, spectral representation? 
 
 Years of reasearch into the issue have yielded a solution called
-\texttt{supervectors} which provide a probabilistic representation of the
+\emph{supervectors} which provide a probabilistic representation of the
 numeric signal's spectral features. Those supervectors however present the
 significant downside of being enormous and therefore evolving in a very sparse
 representation space, which makes them unfit for applications. What recent works
 have had success with is the extraction of more condensed representations from
-those supervectors named \texttt{i-vectors}.
+those supervectors named \emph{i-vectors}.
 
 Deep Learning techniques have had tremendous success in a number of fields
-ranginf from computer vision (\cite{lecun1998gradient}) to natural language
+ranging from computer vision (\cite{lecun1998gradient}) to natural language
 processing (\cite{bordes2012joint}) by building upon successive layers of data
 representation and inferring hierachical dependencies within the data. It seems
 to us that such architectures would be especially adapted to the extraction of
-intermediate representations from \texttt{supervectors} and might provide
-representations that outperform the current state of the art \texttt{i-vectors}.
+intermediate representations from \emph{supervectors} and might provide
+representations that outperform the current state of the art \emph{i-vectors}.
+
+To begin with, we will give a brief exposition of signal representations used
+up until now \ref{sec:signal}. Afterwards, a brief explanation of the Deep
+Learning techniques we will need will be provided \ref{sec:Deep}. Finally, we
+will give an overview of the study we plan to conduct \ref{sec:Method}
 
 \section{Sound signals}
-
+\label{sec:signal}
 An audio signal used for Speaker recognition tasks is technically an analogical
 signal. To allow computer pocessing, those signals are sampled into a numeric
 signal (discrete set of measures that can a discrete set of values). Such a
@@ -149,16 +154,38 @@ where
 \item $w$ is a an intermediate vector, or \emph{i-vector}
 \end{itemize}
 
-These \texttt{i-vectors} provide lighter, and therefore more usable, data for application tasks.
+These \emph{i-vectors} provide lighter, and therefore more usable, data for application tasks.
 
 \subsection{Previous works}
 
-\section{Use of neuronal networks}
 
+Extracting the i-vector is interesting for speaker recognition because it is easier to apply usual classifications method on it as Cosine Distance Scoring (CDS) and Support Vector Machines (SVM) \cite{Senoussaoui_ani-vector, dehak2011front}. I-vectors are good tools for speaker recognition because they are channel independant and compact. We will try to keep these two characteristics in the new representation we will build using neuronal networks.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Use of neuronal networks}
+\label{sec:Deep}
 The recent success of deep learning techniques in various fields such as
 computer vision (\cite{lecun1998gradient}) and natural language processing (\cite{bordes2012joint}) has sparked
 many explorations of their usefulness in classification tasks on
-\texttt{i-vectors} such as speaker recognition. Many architectures such as Deep
+\emph{i-vectors} such as speaker recognition. Many architectures such as Deep
 Belief Networks(\cite{DBLP:journals/corr/GhahabiH15},\cite{ghahabi2014deep}),
 Deep Neural Networks
 (\cite{DBLP:journals/corr/GhahabiH15},\cite{ghahabi2014deep}), Recurrent
@@ -190,7 +217,12 @@ meaningful intermediate representation of supervectors through the use of deep a
 A neuron can be thought of as a function which takes an $n$-dimensional vector
 $A$ as input and returns a scalar $e$ as output. This function typically has two
 internal parameters which are a bias $b$ and a weight-matrix $W$. The function
-starts by calculating $WA+b$ before using a non-linear activation function (such as sigmoid or tanh): $e=f(WA+b)$.
+starts by calculating $WA+b$ before using a non-linear activation function (such
+as sigmoid or tanh).
+
+\begin{equation}
+  e=f(WA+b)
+\end{equation}
 
 \paragraph{Adjusting the function}
 
@@ -275,19 +307,30 @@ capture features specific to the input so that it may be reconstructed.
 
 \paragraph{Structure}
 
+\todo{ref}
+
+\begin{equation}
+  x_{latent} = encoder(x_{input})
+\end{equation}
+
+\begin{equation}
+  x_{output} = decoder(x_{latent}) \simeq x_{input}
+\end{equation}
+
 Typically, the \textbf{input} is \textit{encoded} into a \textbf{latent
   representation} which is then \textit{decoded} into an \textbf{output} that
 should match the input as closely as possible, hence the autoencoder
 denomination. The main danger of such an approach is having the networks that
 does not transform the input at all and yields a latent representation that is
-no different to the raw input data. 
-
-% A neuronal network that tries to reconstruct the input may learn the identity.
-% But an autoencoder has a structure the makes it impossible. In fact, an
-% autoencoder has at least one hidden layer that is smaller than the input. So an
-% autoencoder can be decomposed as an encoder that transform the input to a
-% smaller represatation, called latent representation or code, and a decoder that
-% reconstruct the input from the latent representation.
+no different to the raw input data. A multitude of solutions exist to avoid such
+a scenario:
+\begin{itemize}
+\item Compress the input into a latent representation of lower dimension
+\item Put the input through a corrupting input layer: the autoencoder cannot
+  just do nothing and give back the same thing because it never had the actual
+  input to begin with
+\item Use various regularisation methods.
+\end{itemize}
 
 \begin{figure}[!h]
     \centering
@@ -311,7 +354,19 @@ Since the problem is symmetrical, we can perform the learning in both directions
 
 
 We talk about tied weight autoencoder when the same weights appears in two different places in the autoencoder. For example, in the architecture proposed in \cite{vukotic:hal-01314302}
-(Fig. \ref{archi_vedran}), the weights in light blue in the upper part of the autoencoder are the same as the weights in light blue in the lower part. So, if the function that transform the upper first hidden layer to the upper part of the representation is $h_1(x) = f(W \times x + b_1)$, then  the function that transform the lower part of the representation to the next layer is $h_2(x) = f(W^T \times x + b_2)$. In this architecture, the pink weights are also tied. 
+(Fig. \ref{archi_vedran}), the weights in light blue in the upper part of the
+autoencoder are the same as the weights in light blue in the lower part. So, if
+the function that transform the upper first hidden layer to the upper part of
+the representation is
+\begin{equation}
+ h_1(x) = f(W \times x + b_1) 
+\end{equation}
+then  the function that transform the lower part of the representation to the
+next layer is
+\begin{equation}
+ h_2(x) = f(W^T \times x + b_2) 
+\end{equation}
+In this architecture, the pink weights are also tied. 
 
 \begin{figure}[!h]
     \centering
@@ -323,6 +378,7 @@ We talk about tied weight autoencoder when the same weights appears in two diffe
 This architecture learns a joint representation of the two modalities which gives encouraging results multimodal query expansion \cite{vukotic:hal-01314302}. In our context, the two modalities will be two supervectors from the same speaker.
 
 \section{Method}
+\label{sec:Method}
 
 As explained earlier, supervectors computed from Gaussian Mixture Models provide
 useful features of a given signal. i-vectors have built upon this representation
@@ -381,18 +437,18 @@ a preliminary study on a small dataset will first be conducted.
 
 15311 audio signals were extracted from BFMTV's various programs and labeled
 with the name of their respective speaker. Those soundfiles were then processed
-into 15311 supervectors of length 9311 (?) with the \texttt{AudioSeg} tool.
-We then create 1800000 pairs of supervectors that originate from the same
+into 15311 supervectors of length 9216 with the \emph{AudioSeg} tool.
+We then create 1 839 235 pairs of supervectors that originate from the same
 speaker.
 
 \paragraph{Input}
 
 For each computed pair, we feed both of its supervectors to the neural network as
-input. Therefore, we train the network on 3 600 000 supervectors of size 9311.
+input. Therefore, we train the network on 3 678 470 supervectors of size 9216.
 
 \paragraph{Output and task}
 
-The neural network outputs a vector of size 9311 that we try to match as closely
+The neural network outputs a vector of size 9216 that we try to match as closely
 as possible to the supervector the original input was paired with.
 
 \subsubsection{Neural approach}
@@ -400,12 +456,12 @@ as possible to the supervector the original input was paired with.
 We will start by training a 7-hidden layer auto-encoder.
 
 The encoder is 3 layer
-deep and encodes the input of size 9311 into a latent representation of size 40.
+deep and encodes the input of size 9216 into a latent representation of size 40.
 This is done by successively compressing into representations of size 5000
 (first layer), 500 (second layer) and 100 (third layer).
 
 The decoder is 3 layer deep and inflates the 40 dimensional latent
-representation back into a 9311 dimensional supervector by successively
+representation back into a 9216 dimensional supervector by successively
 inflating into representations of size 100 (fifth layer), 500 (sixth layer) and
 5000 (seventh layer). The weights used to inflate from the latent layer to the
 fifth and the fifth to sixth are tied to those used to compress from the second
@@ -435,14 +491,38 @@ as a classification method.
 
  To substantiate our claim that i-vector extraction does not lead to a
  clustering of same speaker vectors, we will apply our method to both our
- extracted intermmediate vectors and standard \texttt{i-vectors}
+ extracted intermmediate vectors and standard \emph{i-vectors}. Those
+ intermediate representations will be extracted from source files using the tool
+ ALIZE (\cite{larcher2013alize})
 
 \subsection{Anticipated issues}
 
+\paragraph{Optimization function}
 
+It is likely we will end up tweaking the optimization function over the course
+of our study, be it by using a linear combination of the functions we already
+brought up or by using a completely different function.
 
+\paragraph{Training set}
 
+We intentionnally started out with a fairly small training set in order to be
+able to put forth some preliminary results faster so that early decisions can be
+made. It is possible we will not have enough training examples to train very
+deep architectures and will end up using bigger training set.
 
+\paragraph{Evaluation method}
+
+The evaluation method detailed above is fairly clumsy in that it is extremely
+vulnerable to outliers. Various improvements on it could be explored if we
+notice that we consistently have some outliers that artificially skew the
+results in favour of one type of intermediate representation.
+
+\paragraph{Network hyper-parameters}
+
+The above hyper-parameters (number of layers, dimension of each layer, ...) have
+mostly been chosen arbitrarily. The values chosen seemed reasonnable in light of
+the pursued goal and the task at hand, but will most likely evolve depending on
+experiments' results.
 
 \appendix
 
