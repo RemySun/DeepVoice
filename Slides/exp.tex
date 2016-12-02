@@ -5,6 +5,7 @@
 \usepackage[main=french,english]{babel}
 \usepackage{hyperref}
 \usepackage{tikz}
+\usetikzlibrary{shapes,snakes}
 \usepackage{ulem}
 \usepackage{xcolor, colortbl}
 \usepackage{mathtools}
@@ -43,6 +44,157 @@
     \tableofcontents[hideallsubsections]
 \end{frame}
 
+
+
+\section{Figures}
+
+\begin{frame}
+\def\layersep{2.5cm}
+
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[ellipse,fill=black!25,minimum size=17pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron, fill=green!50];
+    \tikzstyle{output neuron}=[neuron, fill=red!50];
+    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+    \tikzstyle{annot} = [text width=4em, text centered]
+
+    % Draw the input layer nodes
+    \foreach \name / \y in {1,...,4}
+    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+        \node[input neuron, pin=left:] (I-\name) at (0,-\y) {$a_\y$};
+
+    % Draw the hidden layer nodes
+    \foreach \name / \y in {1,...,1}
+        \path[yshift=-1.5cm]
+            node[hidden neuron] (H-\name) at (\layersep,-\y cm) {};
+
+    % Draw the output layer node
+    \node[output neuron, right of=H-1] (O) {$e = f(WA + b)$};
+
+    % Connect every node in the input layer with every node in the
+    % hidden layer.
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,1}
+            \path (I-\source) edge (H-\dest);
+
+    % Connect every node in the hidden layer with the output layer
+    \foreach \source in {1,...,1}
+        \path (H-\source) edge (O);
+
+    % Annotate the layers
+    \node[annot,below of=H-1, node distance=1cm] (hl) {Weight $W$\\Bias $b$};
+    \node[annot,above of=H-1, node distance=1cm] (hl) {Neuron};
+    \node[annot,above of=I-1, node distance=1cm] (hl) {Input A};
+\end{tikzpicture}
+
+\end{figure}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\def\layersep{1.8cm}
+
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron, fill=green!50];
+    \tikzstyle{output neuron}=[neuron, fill=red!50];
+    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+    \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
+    \tikzstyle{annot} = [text width=4em, text centered]
+
+    % Draw the input layer nodes
+    \foreach \name / \y in {1,...,4}
+    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+        \node[input neuron, pin=left:] (I-\name) at (0,-\y) {$a_\y$};
+
+    % Draw the hidden layer nodes
+    \foreach \name / \y in {1,...,5}
+        {
+        \visible<-10>{\path[yshift=0.5cm]
+            node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};}
+        \visible<11->{\path[yshift=0.5cm]
+            node[hidden neuron back] (H1-\name) at (\layersep,-\y cm) {};}
+        }
+            
+    \foreach \name / \y in {1,...,4}
+        {
+        \visible<-9>{\path
+            node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};}
+        \visible<10->{\path
+            node[hidden neuron back] (H2-\name) at (2*\layersep,-\y cm) {};}
+        }
+            
+    \foreach \name / \y in {1,...,5}
+        {
+        \visible<-8>{\path[yshift=0.5cm]
+            node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};}
+        \visible<9->{\path[yshift=0.5cm]
+            node[hidden neuron back] (H3-\name) at (3*\layersep,-\y cm) {};}
+        }
+    % Draw the output layer node
+    \node[output neuron,pin={[pin edge={->}]right:Output}, right of=H3-3] (O) {};
+
+    % Connect every node in the input layer with every node in the
+    % hidden layer.
+    
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            {\only<\source>{\path (I-\source) edge (H1-\dest);}}
+            
+            
+    \visible<5->{
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            \path (I-\source) edge (H1-\dest);
+    }
+    
+            
+    \visible<6->{
+    \foreach \source in {1,...,5}
+        \foreach \dest in {1,...,4}
+            \path (H1-\source) edge (H2-\dest);
+    }
+            
+    \visible<7->{
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            \path (H2-\source) edge (H3-\dest);
+    }
+            
+    \visible<8->{
+    \foreach \source in {1,...,5}
+        \path (H3-\source) edge (O);
+    }
+        
+        
+    % Annotate the layers
+    \node[annot,above of=H1-1, node distance=1cm] (hl1) {Hidden layer 1};
+    \node[annot,right of=hl1] (hl2) {Hidden layer 2};
+    \node[annot,right of=hl2] (hl3) {Hidden layer 3};
+    \node[annot,right of=hl3] {Output layer};
+    \node[annot,left of=hl1] {Input layer};
+    
+    \node[annot,below of=H1-5, node distance=1cm] (wb1) {$W\visible<11->{'}_1$, $b\visible<11->{'}_1$};
+    \node[annot,right of=wb1] (wb2) {$W\visible<10->{'}_2$, $b\visible<10->{'}_2$};
+    \node[annot,right of=wb2] (wb3) {$W\visible<9->{'}_3$, $b\visible<9->{'}_3$};
+\end{tikzpicture}
+
+\end{figure}
+
+\end{frame}
 
 \section{Signal representation for speaker recognition}
 
