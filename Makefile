@@ -28,8 +28,6 @@ $(AUX_FILES): %.aux: %.tex Makefile $(FORMAT_FILES)
 
 $(PDF_FILES): %.pdf: %.tex $(BBL_FILES) $(PNG_FILES) Makefile $(FORMAT_FILES)
 	-pdflatex $*
-	@while grep -i 'Rerun' $*.log; \
-		do pdflatex $*; done
 
 pdfnup: $(PDFNUP_FILES)
 
