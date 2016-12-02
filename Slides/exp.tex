@@ -1,4 +1,5 @@
 \documentclass[11pt,english]{beamer}
+
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[main=french,english]{babel}
@@ -6,8 +7,10 @@
 \usepackage{tikz}
 \usepackage{ulem}
 \usepackage{xcolor, colortbl}
+\usepackage{mathtools}
 
-\usetheme{Darmstadt}
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
 
 \title{DeepVoice}
 \subtitle{Extracting meaningful signal representation for Speaker Recognition
@@ -125,10 +128,57 @@
 \begin{frame}
   \frametitle{Supplanting i-vectors}
   
+  \begin{columns}
+  \column{0.44\textwidth}  
+  
+\only<1>{
+\begin{equation*}
+    \begin{bmatrix}
+      G_0^{0,0} \\   G_0^{0,1} \\ ... \\ G_{0}^{0,255} \\ G_0^{1,0} \\ .. \\ G_{0}^{N,255}
+    \end{bmatrix}
+\begin{bmatrix}
+      G_1^{0,0} \\   G_1^{0,1} \\ ... \\ G_{1}^{0,255} \\ G_1^{1,0} \\ .. \\ G_{1}^{N,255}
+    \end{bmatrix}
+...
+\begin{bmatrix}
+      G_M^{0,0} \\   G_M^{0,1} \\ ... \\ G_{M}^{0,255} \\ G_M^{1,0} \\ .. \\ G_{M}^{N,255}
+    \end{bmatrix}
+  \end{equation*}
+M supervectors
+}
+
+\only<2>{
+  \begin{equation*}
+    \begin{bmatrix}
+      G_0^{0,0} \\   G_0^{0,1} \\ ... \\ G_{0}^{0,255} \\ G_0^{1,0} \\ .. \\ G_{0}^{N,255}
+    \end{bmatrix}
+  \end{equation*}
+  Supervector from signal spoken by \textbf{someone}
+}
+  \column{0.5\textwidth}  
+  What is needed to extract i-vectors ?
+  \begin{itemize}
+  \item Supervectors
+  \item Training data (Labels on supervectors)
+  \end{itemize}
+  We will use the \textbf{exact same data}
+  \end{columns}
+
 \end{frame}
 
 \begin{frame}
   \frametitle{Processed data}
+
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+    \item Raw data: 15311 numeric soud files from BFMTV with labeled speakers
+    \item Input: 3 678 470 supervectors
+
+    \end{itemize}
+
+    \column{0.4\textwidth}
+  \end{columns}
   
 \end{frame}
 
