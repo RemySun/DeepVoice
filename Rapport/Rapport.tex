@@ -1,0 +1,406 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+%\usepackage{fullpage}           %
+\usepackage[french, english]{babel}
+\usepackage{graphicx}
+\usepackage{todonotes}
+
+\usepackage[backend=biber]{biblatex}
+\bibliography{Biblio}{}
+
+\title{PROJ: DeepVoice}
+
+\author{Remi Hutin, Remy Sun, Raphael Truffet \\
+  \{Remi.Hutin, Remy.Sun, Raphael.Truffet\}@ens-rennes.fr \\
+  Département informatique, ENS Rennes \\
+  Campus de Ker lann, Bruz, France
+\and
+  Guillaume Gravier \\
+  guig@irisa.fr\\
+  Linkmedia project, INRIA \\
+  Campus de Beaulieu, Rennes, France
+ }
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  To carry out a speaker recognition task, ie to identify the locutor in an
+audio signal, one must first obtain a serviceable representation
+of said signal. Improvements upon the raw numeric signal have been made over the years, one
+of which is the creation of a Gaussian Mixture Model supervector modeling the
+probabilistic distribution of the signal's
+spectral features. Due to the enormous size of such supervectors, condensed
+forms such as i-vectors have been created to provide usable data for application
+tasks. Deep learning techniques have seen significant success in many
+classification tasks due to their ability to
+build upon successive layers of data representation. We will
+strive to explore the possibility of using such techniques to acquire a
+representation of supervectors that is at least competitive with i-vectors.
+\end{abstract}
+
+\section{Introduction}
+
+Speaker recognition refers to the all too important identification of a locutor
+from an unlabeled audio signal. However, the resolution of this essential issue
+is no trivial matter as it raises a number of questions along the way. The most
+immediate one, is the manner in which the data will be represented: raw numeric
+signal, fourrier transform, spectral representation? 
+
+Years of reasearch into the issue have yielded a solution called
+\texttt{supervectors} which provide a probabilistic representation of the
+numeric signal's spectral features. Those supervectors however present the
+significant downside of being enormous and therefore evolving in a very sparse
+representation space, which makes them unfit for applications. What recent works
+have had success with is the extraction of more condensed representations from
+those supervectors named \texttt{i-vectors}.
+
+Deep Learning techniques have had tremendous success in a number of fields
+ranginf from computer vision (\cite{lecun1998gradient}) to natural language
+processing (\cite{bordes2012joint}) by building upon successive layers of data
+representation and inferring hierachical dependencies within the data. It seems
+to us that such architectures would be especially adapted to the extraction of
+intermediate representations from \texttt{supervectors} and might provide
+representations that outperform the current state of the art \texttt{i-vectors}.
+
+\section{Sound signals}
+
+An audio signal used for Speaker recognition tasks is technically an analogical
+signal. To allow computer pocessing, those signals are sampled into a numeric
+signal (discrete set of measures that can a discrete set of values). Such a
+representation is highly vulnerable to noise and and transformations however,
+and more developped means are usually used.
+
+\subsection{Cepstral analysis}
+
+The speech signal of a locutor is hardly suitable for statistical modeling or
+the calculation of a distance.
+In order to obtain a representation which is more compact and less redundant, we
+use a cepstral representation of the speech. 
+
+The cepstrum of a signal $x(t)$ is defined by :
+
+$$C(x(t)) = \mathcal{F}^{-1}(\ln(|\mathcal{F}(x(t))|)$$
+
+where $\mathcal{F}$ is the Fourier transform.
+
+
+We can analyze a signal locally by applying a window, whose duration is shorter
+than the signal. Then, we exctract a vector of cepstral coefficents of this part
+of signal. We repeat it for several windows, until the end of the signal is
+reached. 
+
+In the cepstral domain, the distance between two speech signals may be easily
+computed, using the Euclidean distance. 
+
+
+\subsection{Gaussian Mixture Model (GMM) and supervectors}
+
+A Gaussian Mixture Model (GMM) is a probabilistic model used to approximate a distribution of random variables as a sum of normal distributions. 
+
+Here, we suppose that cepstral vectors of a signal follow a probality
+distribution that is specific to the given signal. This distribution is the one
+that we try to approximate with the GMM using a reference model. The supervector
+is the vector that gather means of all the normal distributions of the GMM.  \\
+
+
+\begin{figure}[!h]
+    \centering
+    \caption{Gaussian Mixture Model (GMM)}
+    \includegraphics[width=7cm]{GMM.jpg}
+    \label{gmm}
+\end{figure}
+
+\subsection{I-vectors}
+
+\todo[inline]{Ajouter les références}
+
+A supervector presents a probabilistic representation of a signal's spectral features. 
+However, these supervectors are enormous, which makes them unfit for applications.
+That's why we want a more condensed version a these supervectors.
+
+
+Let $M$ be the supervector, obtained as explained previously. $M$ depends on the speaker and on the channel. 
+
+%We want to split this vector into two components, $s$ and $v$ such as $M = s + c$ with :
+%\begin{itemize}
+%\item $s$ is the speaker dependant supervector
+%\item $c$ is the channel dependant supervector
+%\end{itemize}
+
+We want to express $M$ as $M = m + Tw$, where
+\begin{itemize}
+\item $m$ is a speaker and channel independent supervector
+\item $T$ is a rectangular matrix, called \emph{Total-variability matrix}
+\item $w$ is a an intermediate vector, or \emph{i-vector}
+\end{itemize}
+
+These i-vectors provide lighter, and therefore more usable, data for application tasks.
+
+\subsection{Previous works}
+
+\section{Use of neuronal networks}
+
+The recent success of deep learning techniques in various fields such as
+computer vision (\cite{lecun1998gradient}) and natural language processing (\cite{bordes2012joint}) has sparked
+many explorations of their usefulness in classification tasks on
+\texttt{i-vectors} such as speaker recognition. Many architectures such as Deep
+Belief Networks(\cite{DBLP:journals/corr/GhahabiH15},\cite{ghahabi2014deep}),
+Deep Neural Networks
+(\cite{DBLP:journals/corr/GhahabiH15},\cite{ghahabi2014deep}), Recurrent
+Networks (\cite{DBLP:journals/corr/SaonSRK16}) or even a mix of
+Deep neural networks and Support Vector machines (\cite{richardson2015deep}) have been tested and yielded
+better results than previous techniques, though - to the best of our knowledge -
+none directly tackled the issue of supervectors' intermediate representation.
+Instead, all of the aforementionned work relied on pre-existing i-vector
+extraction techniques. We will explore the possibility of extracting a
+meaningful intermediate representation of supervectors through the use of deep architectures.
+
+\subsection{Formal neuron}
+
+\begin{figure}[!tbp]
+\centering  
+  \begin{minipage}[b]{0.2\textwidth}
+    \includegraphics[width=0.9\textwidth]{Neuron}
+    \caption{Exemple de neurone formel}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.2\textwidth}
+    \includegraphics[width=\textwidth]{Deep}
+    \caption{Réseau de neurones profond}
+  \end{minipage}
+\end{figure}
+
+
+\paragraph{Neuron?}
+A neuron can be thought of as a function which takes an $n$-dimensional vector
+$A$ as input and returns a scalar $e$ as output. This function typically has two
+internal parameters which are a bias $b$ and a weight-matrix $W$. The function
+starts by calculating $WA+b$ before using a non-linear activation function (such as sigmoid or tanh): $e=f(WA+b)$.
+
+\paragraph{Adjusting the function}
+
+Our endgoal is to have the neuron, and by extension the neural network, perform
+a certain task. The formal neuron \og learns\fg by adjusting its function to perform better on
+this designated task. For simplicity's sake, we will first explain how this
+process - called \og backpropagation\fg{} - works with a single neuron.
+
+For instance, suppose we have a bi-dimensional vector given as input and that we
+want our neuron to return 1 if its two coordinates are the identical and -1 if
+it is not. A natural way to evaluate how accurate our neuron is by looking at the
+distance between its output $e$ and the desired result r : d(e)=|e-r|.
+
+We want to modify our neuron/function to minimize this distance. That means
+changing $e$, typically by gradient descent on function $d$ derivative. Here,
+$\frac{\partial d}{\partial e} = r-e$, which means we want to \og move\fg{} $e$ in this
+direction. To this end, we modify our function's two internal parameters $W$ and
+$b$. $e$, and by extension $d$, can actually be seen as a function of those two
+parameters: $d(W,b)=|e(W,b)-r|$. Therefore $\frac{\partial d}{\partial W}
+   = \frac{\partial d}{\partial e}\frac{\partial e}{\partial W}$,
+$\frac{\partial d}{\partial b}
+   = \frac{\partial d}{\partial e}\frac{\partial e}{\partial b}$. We then only
+   need to compute new internal parameters $W'$ and $b'$ with 
+
+\begin{equation}
+     W'=W + s\frac{\partial d}{\partial W}=W-s\frac{\partial d}{\partial e}\frac{\partial e}{\partial W}
+\end{equation}
+
+\begin{equation}
+     b'=b + s\frac{\partial d}{\partial b}=b-s\frac{\partial d}{\partial e}\frac{\partial e}{\partial b}
+\end{equation}
+
+What we just demonstrated was a simple backpropagation algorithm called gradient
+descent. This method is deeply flawed, but most state of the art backpropagation
+methods find their origins in this humble algorithm.
+
+\paragraph{Neuronal network?}
+
+Typically, a neural \textbf{network} is made up of more than a single neuron. A
+neural layer refers to multiple neurons working on the same input (or parts of
+the same input) and producing an output that can be construed as some form of
+concatenation of their respective outputs. This output can be in turn regarded
+as an alternate representation of the input. Backpropagation for each neuron
+works the same way as it would if it were the only neuron calculating.
+
+The notion of \textbf{deep} learning comes from the fact that the alternate
+reprensentation computed by one layer $A$ can be fed as input to another layer $B$.
+This allows networks to infer multiple levels of representation, same as one
+first processes simple geometrical forms before recognizing more complex
+compositions. Backpropagation is straight-forwardly computed on layer $B$. It is
+computed on layer $A$ by looking at $\frac{\partial d}{\partial input_B}$
+instead of $\frac{\partial d}{\partial e}$
+\subsection{Autoencoders}
+
+An autoencoder (\cite{Hinton504}
+) is a neuronal network with a particular architecture which is defined below.
+
+\paragraph{A default task for a different goal}
+
+Neural networks' ability to extract internal meaningful representation from the
+original raw data is very enticing. Indeed, providing a meaningful
+representation of the initial data is one of the biggest hurdles of classical
+machine learning. However, neural networks need to be trained on a task, and
+require labeled data to that end. 
+
+Since we are no longer interested in the specific task needed to train the
+network, it is possible to default to a task that is not interesting in itself
+but might require the network to learn salient features of the data in order to
+be completed. A very natural one is to match the output to the input, which
+would not require man made labeling. Hopefully, the learned representation will
+capture features specific to the input so that it may be reconstructed.
+
+\paragraph{Structure}
+
+Typically, the \textbf{input} is \textit{encoded} into a \textbf{latent
+  representation} which is then \textit{decoded} into an \textbf{output} that
+should match the input as closely as possible, hence the autoencoder
+denomination. The main danger of such an approach is having the networks that
+does not transform the input at all and yields a latent representation that is
+no different to the raw input data. 
+
+% A neuronal network that tries to reconstruct the input may learn the identity.
+% But an autoencoder has a structure the makes it impossible. In fact, an
+% autoencoder has at least one hidden layer that is smaller than the input. So an
+% autoencoder can be decomposed as an encoder that transform the input to a
+% smaller represatation, called latent representation or code, and a decoder that
+% reconstruct the input from the latent representation.
+
+\begin{figure}[!h]
+    \centering
+    \caption{Structure of an autoencoder}
+    \includegraphics[width=7cm]{Autoencoder_structure.png}
+    \label{autoencoder_structure}
+\end{figure}
+
+
+\paragraph{Why use autoencoders?}
+
+Autoencoders can be used for denoising, using corrupted data as input and the original data as objective.
+
+Autoencoders may also be very useful to learn a representation. In fact, the latent represention contains enough information to reconstruct the data.
+
+In our context, autoencoders could be used to find a representation of a speaker, by giving to the autoencoder a supervector from a speaker as input, and an another supervector from the same speaker as objective. This idea is based on considerating the within-speaker variability as a noise, and using a denoising autoencoder. Repeating this with several pairs of supervectors, we may learn a representation of the speaker. 
+
+Since the problem is symmetrical, we can perform the learning in both directions. One way to perform this training is to use an autoencoder that reconstruct each supervector from the other using tied weights.
+
+\subsection{Tied weight autoencoder}
+
+\paragraph{Architecture}
+
+We talk about tied weight autoencoder when the same weights appears in two different places in the autoencoder. For example, in the architecture proposed in \cite{vukotic:hal-01314302}
+(Fig. \ref{archi_vedran}), the weights in light blue in the upper part of the autoencoder are the same as the weights in light blue in the lower part. So, if the function that transform the upper first hidden layer to the upper part of the representation is $h_1(x) = f(W \times x + b_1)$, then  the function that transform the lower part of the representation to the next layer is $h_2(x) = f(W^T \times x + b_2)$. In this architecture, the pink weights are also tied.
+
+\begin{figure}[!h]
+    \centering
+    \caption{Symmetrical and bidirectional learning architecture using tied weights}
+    \includegraphics[width=5cm]{archi-vedran.pdf}
+    \label{archi_vedran}
+\end{figure}
+
+\paragraph{Good results}
+
+\section{Method}
+
+As explained earlier, supervectors computed from Gaussian Mixture Models provide
+useful features of a given signal. i-vectors have built upon this representation
+to extract a more compact reprensentation that better reprensent the
+specificities of the signal.
+
+One task that naturally comes to mind is deciding whether two signals have been
+said by the same person. Unfortunately, computing euclidian distance between the signals'
+respective supervector or i-vector does not yield satisfactory results.
+Therefore, we will use neural networks to extract an intermediate representation
+of each signal that might be better suited to this particular problem.
+
+\subsection{Prospective methodology}
+\label{subsec:prosp}
+
+\paragraph{Evaluating speaker-dependant similarities}
+
+\todo[inline]{Talk about evaluation with guig. SVM? Neural classifier?}
+
+\paragraph{Phasing out non-speaker dependant noise}
+
+In order to extract a representation of supervectors that makes speaker
+dependent features of the given signal more salient, we use a model derived from
+the design of a denoising autoencoder. Indeed, we have no need for any
+information pertaining to what is actually being said or what kind of microphone
+was used: this is all noise to us. Therefore, if two supervectors originate from
+the same speaker, it seems reasonnable to think of them as the same original \og
+speaker\fg{} sound vector which has polluted by non-speaker dependant noise.
+
+The latent representation thusly extracted should present salient features
+specific to the studied speaker. An autoencoder trained that way could allow for
+a sort of projection that we wish to study.
+
+\paragraph{Prospective general model}
+
+We will therefore train an autoencoder on supervectors. Given good results of
+[Vedran's paper], we will tie all but the extreme weights to reflect the
+symmetrical nature of the task at hand.
+
+\subsection{First experimentation}
+
+In light of the difficulties inherent to the training of large neural networks,
+a preliminary study on a small dataset will first be conducted.
+
+\subsubsection{Dataset}
+
+\paragraph{Processing raw data}
+
+15311 audio signals were extracted from BFMTV's various programs and labeled
+with the name of their respective speaker. Those soundfiles were then processed
+into 15311 supervectors of length 9311 (?) with the \texttt{AudioSeg} tool.
+We then create 1800000 pairs of supervectors that originate from the same
+speaker.
+
+\paragraph{Input}
+
+For each computed pair, we feed both of its suervectors to the neural network as
+input. Therefore, we train the network on 3 600 000 supervectors of size 9311.
+
+\paragraph{Output and task}
+
+The neural network outputs a vector of size 9311 that we try to match as closely
+as possible to the supervector the original input was paired with.
+
+\subsubsection{Neural approach}
+
+\subsubsection{Evaluating results}
+
+\paragraph{Evaluation method}
+
+We will first try to to pinpoint a threshold on the distance
+between two vectors which separates pairs of vectors labeled to the same locutor
+and labeled to two separate locutors. To this end, we will compute the distance
+(discussed in \ref{subsec:prosp}) between every pair of vectors labeled to the
+same locutor. The maximum of those distances is then computed and chosen as our
+\textbf{threshold}.
+
+We know by construction that every pair labeled to the same locutor is below the
+chosen threshold. To evaluate the relevance of the studied representation we
+then count the number of pairs of unmatched vectors whose corresponding distance
+is below our threshold. and would be misclassified if our threshold is was used
+as a classification method.
+
+\paragraph{Comparing to i-vectors}
+
+ To substantiate our claim that i-vector extraction does not lead to a
+ clustering of same speaker vectors, we will apply our method to both our
+ extracted intermmediate vectors and standard \texttt{i-vectors}
+
+
+
+
+
+
+\appendix
+
+\printbibliography
+
+
+
+
+\end{document}
