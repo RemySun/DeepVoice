@@ -9,7 +9,7 @@
 \usepackage{ulem}
 \usepackage{xcolor, colortbl}
 \usepackage{mathtools}
-
+\usepackage{xcolor}
 \usetheme{AnnArbor}
 \usecolortheme{beaver}
 
@@ -17,7 +17,7 @@
 \subtitle{Extracting meaningful signal representation for Speaker Recognition
   using deep architectures}
 
-\author{Rémi~Hutin, Rémy Sun, Raphaël Truffet\\ \\Encadrants : Guillaume Gravier et Vedran Vukoki\'c}
+\author{Rémi Hutin, Rémy Sun, Raphaël Truffet \and Encadrants : Guillaume Gravier et Vedran Vukoki\'c}
 
 
 \institute{ENS Rennes, IRISA}
@@ -46,9 +46,93 @@
 
 
 
-\section{Figures}
+
+
+
+\section{Signal representation for speaker recognition}
 
 \begin{frame}
+  \frametitle{Cesptral alanysis}
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Cepstral space}
+  \begin{columns}
+    \column{0.35\textwidth}
+    
+    \column{0.6\textwidth}
+    \only<1>{
+      
+    }
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Probabilistic modeling}
+  \begin{columns}
+    \column{0.35\textwidth}
+    \begin{itemize}
+    \item Modèle: Somme de gaussienne
+    \item Modéle standard UBM
+    \item<2> Adaptation à l'espace cepstral
+    \end{itemize}
+    \column{0.6\textwidth}
+    \only<1>{
+      \begin{figure}
+        \centering
+       \includegraphics[scale = 0.5]{ubm.pdf}
+      \end{figure}
+    }
+    \only<2>{
+      \begin{figure}
+        \centering
+       \includegraphics[scale = 0.5]{speker_model.pdf}
+      \end{figure}
+    }
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{supervectors}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{i-vectors}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{i-vectors}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{i-vectors}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{transition}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{transition}
+  
+\end{frame}
+
+\section{Deep learning}
+
+\begin{frame}
+  \frametitle{Use of DNNs}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Formal neuron}
 \def\layersep{2.5cm}
 
 
@@ -93,14 +177,11 @@
 
 \end{figure}
 
+  
 \end{frame}
 
-
-
-
-
-
 \begin{frame}
+  \frametitle{Neural network}
 \def\layersep{1.8cm}
 
 
@@ -193,70 +274,6 @@
 \end{tikzpicture}
 
 \end{figure}
-
-\end{frame}
-
-\section{Signal representation for speaker recognition}
-
-\begin{frame}
-  \frametitle{Cesptral alanysis}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{Cepstral space}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{Probabilistic modeling}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{supervectors}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{i-vectors}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{i-vectors}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{i-vectors}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{transition}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{transition}
-  
-\end{frame}
-
-\section{Deep learning}
-
-\begin{frame}
-  \frametitle{Use of DNNs}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{Formal neuron}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{Neural network}
   
 \end{frame}
 
@@ -319,6 +336,31 @@ M supervectors
 \end{frame}
 
 \begin{frame}
+  \frametitle{Filtering out non-speaker noise} 
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Filter out non-speaker dependant features
+      \only<2-3>{(\textcolor{red}{noise})}
+    \item<2-3> Need to denoise the signal
+    \item<3> Same speaker, different signals     
+    \item<3> Same signal, different non-speaker dependant noise
+    \end{itemize}
+    \column{0.4\textwidth}
+    \only<1>{
+      \begin{equation*}
+        M = m + Tw
+      \end{equation*}
+}
+\only<2>{
+  \begin{equation*}
+    M = \textcolor{red}{m} + T\color{green}{w}
+  \end{equation*}
+    }
+  \end{columns}
+\end{frame}
+
+\begin{frame}
   \frametitle{Processed data}
 
   \begin{columns}
@@ -334,13 +376,59 @@ M supervectors
     \end{itemize}
 
     \column{0.35\textwidth}
+    \only<1>{}
+    \only<2>{
+      \begin{equation*}
+        \begin{bmatrix}
+          v_1^{0,0} \\   v_1^{0,1} \\ ... \\ v_1^{0,255} \\ v_1^{1,0} \\ .. \\ v_1^{N,255}
+        \end{bmatrix}
+        \begin{bmatrix}
+          v_2^{0,0} \\   v_2^{0,1} \\ ... \\ v_2^{0,255} \\ v_2^{1,0} \\ .. \\ v_2^{N,255}
+        \end{bmatrix}
+      \end{equation*}
+    }
+    \only<3>{
+      \begin{equation*}
+        \color{green}{
+        \begin{bmatrix}
+          v_1^{0,0} \\   v_1^{0,1} \\ ... \\ v_1^{0,255} \\ v_1^{1,0} \\ .. \\ v_1^{N,255}
+        \end{bmatrix}
+      }
+      \color{black}{
+        \begin{bmatrix}
+          v_2^{0,0} \\   v_2^{0,1} \\ ... \\ v_2^{0,255} \\ v_2^{1,0} \\ .. \\ v_2^{N,255}
+        \end{bmatrix}
+        }
+      \end{equation*}
+    }
+    \only<4>{
+      \begin{equation*}
+        \begin{bmatrix}
+          v_1^{0,0} \\   v_1^{0,1} \\ ... \\ v_1^{0,255} \\ v_1^{1,0} \\ .. \\ v_1^{N,255}
+        \end{bmatrix}
+        \color{red}{
+          \begin{bmatrix}
+            v_2^{0,0} \\ v_2^{0,1} \\ ... \\ v_2^{0,255} \\ v_2^{1,0} \\ .. \\
+            v_2^{N,255}
+          \end{bmatrix}
+}
+      \end{equation*}
+    }
   \end{columns}
   
 \end{frame}
 
 \begin{frame}
   \frametitle{Intermediate vector evaluation}
-  
+  What uses i-vectors for speaker recognition?
+  \begin{itemize}
+  \item Cosine distance comparisons
+  \item SVM
+  \item Deep Neural networks
+  \end{itemize}
+  \only<2>{
+    \textbf{Preliminary evaluation} with cosine distance
+  }
 \end{frame}
 
 \begin{frame}
