@@ -18,7 +18,7 @@
 \usetheme{AnnArbor}
 \usecolortheme{beaver}
 
-\title{DeepVoice}
+\title{DeepVoice}                                          
 \subtitle{Extracting meaningful signal representation for Speaker Recognition
   using deep architectures}
 
@@ -51,7 +51,7 @@
 
 
 \begin{frame}
-  \frametitle{Diagram}
+  \frametitle{Signal processing workflow}
     \centering
     \begin{tikzpicture}[box/.style={draw,rounded corners,align=center}]
     \node[box,fill=blue!16] (a) {\includegraphics{signal.png}\\Signal};
@@ -59,7 +59,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Diagram}
+  \frametitle{Signal processing workflow}
     \centering
     \begin{tikzpicture}[box/.style={draw,rounded corners,align=center}]
     \node[box,fill=blue!16] (a) {\includegraphics[scale=0.5]{signal.png}\\Signal};
@@ -70,167 +70,6 @@
     \draw[->] (a) -- (f1);
     \draw[->] (a) -- (f2);
     \draw[->] (a) -- (fn);
-    \end{tikzpicture}
-\end{frame}
-
-
-
-
-\begin{frame}
-  \frametitle{Diagram}
-    \centering
-    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center}]
-    \node[box,fill=blue!16] (a) {\includegraphics[scale=0.5]{signal.png}\\Signal};
-    \node[box,fill=green!16,right =1cm of a] (f2) {\includegraphics[scale=0.5]{fen2.png}};
-    \node[box,fill=green!16,above =0.8cm of f2] (f1) {\includegraphics[scale=0.5]{fen1.png}};
-    \node[below =0.8cm of f2] (f3) {\dots};
-    \node[box,fill=green!16,below =0.8cm of f3] (fn) {\includegraphics[scale=0.5]{fenn.png}};
-    \draw[->] (a) -- (f1);
-    \draw[->] (a) -- (f2);
-    \draw[->] (a) -- (fn);
-    
-    
-    
-    \node[box,fill=orange!16, right = 1cm of f1] (c1) {cepstral coefficients};
-    \node[box,fill=orange!16, right = 1cm of f2] (c2) {cepstral coefficients};
-    \node[right = 3.5cm of f3] (c3) {\dots};
-    \node[box,fill=orange!16, right = 1cm of fn] (cn) {cepstral coefficients};
-    
-    \draw[->] (f1) -- (c1);
-    \draw[->] (f2) -- (c2);
-    \draw[->] (fn) -- (cn);
-    \end{tikzpicture}
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{Diagram}
-    \centering
-    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center}]
-    
-    \node[box,fill=green!16] (f2) {\includegraphics[scale=0.5]{fen2.png}};
-    \node[box,fill=green!16,above =0.8cm of f2] (f1) {\includegraphics[scale=0.5]{fen1.png}};
-    \node[below =0.8cm of f2] (f3) {\dots};
-    \node[box,fill=green!16,below =0.8cm of f3] (fn) {\includegraphics[scale=0.5]{fenn.png}};
-    
-    \node[box,fill=orange!16, right =1cm of f1] (c1) {cepstral coefficients};
-    \node[box,fill=orange!16, right =1cm of f2] (c2) {cepstral coefficients};
-    \node[below, right = 3.5cm of f3] (c3) {\dots};
-    \node[box,fill=orange!16, right =1cm of fn] (cn) {cepstral coefficients};
-    
-    \draw[->] (f1) -- (c1);
-    \draw[->] (f2) -- (c2);
-    \draw[->] (fn) -- (cn);
-    
-    \node[box,fill=cyan!16, right = 2cm of c2] (sv) {Supervector};
-    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
-    
-    \draw[->] (c1) -- (sv);
-    \draw[->] (c2) -- (sv);
-    \draw[->] (cn) -- (sv);
-    \draw[->] (ubm) -- (sv);
-    \end{tikzpicture}
-\end{frame}
-
-
-
-\begin{frame}
-  \frametitle{Diagram}
-    \centering
-    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},barre/.style={draw,cross out,align=center}]
-    
-    \node[box,fill=orange!16] (c1) {cepstral coefficients};
-    \node[box,fill=orange!16, below =0.8cm of c1] (c2) {cepstral coefficients};
-    \node[below =0.8cm of c2] (c3) {\dots};
-    \node[box,fill=orange!16, below =0.8cm of c3] (cn) {cepstral coefficients};
-    
-    
-    \node[box,fill=cyan!16, right = 2cm of c2] (sv) {Supervector};
-    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
-    
-    \node[box,fill=yellow!16, right = 2cm of sv] (iv) {I-vectors};
-    
-    \draw[->] (c1) -- (sv);
-    \draw[->] (c2) -- (sv);
-    \draw[->] (cn) -- (sv);
-    \draw[->] (ubm) -- (sv);
-    
-    \draw[->] (sv) -- (iv);
-    
-    \end{tikzpicture}
-\end{frame}
-
-
-
-
-\begin{frame}
-  \frametitle{Diagram}
-    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},barre/.style={draw,cross out,align=center}]
-    
-    \node[box,fill=orange!16] (c1) {cepstral coefficients};
-    \node[box,fill=orange!16, below =0.8cm of c1] (c2) {cepstral coefficients};
-    \node[below =0.8cm of c2] (c3) {\dots};
-    \node[box,fill=orange!16, below =0.8cm of c3] (cn) {cepstral coefficients};
-    
-    
-    \node[box,fill=cyan!16, right = 2cm of c2] (sv) {Supervector};
-    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
-    
-    \node[barre, right = 2cm of sv] (iv) {I-vectors};
-    \node[box,fill=yellow!16, below = 1cm of iv] (ow) {\Large Our work};
-    
-    \draw[->] (c1) -- (sv);
-    \draw[->] (c2) -- (sv);
-    \draw[->] (cn) -- (sv);
-    \draw[->] (ubm) -- (sv);
-    
-    
-    
-    \draw[->] (sv) -- (iv);
-    \draw[->] (sv) -- (ow);
-    
-    \end{tikzpicture}
-\end{frame}
-
-
-
-\begin{frame}
-  \frametitle{Full diagram}
-    \centering
-    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},barre/.style={draw,cross out,align=center}]
-    \node[box,fill=blue!16] (a) {\includegraphics[scale=0.25]{signal.png}\\Signal};
-    \node[box,fill=green!16,right =0.6cm of a] (f2) {\includegraphics[scale=0.25]{fen2.png}};
-    \node[box,fill=green!16,above =0.6cm of f2] (f1) {\includegraphics[scale=0.25]{fen1.png}};
-    \node[below =0.8cm of f2] (f3) {\dots};
-    \node[box,fill=green!16,below =0.6cm of f3] (fn) {\includegraphics[scale=0.25]{fenn.png}};
-    \draw[->] (a) -- (f1);
-    \draw[->] (a) -- (f2);
-    \draw[->] (a) -- (fn);
-    
-    
-    
-    \node[box,fill=orange!16, right = 0.6cm of f1] (c1) {cepstral\\coefficients};
-    \node[box,fill=orange!16, right = 0.6cm of f2] (c2) {cepstral\\coefficients};
-    \node[right = 2cm of f3] (c3) {\dots};
-    \node[box,fill=orange!16, right = 0.6cm of fn] (cn) {cepstral\\coefficients};
-    
-    \draw[->] (f1) -- (c1);
-    \draw[->] (f2) -- (c2);
-    \draw[->] (fn) -- (cn);
-    
-    
-    \node[box,fill=cyan!16, right = 0.6cm of c2] (sv) {Supervector};
-    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
-    
-    \draw[->] (c1) -- (sv);
-    \draw[->] (c2) -- (sv);
-    \draw[->] (cn) -- (sv);
-    \draw[->] (ubm) -- (sv);
-    
-    \node[barre, right = 0.6cm of sv] (iv) {I-vectors};
-    \node[box,fill=yellow!16, below = 1cm of iv] (ow) {\Large Our work};
-    \draw[->] (sv) -- (iv);
-    \draw[->] (sv) -- (ow);
     \end{tikzpicture}
 \end{frame}
 
@@ -254,6 +93,33 @@
   
 \end{frame}
 
+
+
+\begin{frame}
+  \frametitle{Signal processing workflow}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center}]
+    \node[box,fill=blue!16] (a) {\includegraphics[scale=0.5]{signal.png}\\Signal};
+    \node[box,fill=green!16,right =1cm of a] (f2) {\includegraphics[scale=0.5]{fen2.png}};
+    \node[box,fill=green!16,above =0.8cm of f2] (f1) {\includegraphics[scale=0.5]{fen1.png}};
+    \node[below =0.8cm of f2] (f3) {\dots};
+    \node[box,fill=green!16,below =0.8cm of f3] (fn) {\includegraphics[scale=0.5]{fenn.png}};
+    \draw[->] (a) -- (f1);
+    \draw[->] (a) -- (f2);
+    \draw[->] (a) -- (fn);
+    
+    
+    
+    \node[box,fill=orange!16, right = 1cm of f1] (c1) {cepstral coefficients};
+    \node[box,fill=orange!16, right = 1cm of f2] (c2) {cepstral coefficients};
+    \node[right = 3.5cm of f3] (c3) {\dots};
+    \node[box,fill=orange!16, right = 1cm of fn] (cn) {cepstral coefficients};
+    
+    \draw[->] (f1) -- (c1);
+    \draw[->] (f2) -- (c2);
+    \draw[->] (fn) -- (cn);
+    \end{tikzpicture}
+\end{frame}
 
 \begin{frame}
   \frametitle{Cepstral space}
@@ -308,7 +174,50 @@
 
 \begin{frame}
  \frametitle{supervectors}
-  
+  \begin{columns}
+    \column{0.35\textwidth}
+    \begin{itemize}
+    \item Probabilistic model vector representation
+    \item Represents the whole signal
+    \item Spectral features
+    \end{itemize}
+    \column{0.6\textwidth}
+    \begin{figure}
+        \centering
+       \includegraphics[scale = 0.5]{supervectors.pdf}
+      \end{figure}
+  \end{columns}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Signal processing workflow}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center}]
+    
+    \node[box,fill=green!16] (f2) {\includegraphics[scale=0.5]{fen2.png}};
+    \node[box,fill=green!16,above =0.8cm of f2] (f1) {\includegraphics[scale=0.5]{fen1.png}};
+    \node[below =0.8cm of f2] (f3) {\dots};
+    \node[box,fill=green!16,below =0.8cm of f3] (fn) {\includegraphics[scale=0.5]{fenn.png}};
+    
+    \node[box,fill=orange!16, right =1cm of f1] (c1) {cepstral coefficients};
+    \node[box,fill=orange!16, right =1cm of f2] (c2) {cepstral coefficients};
+    \node[below, right = 3.5cm of f3] (c3) {\dots};
+    \node[box,fill=orange!16, right =1cm of fn] (cn) {cepstral coefficients};
+    
+    \draw[->] (f1) -- (c1);
+    \draw[->] (f2) -- (c2);
+    \draw[->] (fn) -- (cn);
+    
+    \node[box,fill=cyan!16, right = 2cm of c2] (sv) {Supervector};
+    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
+    
+    \draw[->] (c1) -- (sv);
+    \draw[->] (c2) -- (sv);
+    \draw[->] (cn) -- (sv);
+    \draw[->] (ubm) -- (sv);
+    \end{tikzpicture}
 \end{frame}
 
 \begin{frame}
@@ -325,6 +234,62 @@
   \frametitle{i-vectors}
   
 \end{frame}
+
+\begin{frame}
+  \frametitle{Signal processing workflow}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},barre/.style={draw,cross out,align=center}]
+    
+    \node[box,fill=orange!16] (c1) {cepstral coefficients};
+    \node[box,fill=orange!16, below =0.8cm of c1] (c2) {cepstral coefficients};
+    \node[below =0.8cm of c2] (c3) {\dots};
+    \node[box,fill=orange!16, below =0.8cm of c3] (cn) {cepstral coefficients};
+    
+    
+    \node[box,fill=cyan!16, right = 2cm of c2] (sv) {Supervector};
+    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
+    
+    \node[box,fill=yellow!16, right = 2cm of sv] (iv) {I-vectors};
+    
+    \draw[->] (c1) -- (sv);
+    \draw[->] (c2) -- (sv);
+    \draw[->] (cn) -- (sv);
+    \draw[->] (ubm) -- (sv);
+    
+    \draw[->] (sv) -- (iv);
+    
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Signal processing workflow}
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},barre/.style={draw,cross out,align=center}]
+    
+    \node[box,fill=orange!16] (c1) {cepstral coefficients};
+    \node[box,fill=orange!16, below =0.8cm of c1] (c2) {cepstral coefficients};
+    \node[below =0.8cm of c2] (c3) {\dots};
+    \node[box,fill=orange!16, below =0.8cm of c3] (cn) {cepstral coefficients};
+    
+    
+    \node[box,fill=cyan!16, right = 2cm of c2] (sv) {Supervector};
+    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
+    
+    \node[barre, right = 2cm of sv] (iv) {I-vectors};
+    \node[box,fill=yellow!16, below = 1cm of iv] (ow) {\Large Our work};
+    
+    \draw[->] (c1) -- (sv);
+    \draw[->] (c2) -- (sv);
+    \draw[->] (cn) -- (sv);
+    \draw[->] (ubm) -- (sv);
+    
+    
+    
+    \draw[->] (sv) -- (iv);
+    \draw[->] (sv) -- (ow);
+    
+    \end{tikzpicture}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{transition}
@@ -335,6 +300,48 @@
   \frametitle{transition}
   
 \end{frame}
+
+
+\begin{frame}
+  \frametitle{Signal processing workflow}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},barre/.style={draw,cross out,align=center}]
+    \node[box,fill=blue!16] (a) {\includegraphics[scale=0.25]{signal.png}\\Signal};
+    \node[box,fill=green!16,right =0.6cm of a] (f2) {\includegraphics[scale=0.25]{fen2.png}};
+    \node[box,fill=green!16,above =0.6cm of f2] (f1) {\includegraphics[scale=0.25]{fen1.png}};
+    \node[below =0.8cm of f2] (f3) {\dots};
+    \node[box,fill=green!16,below =0.6cm of f3] (fn) {\includegraphics[scale=0.25]{fenn.png}};
+    \draw[->] (a) -- (f1);
+    \draw[->] (a) -- (f2);
+    \draw[->] (a) -- (fn);
+    
+    
+    
+    \node[box,fill=orange!16, right = 0.6cm of f1] (c1) {cepstral\\coefficients};
+    \node[box,fill=orange!16, right = 0.6cm of f2] (c2) {cepstral\\coefficients};
+    \node[right = 2cm of f3] (c3) {\dots};
+    \node[box,fill=orange!16, right = 0.6cm of fn] (cn) {cepstral\\coefficients};
+    
+    \draw[->] (f1) -- (c1);
+    \draw[->] (f2) -- (c2);
+    \draw[->] (fn) -- (cn);
+    
+    
+    \node[box,fill=cyan!16, right = 0.6cm of c2] (sv) {Supervector};
+    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
+    
+    \draw[->] (c1) -- (sv);
+    \draw[->] (c2) -- (sv);
+    \draw[->] (cn) -- (sv);
+    \draw[->] (ubm) -- (sv);
+    
+    \node[barre, right = 0.6cm of sv] (iv) {I-vectors};
+    \node[box,fill=yellow!16, below = 1cm of iv] (ow) {\Large Our work};
+    \draw[->] (sv) -- (iv);
+    \draw[->] (sv) -- (ow);
+    \end{tikzpicture}
+\end{frame}
+ 
 
 \section{Deep learning}
 
@@ -504,7 +511,7 @@
   
 \end{frame}
 
-\section{Methodology}
+\section{Methods}
 
 \begin{frame}
   \frametitle{Supplanting i-vectors}
@@ -664,13 +671,32 @@ M supervectors
 \section{Discussion}
 
 \begin{frame}
-  \frametitle{Goal}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{Expected issues}
-  
+  \frametitle{Goals \only<2>{and expected issues}}
+  What does it mean to improve on i-vectors?
+  \begin{itemize}
+  \item Better compression
+    \only<2>{
+      \begin{itemize}
+      \item Compression size
+      \item Hyperparameters
+      \item Compromise with results
+      \end{itemize}
+    }
+  \item Better results on angular treshold
+    \only<2>{
+      \begin{itemize}
+      \item Optimization method
+      \item Compromise with compression
+      \end{itemize}
+    }
+  \item State-of-of-the-art-results
+    \only<2>{
+      \begin{itemize}
+      \item Different training sets
+      \item More complicated evaluation methods
+      \end{itemize}
+    }
+  \end{itemize}
 \end{frame}
 
 \end{document}
