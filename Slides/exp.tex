@@ -10,6 +10,11 @@
 \usepackage{xcolor, colortbl}
 \usepackage{mathtools}
 \usepackage{xcolor}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+
+
 \usetheme{AnnArbor}
 \usecolortheme{beaver}
 
@@ -45,14 +50,207 @@
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{Diagram}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center}]
+    \node[box,fill=blue!16] (a) {\includegraphics{signal.png}\\Signal};
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Diagram}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center}]
+    \node[box,fill=blue!16] (a) {\includegraphics[scale=0.5]{signal.png}\\Signal};
+    \node[box,fill=green!16,right =1cm of a] (f2) {\includegraphics[scale=0.5]{fen2.png}};
+    \node[box,fill=green!16,above =0.8cm of f2] (f1) {\includegraphics[scale=0.5]{fen1.png}};
+    \node[below =0.8cm of f2] (f3) {\dots};
+    \node[box,fill=green!16,below =0.8cm of f3] (fn) {\includegraphics[scale=0.5]{fenn.png}};
+    \draw[->] (a) -- (f1);
+    \draw[->] (a) -- (f2);
+    \draw[->] (a) -- (fn);
+    \end{tikzpicture}
+\end{frame}
 
 
+
+
+\begin{frame}
+  \frametitle{Diagram}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center}]
+    \node[box,fill=blue!16] (a) {\includegraphics[scale=0.5]{signal.png}\\Signal};
+    \node[box,fill=green!16,right =1cm of a] (f2) {\includegraphics[scale=0.5]{fen2.png}};
+    \node[box,fill=green!16,above =0.8cm of f2] (f1) {\includegraphics[scale=0.5]{fen1.png}};
+    \node[below =0.8cm of f2] (f3) {\dots};
+    \node[box,fill=green!16,below =0.8cm of f3] (fn) {\includegraphics[scale=0.5]{fenn.png}};
+    \draw[->] (a) -- (f1);
+    \draw[->] (a) -- (f2);
+    \draw[->] (a) -- (fn);
+    
+    
+    
+    \node[box,fill=orange!16, right = 1cm of f1] (c1) {cepstral coefficients};
+    \node[box,fill=orange!16, right = 1cm of f2] (c2) {cepstral coefficients};
+    \node[right = 3.5cm of f3] (c3) {\dots};
+    \node[box,fill=orange!16, right = 1cm of fn] (cn) {cepstral coefficients};
+    
+    \draw[->] (f1) -- (c1);
+    \draw[->] (f2) -- (c2);
+    \draw[->] (fn) -- (cn);
+    \end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Diagram}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center}]
+    
+    \node[box,fill=green!16] (f2) {\includegraphics[scale=0.5]{fen2.png}};
+    \node[box,fill=green!16,above =0.8cm of f2] (f1) {\includegraphics[scale=0.5]{fen1.png}};
+    \node[below =0.8cm of f2] (f3) {\dots};
+    \node[box,fill=green!16,below =0.8cm of f3] (fn) {\includegraphics[scale=0.5]{fenn.png}};
+    
+    \node[box,fill=orange!16, right =1cm of f1] (c1) {cepstral coefficients};
+    \node[box,fill=orange!16, right =1cm of f2] (c2) {cepstral coefficients};
+    \node[below, right = 3.5cm of f3] (c3) {\dots};
+    \node[box,fill=orange!16, right =1cm of fn] (cn) {cepstral coefficients};
+    
+    \draw[->] (f1) -- (c1);
+    \draw[->] (f2) -- (c2);
+    \draw[->] (fn) -- (cn);
+    
+    \node[box,fill=cyan!16, right = 2cm of c2] (sv) {Supervector};
+    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
+    
+    \draw[->] (c1) -- (sv);
+    \draw[->] (c2) -- (sv);
+    \draw[->] (cn) -- (sv);
+    \draw[->] (ubm) -- (sv);
+    \end{tikzpicture}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Diagram}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},barre/.style={draw,cross out,align=center}]
+    
+    \node[box,fill=orange!16] (c1) {cepstral coefficients};
+    \node[box,fill=orange!16, below =0.8cm of c1] (c2) {cepstral coefficients};
+    \node[below =0.8cm of c2] (c3) {\dots};
+    \node[box,fill=orange!16, below =0.8cm of c3] (cn) {cepstral coefficients};
+    
+    
+    \node[box,fill=cyan!16, right = 2cm of c2] (sv) {Supervector};
+    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
+    
+    \node[box,fill=yellow!16, right = 2cm of sv] (iv) {I-vectors};
+    
+    \draw[->] (c1) -- (sv);
+    \draw[->] (c2) -- (sv);
+    \draw[->] (cn) -- (sv);
+    \draw[->] (ubm) -- (sv);
+    
+    \draw[->] (sv) -- (iv);
+    
+    \end{tikzpicture}
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Diagram}
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},barre/.style={draw,cross out,align=center}]
+    
+    \node[box,fill=orange!16] (c1) {cepstral coefficients};
+    \node[box,fill=orange!16, below =0.8cm of c1] (c2) {cepstral coefficients};
+    \node[below =0.8cm of c2] (c3) {\dots};
+    \node[box,fill=orange!16, below =0.8cm of c3] (cn) {cepstral coefficients};
+    
+    
+    \node[box,fill=cyan!16, right = 2cm of c2] (sv) {Supervector};
+    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
+    
+    \node[barre, right = 2cm of sv] (iv) {I-vectors};
+    \node[box,fill=yellow!16, below = 1cm of iv] (ow) {\Large Our work};
+    
+    \draw[->] (c1) -- (sv);
+    \draw[->] (c2) -- (sv);
+    \draw[->] (cn) -- (sv);
+    \draw[->] (ubm) -- (sv);
+    
+    
+    
+    \draw[->] (sv) -- (iv);
+    \draw[->] (sv) -- (ow);
+    
+    \end{tikzpicture}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Full diagram}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},barre/.style={draw,cross out,align=center}]
+    \node[box,fill=blue!16] (a) {\includegraphics[scale=0.25]{signal.png}\\Signal};
+    \node[box,fill=green!16,right =0.6cm of a] (f2) {\includegraphics[scale=0.25]{fen2.png}};
+    \node[box,fill=green!16,above =0.6cm of f2] (f1) {\includegraphics[scale=0.25]{fen1.png}};
+    \node[below =0.8cm of f2] (f3) {\dots};
+    \node[box,fill=green!16,below =0.6cm of f3] (fn) {\includegraphics[scale=0.25]{fenn.png}};
+    \draw[->] (a) -- (f1);
+    \draw[->] (a) -- (f2);
+    \draw[->] (a) -- (fn);
+    
+    
+    
+    \node[box,fill=orange!16, right = 0.6cm of f1] (c1) {cepstral\\coefficients};
+    \node[box,fill=orange!16, right = 0.6cm of f2] (c2) {cepstral\\coefficients};
+    \node[right = 2cm of f3] (c3) {\dots};
+    \node[box,fill=orange!16, right = 0.6cm of fn] (cn) {cepstral\\coefficients};
+    
+    \draw[->] (f1) -- (c1);
+    \draw[->] (f2) -- (c2);
+    \draw[->] (fn) -- (cn);
+    
+    
+    \node[box,fill=cyan!16, right = 0.6cm of c2] (sv) {Supervector};
+    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
+    
+    \draw[->] (c1) -- (sv);
+    \draw[->] (c2) -- (sv);
+    \draw[->] (cn) -- (sv);
+    \draw[->] (ubm) -- (sv);
+    
+    \node[barre, right = 0.6cm of sv] (iv) {I-vectors};
+    \node[box,fill=yellow!16, below = 1cm of iv] (ow) {\Large Our work};
+    \draw[->] (sv) -- (iv);
+    \draw[->] (sv) -- (ow);
+    \end{tikzpicture}
+\end{frame}
 
 
 \section{Signal representation for speaker recognition}
 
 \begin{frame}
   \frametitle{Cesptral alanysis}
+    \begin{figure}
+    \centering
+    \includegraphics[trim={0 7.2cm 0 0}, clip, scale = 0.8]{cepstre.png}
+    \end{figure}
+      
+    \begin{itemize}
+    \item Hardly suitable for statistical modeling, distance calculation
+    \item Apply a transformation :
+    $ C(x(t)) = \mathcal{F}^{-1}(\ln(|\mathcal{F}(x(t))|)  $
+    \item $C$ : cepstrum of the signal
+    \item Cepstral domain : Euclidean distance
+    \end{itemize}
   
 \end{frame}
 
@@ -218,25 +416,25 @@
     % Draw the hidden layer nodes
     \foreach \name / \y in {1,...,5}
         {
-        \visible<-10>{\path[yshift=0.5cm]
+        \visible<-11>{\path[yshift=0.5cm]
             node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};}
-        \visible<11->{\path[yshift=0.5cm]
+        \visible<12->{\path[yshift=0.5cm]
             node[hidden neuron back] (H1-\name) at (\layersep,-\y cm) {};}
         }
             
     \foreach \name / \y in {1,...,4}
         {
-        \visible<-9>{\path
+        \visible<-10>{\path
             node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};}
-        \visible<10->{\path
+        \visible<11->{\path
             node[hidden neuron back] (H2-\name) at (2*\layersep,-\y cm) {};}
         }
             
     \foreach \name / \y in {1,...,5}
         {
-        \visible<-8>{\path[yshift=0.5cm]
+        \visible<-9>{\path[yshift=0.5cm]
             node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};}
-        \visible<9->{\path[yshift=0.5cm]
+        \visible<10->{\path[yshift=0.5cm]
             node[hidden neuron back] (H3-\name) at (3*\layersep,-\y cm) {};}
         }
     % Draw the output layer node
@@ -247,29 +445,29 @@
     
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
-            {\only<\source>{\path (I-\source) edge (H1-\dest);}}
+            {\only<\dest>{\path (I-\source) edge (H1-\dest);}}
             
             
-    \visible<5->{
+    \visible<6->{
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
             \path (I-\source) edge (H1-\dest);
     }
     
             
-    \visible<6->{
+    \visible<7->{
     \foreach \source in {1,...,5}
         \foreach \dest in {1,...,4}
             \path (H1-\source) edge (H2-\dest);
     }
             
-    \visible<7->{
+    \visible<8->{
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
             \path (H2-\source) edge (H3-\dest);
     }
             
-    \visible<8->{
+    \visible<9->{
     \foreach \source in {1,...,5}
         \path (H3-\source) edge (O);
     }
@@ -282,9 +480,9 @@
     \node[annot,right of=hl3] {Output layer};
     \node[annot,left of=hl1] {Input layer};
     
-    \node[annot,below of=H1-5, node distance=1cm] (wb1) {$W\visible<11->{'}_1$, $b\visible<11->{'}_1$};
-    \node[annot,right of=wb1] (wb2) {$W\visible<10->{'}_2$, $b\visible<10->{'}_2$};
-    \node[annot,right of=wb2] (wb3) {$W\visible<9->{'}_3$, $b\visible<9->{'}_3$};
+    \node[annot,below of=H1-5, node distance=1cm] (wb1) {$W\visible<12->{'}_1$, $b\visible<12->{'}_1$};
+    \node[annot,right of=wb1] (wb2) {$W\visible<11->{'}_2$, $b\visible<11->{'}_2$};
+    \node[annot,right of=wb2] (wb3) {$W\visible<10->{'}_3$, $b\visible<10->{'}_3$};
 \end{tikzpicture}
 
 \end{figure}
