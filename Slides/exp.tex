@@ -434,20 +434,33 @@ M supervectors
 
 \begin{frame}
   \frametitle{Intermediate vector evaluation}
-  What uses i-vectors for speaker recognition?
-  \begin{itemize}
-  \item Cosine distance comparisons
-  \item SVM
-  \item Deep Neural networks
-  \end{itemize}
-  \only<2>{
-    \textbf{Preliminary evaluation} with cosine distance
-  }
-\end{frame}
+  \begin{columns}
+    \column{0.6\textwidth}
+    What uses i-vectors for speaker recognition?
+    \begin{itemize}
+      \setlength\itemsep{1em}
+    \item Cosine similarity comparisons
+    \item SVM
+    \item Deep Neural networks
+    \end{itemize}
 
-\begin{frame}
-  \frametitle{Intermediate vector evaluation}
-  
+    
+    \only<2>{
+      \textbf{Preliminary evaluation} with cosine similarity
+    }
+
+    \column{0.35\textwidth}
+    \only<2>{
+      \begin{itemize}\setlength\itemsep{2em}
+      \item[] Threshold \textcolor{blue}{t}
+      \item[] $distance \leq \textcolor{blue}{t}$ \textcolor{green}{same speaker}
+      \item[] $distance \leq \textcolor{blue}{t}$
+        \textcolor{red}{different speakers}
+      \end{itemize}
+
+    }
+  \end{columns}
+
 \end{frame}
 
 \section{Discussion}
