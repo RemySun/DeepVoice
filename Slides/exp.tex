@@ -43,19 +43,7 @@
     \end{frame} 
 }
 
-\DeclareCiteCommand{\fullcitebib}
-  {\renewcommand{\finalnamedelim}
-   {\ifnum\value{liststop}>2 \finalandcomma\fi\addspace\&\space}%
-   \list{}
-   {\setlength{\leftmargin}{\bibhang}%
-     \setlength{\itemindent}{-\leftmargin}%
-     \setlength{\itemsep}{\bibitemsep}%
-     \setlength{\parsep}{\bibparsep}}\item}
-  {\usedriver
-    {}
-    {\thefield{entrytype}}\finentry}
-  {\item}
-  {\endlist\global\undef\bbx@lasthash}
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
 
 
 \begin{document}
@@ -671,9 +659,102 @@ Deep neural networks are interesting because:
 
 \begin{frame}
   \frametitle{Autoencoder}
-	\begin{figure}
+\def\layersep{1.8cm}
+    \begin{figure}
     \centering
-       \includegraphics[scale = 0.3]{Autoencoder_structure.png}
+\begin{tikzpicture}[scale=0.8, shorten >=1pt,->,draw=black!50, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron, fill=green!50];
+    \tikzstyle{output neuron}=[neuron, fill=red!50];
+    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+    \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
+    \tikzstyle{annot} = [text width=10em, text centered]
+    
+    \visible<2>{
+        \path [draw, thick, fill=yellow!20] (-1,0.5) rectangle (4.5,-6);
+    }
+    \visible<3->{
+        \path [draw, thick] (-1,0.5) rectangle (4.5,-6);
+    }
+    \visible<3>{
+        \path [draw, thick,  fill=yellow!20] (2.7,0.3) rectangle (8.2,-5.8);
+    }
+    \visible<4->{
+        \path [draw, thick] (2.7,0.3) rectangle (8.2,-5.8);
+    }
+    
+    % Draw the input layer nodes
+    \foreach \name / \y in {1,...,5}
+    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+    	{
+        	\node[input neuron, pin=left:] (I-\name) at (0,-\y) {};
+		}
+    % Draw the hidden layer nodes
+    \foreach \name / \y in {1,...,4}
+        {
+        	\path[yshift=-0.5cm]
+            node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};
+        }
+            
+    \foreach \name / \y in {1,...,5}
+        {
+            \path
+            node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};
+            
+        }
+            
+    \foreach \name / \y in {1,...,4}
+        {
+        	\path[yshift=-0.5cm]
+            node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};
+        }
+
+    % Draw the output layer nodes            
+    \foreach \name / \y in {1,...,5}
+        {
+        	\path
+            node[output neuron,pin={[pin edge={->}]right:}] (H4-\name) at (4*\layersep,-\y cm) {};
+        }
+
+    % Connect every node in the input layer with every node in the
+    % hidden layer.
+    
+    
+    \foreach \source in {1,...,5}
+        \foreach \dest in {1,...,4}
+            \path (I-\source) edge (H1-\dest);
+    
+    
+            
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            \path (H1-\source) edge (H2-\dest);
+    
+            
+    \foreach \source in {1,...,5}
+        \foreach \dest in {1,...,4}
+            \path (H2-\source) edge (H3-\dest);
+    
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            \path (H3-\source) edge (H4-\dest);
+            
+    \node[annot,above of=I-1, node distance=0.7cm] (xi) {$x_{input}$};
+    \node[annot,above of=H2-1, node distance=0.7cm] (xl) {$x_{latent}$};
+    \node[annot,above of=H4-1, node distance=0.7cm] (xo) {$x_{output}$};
+    \visible<2->{
+    \node[annot,above of=H1-1, node distance=2.1cm] (xl) {encoder};
+    }
+    \visible<3->{
+    \node[annot,above of=H3-1, node distance=2.1cm] (xo) {decoder};
+    }
+                
+        
+        
+    % Annotate the layers
+    
+\end{tikzpicture}
     \end{figure}
     \centering
   	$x_{latent} = encoder(x_{input})$  \\
@@ -686,21 +767,21 @@ Deep neural networks are interesting because:
   \centering
   \textbf{Danger:}  Learning the identity \\
   \vspace{0.5cm}
-  \only<2-4>{
+  \visible<2-4>{
   	Several solutions:
   }
   \vspace{0.8cm}
   \begin{columns}
   	\column{0.5\textwidth}
     \centering
-    \only<3-4>{
+    \visible<3-4>{
   		Compressing:\\
   		$size(x_{latent}) < size(x_{input})$
     }
   	
   	\column{0.5\textwidth} 
     \centering 
-    \only<4>{
+    \visible<4>{
   		Adding noise:\\
   		$x_{input} = objective + noise$ 
     }
@@ -890,12 +971,9 @@ Deep neural networks are interesting because:
             
     \foreach \name / \y in {1,...,3}
         {
-        	\visible<1>{\path[yshift=-1cm]
-            node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};
-            }
-            \visible<2>{\path[yshift=-1cm]
+            \path[yshift=-1cm]
             node[hidden neuron back] (H2-\name) at (2*\layersep,-\y cm) {};
-            }
+            
         }
             
     \foreach \name / \y in {1,...,4}
@@ -937,7 +1015,7 @@ Deep neural networks are interesting because:
         
         
     % Annotate the layers
-    \visible<2>{\node[annot,above of=H2-1] (iv) {Deep vector};}
+    \node[annot,above of=H2-1] (iv) {Deep vector};
     \node[annot,right =-0.4cm of iv] (ol)  {Supervector $v_2$};
     \node[annot,left =-0.4cm of iv] (il) {Supervector $v_1$};
     
