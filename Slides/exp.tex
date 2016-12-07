@@ -2,7 +2,7 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[main=french,english]{babel}
+\usepackage[english]{babel}
 \usepackage{hyperref}
 \usepackage{tikz}
 \usetikzlibrary{shapes,snakes}
@@ -25,7 +25,7 @@
 
 
 \newcommand\blfootnote[1]{%
-  \begingroup
+ http://stackoverflow.com/questions/3210205/how-to-get-rid-of-navigation-bars-in-beamer \begingroup
   \renewcommand\thefootnote{}\footnote{#1}%
   \addtocounter{footnote}{-1}%
   \endgroup
@@ -47,7 +47,7 @@
 
 \AtBeginSection[]{
     \begin{frame}
-        \frametitle{Sommaire}
+        \frametitle{Outline}
         \tableofcontents[currentsection,hideothersubsections]
     \end{frame} 
 }
@@ -178,7 +178,7 @@
 
 
 \begin{frame}
-    \frametitle{Sommaire}
+    \frametitle{Outline}
     \tableofcontents[hideallsubsections]
 \end{frame}
 
@@ -276,7 +276,7 @@
   \begin{columns}
     \column{0.35\textwidth}
     \begin{itemize}
-    \item Model: gaussian combination
+    \item Model: Gaussian combination
     \item Model: Universal Background Model (UBM) standard
     \item<2> Adaptation to cepstral space
     \end{itemize}
@@ -846,7 +846,7 @@ Deep neural networks are interesting because:
     \column{0.6\textwidth}
     \begin{itemize}
 \setlength\itemsep{2em}
-    \item \textbf{Raw data:} 15311 numeric soud files from BFMTV with labeled speakers
+    \item \textbf{Raw data:} 15311 numeric sound files from BFMTV with labeled speakers
     \item \textbf{Pre-processed data:} 3 678 470 pairs $(v_1,v_2)$ of supervectors
       spoken by the same person
     \item \textbf{Input:} Supervector $v_1$ of length 9216
