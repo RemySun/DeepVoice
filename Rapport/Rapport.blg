@@ -1,15 +1,19 @@
-[0] Config.pm:343> INFO - This is Biber 2.5
-[0] Config.pm:346> INFO - Logfile is 'Rapport.blg'
-[45] biber:290> INFO - === Sun Nov 27, 2016, 20:54:50
-[63] Biber.pm:351> INFO - Reading 'Rapport.bcf'
-[173] Biber.pm:776> INFO - Found 8 citekeys in bib section 0
-[189] Biber.pm:3493> INFO - Processing section 0
-[210] Biber.pm:3657> INFO - Looking for bibtex format file 'Biblio.bib' for section 0
-[212] bibtex.pm:1187> INFO - Decoding LaTeX character macros into UTF-8
-[215] bibtex.pm:1048> INFO - Found BibTeX data source 'Biblio.bib'
-[259] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[259] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[259] Biber.pm:3306> INFO - Sorting list 'nty/global/' of type 'entry' with scheme 'nty' and locale 'en-US'
-[259] Biber.pm:3310> INFO - No sort tailoring available for locale 'en-US'
-[276] bbl.pm:526> INFO - Writing 'Rapport.bbl' with encoding 'UTF-8'
-[278] bbl.pm:619> INFO - Output to Rapport.bbl
+[0] Config.pm:340> INFO - This is Biber 2.4
+[0] Config.pm:343> INFO - Logfile is 'Rapport.blg'
+[63] biber:287> INFO - === mer. déc.  7, 2016, 07:46:11
+[229] Biber.pm:348> INFO - Reading 'Rapport.bcf'
+[359] Biber.pm:742> INFO - Found 11 citekeys in bib section 0
+[415] Biber.pm:3151> INFO - Processing section 0
+[577] Biber.pm:3308> INFO - Looking for bibtex format file 'Biblio.bib' for section 0
+[640] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
+[665] bibtex.pm:974> INFO - Found BibTeX data source 'Biblio.bib'
+[767] Utils.pm:147> WARN - I didn't find a database entry for 'Senoussaoui_ani-vector' (section 0)
+[767] Utils.pm:147> WARN - I didn't find a database entry for 'dehak2011front' (section 0)
+[767] Utils.pm:147> WARN - I didn't find a database entry for 'larcher2013alize' (section 0)
+[840] UCollate.pm:65> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[841] UCollate.pm:65> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[841] Biber.pm:3028> INFO - Sorting list 'nty/global' of type 'entry' with scheme 'nty' and locale 'en-US'
+[841] Biber.pm:3032> INFO - No sort tailoring available for locale 'en-US'
+[852] bbl.pm:519> INFO - Writing 'Rapport.bbl' with encoding 'UTF-8'
+[887] bbl.pm:615> INFO - Output to Rapport.bbl
+[887] Biber.pm:109> INFO - WARNINGS: 3

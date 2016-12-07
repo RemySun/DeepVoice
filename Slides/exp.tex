@@ -389,7 +389,7 @@
         \path (H-\source) edge (O);
 
     % Annotate the layers
-    \node[annot,below of=H-1, node distance=1cm] (hl) {Weight $W$\\Bias $b$};
+    \node[annot,below of=H-1, node distance=1cm] (hl) {Weight $W$\\Bias $b$};
     \node[annot,above of=H-1, node distance=1cm] (hl) {Neuron};
     \node[annot,above of=I-1, node distance=1cm] (hl) {Input A};
 \end{tikzpicture}
@@ -498,16 +498,123 @@
 
 \begin{frame}
   \frametitle{Autoencoder}
+	\begin{figure}
+    \centering
+       \includegraphics[scale = 0.3]{Autoencoder_structure.png}
+    \end{figure}
+    \centering
+  	$x_{latent} = encoder(x_{input})$  \\
+  	$x_{output} = decoder(x_{latent}) \simeq x_{input}$
   
 \end{frame}
 
 \begin{frame}
   \frametitle{Autoencoder}
-  
+  \centering
+  \textbf{Danger:}  Learning the identity \\
+  \vspace{0.5cm}
+  \only<2-4>{
+  	Several solutions:
+  }
+  \vspace{0.8cm}
+  \begin{columns}
+  	\column{0.5\textwidth}
+  		\centering
+    	\only<3-4>{
+  		Adding noise:\\
+  		$x_{input} = objective + noise$ 
+  	    }
+  	
+  	\column{0.5\textwidth} 
+  		\centering 
+    	\only<4>{
+  		Compressing:\\
+  		$size(x_{latent}) < size(x_{input})$
+  	    }
+	\end{columns}
 \end{frame}
 
 \begin{frame}
   \frametitle{i-vector 2.0}
+\def\layersep{1.8cm}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron, fill=green!50];
+    \tikzstyle{output neuron}=[neuron, fill=red!50];
+    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+    \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
+    \tikzstyle{annot} = [text width=4em, text centered]
+
+    % Draw the input layer nodes
+    \foreach \name / \y in {1,...,5}
+    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+    	{
+        	\node[input neuron, pin=left:] (I-\name) at (0,-\y) {};
+		}
+    % Draw the hidden layer nodes
+    \foreach \name / \y in {1,...,4}
+        {
+        	\path
+            node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};
+        }
+            
+    \foreach \name / \y in {1,...,3}
+        {
+        	\path
+            node[hidden neuron back] (H2-\name) at (2*\layersep,-\y cm) {};
+        }
+            
+    \foreach \name / \y in {1,...,4}
+        {
+        	\path
+            node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};
+        }
+
+    % Draw the output layer nodes            
+    \foreach \name / \y in {1,...,5}
+        {
+        	\path
+            node[output neuron,pin={[pin edge={->}]right:}] (H4-\name) at (4*\layersep,-\y cm) {};
+        }
+
+    % Connect every node in the input layer with every node in the
+    % hidden layer.
+    
+    
+    \foreach \source in {1,...,5}
+        \foreach \dest in {1,...,4}
+            \path (I-\source) edge (H1-\dest);
+    
+    
+            
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,3}
+            \path (H1-\source) edge (H2-\dest);
+    
+            
+    \foreach \source in {1,...,3}
+        \foreach \dest in {1,...,4}
+            \path (H2-\source) edge (H3-\dest);
+    
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            \path (H3-\source) edge (H4-\dest);
+                
+        
+        
+    % Annotate the layers
+    \node[annot,above of=H2-1] (hl2) {New representation};
+    \node[annot,above of=H4-1] {Output layer: Second supervector};
+    \node[annot,above of=I-1] {Input layer: First supervector};
+    
+\end{tikzpicture}
+
+\end{figure}
+  
   
 \end{frame}
 

@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 2.7 $
+% $ biblatex bbl format version 2.6 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -18,7 +18,7 @@
 
 
 \refsection{0}
-  \sortlist[entry]{nty/global/}
+  \sortlist[entry]{nty/global}
     \entry{bordes2012joint}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=f1733e10bf044cbd7be63e10e5689d78}{%
@@ -306,6 +306,9 @@
       \keyw{neural networks ; deep learning ; representation ; embedding ; multimodal ; crossmodal ; retrieval ; video retrieval ; video hyperlinking ; image and text ; autoencoder ; bidirectional learning ; tied weights ; shared weights}
     \endentry
   \endsortlist
+  \missing{dehak2011front}
+  \missing{Senoussaoui_ani-vector}
+  \missing{larcher2013alize}
 \endrefsection
 \endinput
 
