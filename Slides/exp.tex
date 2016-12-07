@@ -47,9 +47,20 @@
 \end{frame}
 
 \begin{frame}
+	\begin{figure}
+		\centering
+       	\includegraphics[scale = 0.5]{intro.pdf}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
     \frametitle{Sommaire}
     \tableofcontents[hideallsubsections]
 \end{frame}
+
+
+\section{Signal representation for speaker recognition}
 
 
 \begin{frame}
@@ -76,7 +87,6 @@
 \end{frame}
 
 
-\section{Signal representation for speaker recognition}
 
 \begin{frame}
   \frametitle{Cesptral alanysis}
@@ -128,7 +138,7 @@
   \begin{columns}
     \column{0.35\textwidth}
     \begin{itemize}
-    \item Windowing
+    \item On each window
     \item Multiple cepstral representations
     \item High dimensional cepstral space tied to signal
     \item Probabilistic modeling
@@ -155,7 +165,7 @@
     \column{0.35\textwidth}
     \begin{itemize}
     \item Model: gaussian combination
-    \item Model: UBM standard
+    \item Model: Universal Background Model (UBM) standard
     \item<2> Adaptation to cepstral space
     \end{itemize}
     \column{0.6\textwidth}
@@ -294,43 +304,12 @@
     \end{tikzpicture}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Signal processing workflow}
-    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},barre/.style={draw,cross out,align=center}]
-    
-    \node[box,fill=orange!16] (c1) {cepstral coefficients};
-    \node[box,fill=orange!16, below =0.8cm of c1] (c2) {cepstral coefficients};
-    \node[below =0.8cm of c2] (c3) {\dots};
-    \node[box,fill=orange!16, below =0.8cm of c3] (cn) {cepstral coefficients};
-    
-    
-    \node[box,fill=cyan!16, right = 2cm of c2] (sv) {Supervector};
-    \node[box,fill=red!16, above = 1.5cm of sv] (ubm) {UBM};
-    
-    \node[barre, right = 2cm of sv] (iv) {I-vectors};
-    \node[box,fill=yellow!16, below = 1cm of iv] (ow) {\Large Our work};
-    
-    \draw[->] (c1) -- (sv);
-    \draw[->] (c2) -- (sv);
-    \draw[->] (cn) -- (sv);
-    \draw[->] (ubm) -- (sv);
-    
-    
-    
-    \draw[->] (sv) -- (iv);
-    \draw[->] (sv) -- (ow);
-    
-    \end{tikzpicture}
-\end{frame}
-
 
 \begin{frame}
-  \frametitle{transition}
+  \frametitle{Question}
   
-\end{frame}
-
-\begin{frame}
-  \frametitle{transition}
+	\centering
+	{\Huge Can we do better than i-vectors ? \par}
   
 \end{frame}
 
@@ -379,7 +358,16 @@
 \section{Deep learning}
 
 \begin{frame}
-  \frametitle{Use of DNNs}
+  \frametitle{Use of Deep Neural Networks (DNN)}
+
+Deep neural network are interesting because:
+\begin{itemize}
+\item<1-> Generates automatically several level of representation
+\item<2-> Brings out unsuspected features
+\item<3-> There is a multitude of architectures
+
+
+\end{itemize}
   
 \end{frame}
 
@@ -568,7 +556,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{i-vector 2.0}
+  \frametitle{New representation}
 \def\layersep{1.8cm}
 
 \begin{figure}
@@ -597,8 +585,12 @@
             
     \foreach \name / \y in {1,...,3}
         {
-        	\path[yshift=-1cm]
+        	\visible<1>{\path[yshift=-1cm]
+            node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};
+            }
+            \visible<2>{\path[yshift=-1cm]
             node[hidden neuron back] (H2-\name) at (2*\layersep,-\y cm) {};
+            }
         }
             
     \foreach \name / \y in {1,...,4}
@@ -640,9 +632,9 @@
         
         
     % Annotate the layers
-    \node[annot,above of=H2-1] (nr) {New representation};
-    \node[annot,right =-0.4cm of nr] (ol)  {Output layer};
-    \node[annot,left =-0.4cm of nr] (il) {Input layer};
+    \visible<2>{\node[annot,above of=H2-1] (iv) {i-vector 2.0};}
+    \node[annot,right =-0.4cm of iv] (ol)  {Output layer};
+    \node[annot,left =-0.4cm of iv] (il) {Input layer};
     
 \end{tikzpicture}
 
