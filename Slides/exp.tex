@@ -27,10 +27,9 @@
 
 \title{DeepVoice}                                          
 \subtitle{Extracting meaningful signal representation for Speaker Recognition
-  using deep architectures}
+\\  using deep architectures}
 
-\author{Rémi Hutin, Rémy Sun, Raphaël Truffet \and Encadrants : Guillaume Gravier et Vedran Vukoki\'c}
-
+\author[Hutin,Sun,Truffet]{Rémi Hutin, Rémy Sun, Raphaël Truffet \\ Supervisors : Guillaume Gravier et Vedran Vukoti\'c}
 
 \institute{ENS Rennes, IRISA}
 
@@ -174,7 +173,7 @@
 
 
 \begin{frame}
-  \frametitle{Cesptral alanysis}
+  \frametitle{Cepstral analysis}
     \begin{figure}
     \centering
     \includegraphics[trim={0 7.2cm 0 0}, clip, scale = 0.8]{cepstre.png}
@@ -187,27 +186,7 @@
     \item $C$ : cepstrum of the signal
     \item Euclidean distance in Cepstral domain $=$ Spectral distance 
     \end{itemize}
-  
-\end{frame}
-
-
-
-\begin{frame}
-  \frametitle{Cepstral space}
-  \begin{columns}
-    \column{0.35\textwidth}
-    \begin{itemize}
-    \item On each window
-    \item Multiple cepstral representations
-    \end{itemize}
-    \column{0.6\textwidth}
-      \begin{figure}
-        \centering
-        \includegraphics[scale = 0.5]{cepstre.png}
-      \end{figure}
-  \end{columns}
-\end{frame}
-
+  \end{frame}
 
 \begin{frame}
   \frametitle{Signal processing workflow}
@@ -221,8 +200,6 @@
     \draw[->] (a) -- (f1);
     \draw[->] (a) -- (f2);
     \draw[->] (a) -- (fn);
-    
-    
     
     \node[box,fill=orange!16, right = 1cm of f1] (c1) {cepstral coefficients};
     \node[box,fill=orange!16, right = 1cm of f2] (c2) {cepstral coefficients};
@@ -242,7 +219,7 @@
     \begin{itemize}
     \item On each window
     \item Multiple cepstral representations
-    \item High dimensional cepstral space tied to signal
+    \item High dimensional cepstral space tied to signal (40 dimensions)
     \item Probabilistic modeling
     \end{itemize}
     \column{0.6\textwidth}
@@ -286,6 +263,8 @@
     \item Probabilistic model vector representation
     \item Represents the whole signal
     \item Spectral features
+    \item \textbf{Supervectors}
+    \item \textcolor{red}{Enormous (10 000 dimensions), contains irrelevant information}
     \end{itemize}
     \column{0.6\textwidth}
     \begin{figure}
@@ -359,27 +338,33 @@
     \item \textcolor{red}{$m$} : speaker and channel independent supervector
     \item $T$ : rectangular matrix, called \emph{Total-variability matrix}
     \item \textcolor{mygreen}{$w$} : intermediate vector, or \emph{i-vector}
+      (dimension 60)
     \end{itemize}
   
 \end{frame}
 
 \begin{frame}
   \frametitle{i-vectors}
-    What uses i-vectors for speaker recognition?
+    How are i-vectors used for speaker recognition?
     \begin{itemize}
-      \setlength\itemsep{1em}
-    \item Cosine similarity comparisons
+    \item Speaker comparison
+      \begin{itemize}
+      \item Euclidian distance
+      \item Cosine similarity
+      \end{itemize}
+    \item Speaker identification
+      \begin{itemize}
     \item SVM 
         \begin{itemize}
         \item[-] \footnotesize  Najim Dehak et al. “Front-end factor analysis for speaker verification”. In: IEEE Transactions on Audio, Speech, and Language Processing 19.4 (2011), pp. 788–798.
         \item[-] \footnotesize  Mohammed Senoussaoui et al. An i-vector Extractor Suitable for Speaker Recognition with both Microphone and Telephone Speech.
         \end{itemize}
-    \item Deep Neural Networks
+      \item Deep Neural Networks
         \begin{itemize}
-        \item[-] \footnotesize Fred Richardson, Douglas Reynolds, and Najim Dehak. “Deep neural network approaches to speaker and language recognition”. In: IEEE Signal Processing Letters 22.10 (2015), pp. 1671–1675.
+        \item[-] \footnotesize Fred Richardson, Douglas Reynolds, and Najim Dehak. “Deep neural network approaches to speaker and language recognition”. In: IEEE Signal Processing Letters 22.10 (2015), pp. 1671–1675.  
         \end{itemize}
+      \end{itemize}
     \end{itemize}
-
     
 
 
@@ -467,8 +452,9 @@
 \begin{frame}
   \frametitle{Use of Deep Neural Networks (DNN)}
 
-Deep neural network are interesting because:
+Deep neural networks are interesting because:
 \begin{itemize}
+\item \textbf{Non-linear} feature extraction
 \item<2-> They naturally generate several level of representation
 \item<3-> They bring out unsuspected features
 \item<4-> There is a multitude of architectures
@@ -661,18 +647,19 @@ Deep neural network are interesting because:
   \vspace{0.8cm}
   \begin{columns}
   	\column{0.5\textwidth}
-  		\centering
-    	\only<3-4>{
-  		Adding noise:\\
-  		$x_{input} = objective + noise$ 
-  	    }
-  	
-  	\column{0.5\textwidth} 
-  		\centering 
-    	\only<4>{
+    \centering
+    \only<3-4>{
   		Compressing:\\
   		$size(x_{latent}) < size(x_{input})$
-  	    }
+    }
+  	
+  	\column{0.5\textwidth} 
+    \centering 
+    \only<4>{
+  		Adding noise:\\
+  		$x_{input} = objective + noise$ 
+    }
+    
 	\end{columns}
 \end{frame}
 
@@ -767,47 +754,6 @@ Deep neural network are interesting because:
 \section{Methods}
 
 \begin{frame}
-  \frametitle{Supplanting i-vectors}
-  
-  \begin{columns}
-  \column{0.44\textwidth}  
-  
-\only<1>{
-\begin{equation*}
-    \begin{bmatrix}
-      G_0^{0,0} \\   G_0^{0,1} \\ ... \\ G_{0}^{0,255} \\ G_0^{1,0} \\ .. \\ G_{0}^{N,255}
-    \end{bmatrix}
-\begin{bmatrix}
-      G_1^{0,0} \\   G_1^{0,1} \\ ... \\ G_{1}^{0,255} \\ G_1^{1,0} \\ .. \\ G_{1}^{N,255}
-    \end{bmatrix}
-...
-\begin{bmatrix}
-      G_M^{0,0} \\   G_M^{0,1} \\ ... \\ G_{M}^{0,255} \\ G_M^{1,0} \\ .. \\ G_{M}^{N,255}
-    \end{bmatrix}
-  \end{equation*}
-M supervectors
-}
-
-\only<2>{
-  \begin{equation*}
-    \begin{bmatrix}
-      G_0^{0,0} \\   G_0^{0,1} \\ ... \\ G_{0}^{0,255} \\ G_0^{1,0} \\ .. \\ G_{0}^{N,255}
-    \end{bmatrix}
-  \end{equation*}
-  Supervector from signal spoken by \textbf{someone}
-}
-  \column{0.5\textwidth}  
-  What is needed to extract i-vectors ?
-  \begin{itemize}
-  \item Supervectors
-  \item Training data (Labels on supervectors)
-  \end{itemize}
-  We will use the \textbf{exact same data}
-  \end{columns}
-
-\end{frame}
-
-\begin{frame}
   \frametitle{Filtering out non-speaker noise} 
   \begin{columns}
     \column{0.5\textwidth}
@@ -826,9 +772,15 @@ M supervectors
 }
 \only<2>{
   \begin{equation*}
-    M = \textcolor{red}{m} + Tw
+    M = \textcolor{red}{m} + s
   \end{equation*}
     }
+\only<3>{
+  
+  $  M_1 = m_1 + s $\\
+ $   M_2 = m_2 + s $\\
+  $  s = encode(M)$
+}
   \end{columns}
 \end{frame}
 
@@ -857,33 +809,6 @@ M supervectors
         \begin{bmatrix}
           v_2^{0,0} \\   v_2^{0,1} \\ ... \\ v_2^{0,255} \\ v_2^{1,0} \\ .. \\ v_2^{N,255}
         \end{bmatrix}
-      \end{equation*}
-    }
-    \only<3>{
-      \begin{equation*}
-        \color{mygreen}{
-        \begin{bmatrix}
-          v_1^{0,0} \\   v_1^{0,1} \\ ... \\ v_1^{0,255} \\ v_1^{1,0} \\ .. \\ v_1^{N,255}
-        \end{bmatrix}
-      }
-      \color{black}{
-        \begin{bmatrix}
-          v_2^{0,0} \\   v_2^{0,1} \\ ... \\ v_2^{0,255} \\ v_2^{1,0} \\ .. \\ v_2^{N,255}
-        \end{bmatrix}
-        }
-      \end{equation*}
-    }
-    \only<4>{
-      \begin{equation*}
-        \begin{bmatrix}
-          v_1^{0,0} \\   v_1^{0,1} \\ ... \\ v_1^{0,255} \\ v_1^{1,0} \\ .. \\ v_1^{N,255}
-        \end{bmatrix}
-        \color{red}{
-          \begin{bmatrix}
-            v_2^{0,0} \\ v_2^{0,1} \\ ... \\ v_2^{0,255} \\ v_2^{1,0} \\ .. \\
-            v_2^{N,255}
-          \end{bmatrix}
-}
       \end{equation*}
     }
   \end{columns}
@@ -967,7 +892,7 @@ M supervectors
         
         
     % Annotate the layers
-    \visible<2>{\node[annot,above of=H2-1] (iv) {i-vector 2.0};}
+    \visible<2>{\node[annot,above of=H2-1] (iv) {Deep vector};}
     \node[annot,right =-0.4cm of iv] (ol)  {Supervector $v_2$};
     \node[annot,left =-0.4cm of iv] (il) {Supervector $v_1$};
     
@@ -983,30 +908,21 @@ M supervectors
   \frametitle{Intermediate vector evaluation}
   \begin{columns}
     \column{0.6\textwidth}
-    What uses i-vectors for speaker recognition?
-    \begin{itemize}
-      \setlength\itemsep{1em}
-    \item Cosine similarity comparisons
-    \item SVM
-    \item Deep Neural Networks
+    
+   \textbf{Preliminary evaluation} with cosine similarity
+   
+
+    \column{0.35\textwidth}
+    
+    \begin{itemize}\setlength\itemsep{2em}
+    \item[] Threshold \textcolor{blue}{t}
+    \item[] $distance \leq \textcolor{blue}{t}$ \\
+      \textcolor{mygreen}{same speaker}
+    \item[] $distance > \textcolor{blue}{t}$ \\
+      \textcolor{red}{different speakers}
     \end{itemize}
 
     
-    \only<2>{
-      \textbf{Preliminary evaluation} with cosine similarity
-    }
-
-    \column{0.35\textwidth}
-    \only<2>{
-      \begin{itemize}\setlength\itemsep{2em}
-      \item[] Threshold \textcolor{blue}{t}
-      \item[] $distance \leq \textcolor{blue}{t}$ \\
-        \textcolor{mygreen}{same speaker}
-      \item[] $distance > \textcolor{blue}{t}$ \\
-        \textcolor{red}{different speakers}
-      \end{itemize}
-
-    }
   \end{columns}
 
 \end{frame}
@@ -1019,22 +935,22 @@ M supervectors
   \begin{itemize}
 \setlength\itemsep{1em}
   \item Better compression
-    \only<2>{
+    \visible<2>{
       \begin{itemize}
       \item Compression size
       \item Hyperparameters
       \item Compromise with results
       \end{itemize}
     }
-  \item Better results on angular treshold
-    \only<2>{
+  \item Better results on angular threshold
+    \visible<2>{
       \begin{itemize}
       \item Optimization method
       \item Compromise with compression
       \end{itemize}
     }
-  \item State-of-the-art-results for speaker recognition
-    \only<2>{
+  \item State-of-the-art results for speaker recognition
+    \visible<2>{
       \begin{itemize}
       \item Different training sets
       \item More complicated evaluation methods
