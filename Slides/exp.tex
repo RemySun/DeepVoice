@@ -239,11 +239,11 @@
     \begin{figure}
     
     \begin{tikzpicture}[scale=1.25]
-    \draw[->,thick, blue] (0,0) -- (0,2.5);
+    \draw[->,thick, red] (0,0) -- (0,2.5);
     \draw[->,thick, mygreen!50] (0,0) -- (4,0);
-    \draw[->,thick, red] (0,0) -- (4,2.5);
-    \draw (0.2,1.25) node {$\textcolor{blue}{m}$};
-    \draw (1.9,1.45) node {$\textcolor{red}{M}$};
+    \draw[->,thick, blue] (0,0) -- (4,2.5);
+    \draw (0.2,1.25) node {$\textcolor{red}{m}$};
+    \draw (1.9,1.45) node {$\textcolor{blue}{M}$};
     \draw (2,0.2) node {$T\textcolor{mygreen}{w}$};
     \draw[dashed] (0,2.5) -- (4,2.5);
     \draw[dashed] (4,0) -- (4,2.5);
@@ -254,14 +254,14 @@
     
     \column{0.2\textwidth}
   
-    $$\textcolor{red}{M} = \textcolor{blue}{m} + T\textcolor{mygreen}{w}$$
+    $$\textcolor{blue}{M} = \textcolor{red}{m} + T\textcolor{mygreen}{w}$$
     
     \column{0.2\textwidth}
     \\
   \end{columns}
     \vspace{1cm}
     \begin{itemize}
-    \item \textcolor{blue}{$m$} : speaker and channel independent supervector
+    \item \textcolor{red}{$m$} : speaker and channel independent supervector
     \item $T$ : rectangular matrix, called \emph{Total-variability matrix}
     \item \textcolor{mygreen}{$w$} : intermediate vector, or \emph{i-vector}
     \end{itemize}
@@ -705,7 +705,7 @@ M supervectors
 }
 \only<2>{
   \begin{equation*}
-    M = \textcolor{red}{m} + T\color{green}{w}
+    M = \textcolor{red}{m} + Tw
   \end{equation*}
     }
   \end{columns}
@@ -740,7 +740,7 @@ M supervectors
     }
     \only<3>{
       \begin{equation*}
-        \color{green}{
+        \color{mygreen}{
         \begin{bmatrix}
           v_1^{0,0} \\   v_1^{0,1} \\ ... \\ v_1^{0,255} \\ v_1^{1,0} \\ .. \\ v_1^{N,255}
         \end{bmatrix}
@@ -790,8 +790,9 @@ M supervectors
     \only<2>{
       \begin{itemize}\setlength\itemsep{2em}
       \item[] Threshold \textcolor{blue}{t}
-      \item[] $distance \leq \textcolor{blue}{t}$ \textcolor{green}{same speaker}
-      \item[] $distance \leq \textcolor{blue}{t}$
+      \item[] $distance \leq \textcolor{blue}{t}$ \\
+        \textcolor{mygreen}{same speaker}
+      \item[] $distance > \textcolor{blue}{t}$ \\
         \textcolor{red}{different speakers}
       \end{itemize}
 
@@ -821,7 +822,7 @@ M supervectors
       \item Compromise with compression
       \end{itemize}
     }
-  \item State-of-of-the-art-results
+  \item State-of-the-art-results
     \only<2>{
       \begin{itemize}
       \item Different training sets
