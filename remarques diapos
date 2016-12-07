@@ -1,0 +1,117 @@
+1
+\\Encadrants
+\\using
+
+2
+identification/verification/comparaison (revoir le titre)
+deux bouts de signaux
+
+3
+détailler
+
+4,5 OK
+
+6,7 
+Analyse
+Taille R^40
+
+8
+Nope
+
+9,10,11 Ok
+
+12
+SUPERVECTOR
+virer speaker model
+défauts : taille, dependant de plein de trucs
+Taille R^10000
+
+13 OK
+
+14
+linéaire
+m : bruit/constante/moyenne
+Taille
+R^60
+
+15
+"what uses" 
+?
+SVM à expanse
+séparer comparaison, classification
+(euclidian, CDS)
+(SVM, DNN)
+
+
+18
+Virer "automatique"
+Non linaire
+faire un récapitulatif
+
+
+19
+Insister
+
+20
+s
+non linéarité
+
+21
+W pas matrice, mais vecteur
+
+22 ---> 23
+apprendre une représentation
+ne pas parler de classification
+
+
+23
+boites sur notre autoencoder
+
+24
+inverser
+
+25 Ok
+
+Après:
+reparler de non-linéraité
+reparler de comparaison avec le i-vector
+
+27:
+Nope
+
+28:
+encoder(M) après M = m + Tw
+
+29:
+Partie de droite à virer
+
+30:
+Nope
+
+31:
+Revoir
+Seuil, à tatons
+
+32-33:
+Bien
+-results
+
+Numérotation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
