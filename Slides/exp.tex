@@ -77,20 +77,94 @@
 		\centering
         \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},
                             bubble/.style={draw,circle,align=center},
-                            bb/.style={draw,rectangle,align=center}]
+                            vec/.style={draw,rectangle,align=center, text width=0.1cm, text height=0.1cm},
+                            barre/.style={draw,cross out,align=center}
+                           ]
+        \visible<2-3>
+        {
         \node[bubble] (eq) {= ?};
+        }
         \node[box,fill=blue!16, left =1cm of eq] (1) {\includegraphics[scale = 0.5]{signal.png}};
         \node[box,fill=green!16, right =1cm of eq] (2) {\includegraphics[scale = 0.5]{signal180.png}};
+        
+        
+        \visible<2-3>
+        {
         \draw[->] (1) -- (eq);
         \draw[->] (2) -- (eq);
+        }
         
-        \only<2->
+        \visible<3>
         {
-        \node[bb,fill=black!80, below =1cm of 1] (bb1) {\includegraphics[scale = 0.04]{}};
-        \node[bb,fill=black!80, below =1cm of 2] (bb2) {\includegraphics[scale = 0.04]{}};
+        \node[barre, color=red, text width = 1cm, text height = 1cm] {};
+        }
+        
+        \visible<4->
+        {
+        \node[box,fill=black!70, below =1cm of 1] (bb1) {\includegraphics[scale = 0.2]{options_icon.pdf}};
+        \node[box,fill=black!70, below =1cm of 2] (bb2) {\includegraphics[scale = 0.2]{options_icon.pdf}};
+        \draw[->] (1) -- (bb1);
+        \draw[->] (2) -- (bb2);
+        }
+        
+        \visible<5->
+        {
+            \node[vec,fill=blue!16, below =1cm of bb1] (v11) {};
+            \node[vec,fill=blue!16, below =0cm of v11] (v12) {};
+            \node[vec,fill=blue!16, below =0cm of v12] (v13) {};
+            \node[vec,fill=blue!16, below =0cm of v13] (v14) {};
+            \node[vec,fill=blue!16, below =0cm of v14] (v15) {};
+            
+            \node[vec,fill=green!16, below =1cm of bb2] (v21) {};
+            \node[vec,fill=green!16, below =0cm of v21] (v22) {};
+            \node[vec,fill=green!16, below =0cm of v22] (v23) {};
+            \node[vec,fill=green!16, below =0cm of v23] (v24) {};
+            \node[vec,fill=green!16, below =0cm of v24] (v25) {};
+            
+            \draw[->] (bb1) -- (v11);
+            \draw[->] (bb2) -- (v21);
+        }
+        
+        
+        \visible<6->
+        {
+            \node[bubble, below =3.5cm of eq] (eq2) {= ?};
+            
+            \draw[->] (v13) -- (eq2);
+            \draw[->] (v23) -- (eq2);
         }
         \end{tikzpicture}
-	\end{figure}
+        \end{figure}
+\end{frame}
+
+
+\begin{frame}
+    \begin{figure}
+            \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},
+                        vec/.style={draw,rectangle,align=center, text width=0.1cm, text height=0.1cm},
+                        bb2/.style={draw,rectangle,align=center, text width=0.35cm, text height=0.35cm}]
+                        
+        \node[box,fill=blue!16] (s) {\includegraphics[scale = 0.6]{signal.png}};
+        \node[box,fill=black!70, right =2cm of s] (bb) {\includegraphics[scale = 0.4]{options_icon.pdf}};
+        \node[vec,fill=blue!16, right =2cm of bb] (v3) {};
+        \node[vec,fill=blue!16, below =0cm of v3] (v4) {};
+        \node[vec,fill=blue!16, below =0cm of v4] (v5) {};
+        \node[vec,fill=blue!16, above =0cm of v3] (v2) {};
+        \node[vec,fill=blue!16, above =0cm of v2] (v1) {};
+        
+        \draw[->] (s) -- (bb);
+        \draw[->] (bb) -- (v3);
+        
+        
+        \visible<2->
+        {
+        \node[below right=-1.3cm of bb] (puzzle) {\includegraphics[scale = 0.1]{puzzle.png}};
+        \node[below =1cm of puzzle] (dnn) {Deep Neural Networks};
+        \draw[->] (dnn) -- (puzzle);
+        }
+    \end{tikzpicture}
+    \end{figure}
 \end{frame}
 
 
@@ -212,7 +286,7 @@
 \end{frame}
 
 \begin{frame}
- \frametitle{Supervectors}
+ \frametitle{supervectors}
   \begin{columns}
     \column{0.35\textwidth}
     \begin{itemize}
@@ -267,7 +341,7 @@
     \column{0.65\textwidth}
     \begin{figure}
     
-    \begin{tikzpicture}[scale=1.0]
+    \begin{tikzpicture}[scale=1.25]
     \draw[->,thick, red] (0,0) -- (0,2.5);
     \draw[->,thick, mygreen!50] (0,0) -- (4,0);
     \draw[->,thick, blue] (0,0) -- (4,2.5);
@@ -281,8 +355,8 @@
     \end{figure}
     
     
-    \column{0.3\textwidth}
-  	Linear projection: \\
+    \column{0.2\textwidth}
+  
     $$\textcolor{blue}{M} = \textcolor{red}{m} + T\textcolor{mygreen}{w}$$
     
     \column{0.2\textwidth}
@@ -296,9 +370,7 @@
     \item \textcolor{mygreen}{$w$} : intermediate vector, or \emph{i-vector}
       (dimension 60)
     \end{itemize}
-    \begin{itemize}
-  	\item[-] \footnotesize Najim Dehak et al. "Front-End Factor Analysis for Speaker Verification". In : IEEE TRANSACTIONS ON AUDIO, SPEECH, AND LANGUAGE PROCESSING, VOL. 19, NO. 4, MAY 2011
-  	\end{itemize}
+  
 \end{frame}
 
 \begin{frame}
@@ -307,8 +379,6 @@
     \begin{itemize}
     \item Speaker comparison
       \begin{itemize}
-      
-      \end{itemize}
       \item Euclidian distance
       \item Cosine similarity
       \end{itemize}
@@ -361,7 +431,7 @@
   \frametitle{Question}
   
 	\centering
-	{\Huge Can we do better than i-vectors ? \par}
+	{\Huge Can we do better than i-vectors? \par}
   
 \end{frame}
 
