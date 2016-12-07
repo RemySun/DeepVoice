@@ -119,11 +119,28 @@
     \item Apply a transformation :
     $ C(x(t)) = \mathcal{F}^{-1}(\ln(|\mathcal{F}(x(t))|)  $
     \item $C$ : cepstrum of the signal
-    \item Cepstral domain : Euclidean distance
+    \item Euclidean distance in Cepstral domain $=$ Spectral distance 
     \end{itemize}
   
 \end{frame}
 
+
+
+\begin{frame}
+  \frametitle{Cepstral space}
+  \begin{columns}
+    \column{0.35\textwidth}
+    \begin{itemize}
+    \item On each window
+    \item Multiple cepstral representations
+    \end{itemize}
+    \column{0.6\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[scale = 0.5]{cepstre.png}
+      \end{figure}
+  \end{columns}
+\end{frame}
 
 
 \begin{frame}
@@ -163,18 +180,10 @@
     \item Probabilistic modeling
     \end{itemize}
     \column{0.6\textwidth}
-    \only<1>{
-      \begin{figure}
-        \centering
-        \includegraphics[scale = 0.5]{cepstre.png}
-      \end{figure}
-    }
-    \only<2>{
       \begin{figure}
         \centering
        \includegraphics[scale = 0.5]{cepstral_space.pdf}
       \end{figure}
-    }
   \end{columns}
 \end{frame}
 
@@ -280,6 +289,7 @@
   \end{columns}
     \vspace{1cm}
     \begin{itemize}
+    \item \textcolor{blue}{$M$} : supervector
     \item \textcolor{red}{$m$} : speaker and channel independent supervector
     \item $T$ : rectangular matrix, called \emph{Total-variability matrix}
     \item \textcolor{mygreen}{$w$} : intermediate vector, or \emph{i-vector}
@@ -415,7 +425,8 @@ Deep neural network are interesting because:
     \tikzstyle{input neuron}=[neuron, fill=green!50];
     \tikzstyle{output neuron}=[neuron, fill=red!50];
     \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
-    \tikzstyle{annot} = [text width=4em, text centered]
+    \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
+    \tikzstyle{annot} = [text width=8em, text centered]
 
     % Draw the input layer nodes
     \foreach \name / \y in {1,...,4}
@@ -424,8 +435,12 @@ Deep neural network are interesting because:
 
     % Draw the hidden layer nodes
     \foreach \name / \y in {1,...,1}
-        \path[yshift=-1.5cm]
-            node[hidden neuron] (H-\name) at (\layersep,-\y cm) {};
+        {
+        \visible<-2>{\path[yshift=-1.5cm]
+            node[hidden neuron] (H-\name) at (\layersep,-\y cm) {};}
+        \visible<3->{\path[yshift=-1.5cm]
+            node[hidden neuron back] (H-\name) at (\layersep,-\y cm) {};}
+        }
 
     % Draw the output layer node
     \node[output neuron, right of=H-1] (O) {$e = f(WA + b)$};
@@ -441,9 +456,18 @@ Deep neural network are interesting because:
         \path (H-\source) edge (O);
 
     % Annotate the layers
-    \node[annot,below of=H-1, node distance=1cm] (hl) {Weight $W$\\Bias $b$};
-    \node[annot,above of=H-1, node distance=1cm] (hl) {Neuron};
-    \node[annot,above of=I-1, node distance=1cm] (hl) {Input A};
+    \node[annot,below of=H-1, node distance=1cm] (wb) {Weight $W\visible<3->{'}$\\Bias $b\visible<3->{'}$};
+    \node[annot,above of=H-1, node distance=1cm] (n) {Neuron};
+    \node[annot,above of=I-1, node distance=1cm] (ia) {Input A};
+    
+    \visible<2->{
+    \node[annot,above =2cm of O, node distance=1cm] (md) {minimize : $\|e - e^* \|$};
+
+    \path (O) edge (md);
+    }
+    \visible<3->{
+    \path (md) edge (H-1);
+    }
 \end{tikzpicture}
 
 \end{figure}
