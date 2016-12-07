@@ -11,9 +11,10 @@
 \usepackage{mathtools}
 \usepackage{xcolor}
 \usepackage{rotating}
+\usepackage{lipsum}
 
 \usepackage[style=alphabetic]{biblatex}
-
+\beamertemplatenavigationsymbolsempty
 
 \bibliography{Biblio.bib}
 
@@ -21,6 +22,14 @@
 \usetikzlibrary{positioning}
 
 \definecolor{mygreen}{rgb}{0.55, 0.71, 0.0}
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
 
 \usetheme{AnnArbor}
 \usecolortheme{beaver}
@@ -204,6 +213,7 @@
     \item $C$ : cepstrum of the signal
     \item Euclidean distance in Cepstral domain $=$ Spectral distance 
     \end{itemize}
+     \blfootnote{Frédéric Bimbot et al. "A Tutorial on Text-Independent Speaker Verification".  In : EURASIP Journal on Applied Signal Processing 2004:4, 430–451.}
   \end{frame}
 
 \begin{frame}
@@ -245,7 +255,8 @@
         \centering
        \includegraphics[scale = 0.5]{cepstral_space.pdf}
       \end{figure}
-  \end{columns}
+    \end{columns}
+     \blfootnote{Frédéric Bimbot et al. "A Tutorial on Text-Independent Speaker Verification".  In : EURASIP Journal on Applied Signal Processing 2004:4, 430–451.}
 \end{frame}
 
 \begin{frame}
@@ -271,11 +282,9 @@
       \end{figure}
     }
   \end{columns}
-  \begin{itemize}
-  
-\item[-]  Frédéric Bimbot et al. "A Tutorial on Text-Independent Speaker Verification".  In : EURASIP Journal on Applied Signal Processing 2004:4, 430–451.
+ 
+\blfootnote{Frédéric Bimbot et al. "A Tutorial on Text-Independent Speaker Verification".  In : EURASIP Journal on Applied Signal Processing 2004:4, 430–451.}
 
-  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -287,6 +296,7 @@
     \item Represents the whole signal
     \item Spectral features
     \item \textbf{Supervectors}
+
     \item \textcolor{red}{Enormous (10 000 dimensions), contains irrelevant information}
     \end{itemize}
     \column{0.6\textwidth}
@@ -295,11 +305,8 @@
        \includegraphics[scale = 0.5]{supervectors.pdf}
       \end{figure}
   \end{columns}
-  \begin{itemize}
+ \blfootnote{Frédéric Bimbot et al. "A Tutorial on Text-Independent Speaker Verification".  In : EURASIP Journal on Applied Signal Processing 2004:4, 430–451.}
   
-\item[-]  Frédéric Bimbot et al. "A Tutorial on Text-Independent Speaker Verification".  In : EURASIP Journal on Applied Signal Processing 2004:4, 430–451.
-
-  \end{itemize}
 
 \end{frame}
 
@@ -369,11 +376,8 @@
     \item \textcolor{mygreen}{$w$} : intermediate vector, or \emph{i-vector}
       (dimension 60)
     \end{itemize}
-\begin{itemize}
 
-  	 \item[-] \footnotesize Najim Dehak et al. "Front-End Factor Analysis for Speaker Verification". In : IEEE TRANSACTIONS ON AUDIO, SPEECH, AND LANGUAGE PROCESSING, VOL. 19, NO. 4, MAY 2011
-
-\end{itemize}
+ \blfootnote{ Najim Dehak et al. "Front-End Factor Analysis for Speaker Verification". In : IEEE TRANSACTIONS ON AUDIO, SPEECH, AND LANGUAGE PROCESSING, VOL. 19, NO. 4, MAY 2011}
 \end{frame}
 
 \begin{frame}
@@ -557,6 +561,7 @@ Deep neural networks are interesting because:
 
 \end{figure}
 
+\blfootnote{LeCun, Y., Bottou, L., Bengio, Y., and Haffner, P. (1998d). Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11), 2278–2324.}
   
 \end{frame}
 
@@ -654,7 +659,7 @@ Deep neural networks are interesting because:
 \end{tikzpicture}
 
 \end{figure}
-  
+
 \end{frame}
 
 \begin{frame}
@@ -759,6 +764,7 @@ Deep neural networks are interesting because:
     \centering
   	$x_{latent} = encoder(x_{input})$  \\
   	$x_{output} = decoder(x_{latent}) \simeq x_{input}$
+    \blfootnote{G.E. Hinton and R.R. Salakhutdinov, Reducing the Dimensionality of Data with Neural Networks, Science, 28 July 2006, Vol. 313. no. 5786, pp. 504 - 507}
   
 \end{frame}
 
@@ -775,18 +781,22 @@ Deep neural networks are interesting because:
   	\column{0.5\textwidth}
     \centering
     \visible<3-4>{
-  		Compressing:\\
+  		Compressing\footnotemark:\\
   		$size(x_{latent}) < size(x_{input})$
     }
   	
   	\column{0.5\textwidth} 
     \centering 
     \visible<4>{
-  		Adding noise:\\
+  		Adding noise\footnotemark:\\
   		$x_{input} = objective + noise$ 
     }
     
 	\end{columns}
+  \footnotetext[1]{G.E. Hinton and R.R. Salakhutdinov, Reducing the Dimensionality of
+    Data with Neural Networks, Science, 28 July 2006, Vol. 313. no. 5786, pp.
+    504 - 507}
+  \footnotetext[2]{P.Vincent, H. Larochelle Y. Bengio and P.A. Manzagol, Extracting and Composing Robust Features with Denoising Autoencoders, Proceedings of the Twenty-fifth International Conference on Machine Learning (ICML‘08), pages 1096 - 1103, ACM, 2008.}
 \end{frame}
 
 \begin{frame}
