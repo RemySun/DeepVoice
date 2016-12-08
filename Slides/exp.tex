@@ -2,7 +2,7 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage[french, english]{babel}
 \usepackage{hyperref}
 \usepackage{tikz}
 \usetikzlibrary{shapes,snakes}
@@ -59,10 +59,10 @@
 \subtitle{Extracting meaningful signal representation for Speaker Recognition
 \\  using deep architectures}
 
-\author[Hutin,Sun,Truffet]{Rémi Hutin, Rémy Sun, Raphaël Truffet \\ Supervisors : Guillaume Gravier et Vedran Vukoti\'c}
+\author[Hutin,Sun,Truffet]{Rémi Hutin, Rémy Sun, Raphaël Truffet \\ Supervisors : Guillaume Gravier and Vedran Vukoti\'c}
 
 
-\date{8 décembre 2016}
+\date{December 8, 2016}
 
 
 \AtBeginSection[]{
@@ -392,7 +392,7 @@
     \begin{itemize}
     \item \textcolor{blue}{$M$} : supervector
     \item \textcolor{red}{$m$} : speaker and channel independent supervector
-    \item $T$ : rectangular matrix, called \emph{Total-variability matrix}
+    \item $T$ : rectangular matrix, called Total-variability matrix
     \item \textcolor{mygreen}{$w$} : intermediate vector, or \emph{i-vector}
       (dimension 60)
     \end{itemize}
@@ -687,7 +687,7 @@ Deep neural networks are interesting because:
 \def\layersep{1.8cm}
     \begin{figure}
     \centering
-\begin{tikzpicture}[scale=0.8, shorten >=1pt,->,draw=black!50, node distance=\layersep]
+\begin{tikzpicture}[yscale=0.7, shorten >=1pt,->,draw=black!50, node distance=\layersep]
     \tikzstyle{every pin edge}=[<-,shorten <=1pt]
     \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
     \tikzstyle{input neuron}=[neuron, fill=green!50];
@@ -697,16 +697,16 @@ Deep neural networks are interesting because:
     \tikzstyle{annot} = [text width=10em, text centered]
     
     \visible<2>{
-        \path [draw, thick, fill=yellow!20] (-1,0.5) rectangle (4.5,-6);
+        \path [draw, thick, fill=yellow!20] (-1.2,0.5) rectangle (4.5,-5.6);
     }
     \visible<3->{
-        \path [draw, thick] (-1,0.5) rectangle (4.5,-6);
+        \path [draw, thick] (-1.2,0.5) rectangle (4.5,-5.6);
     }
     \visible<3>{
-        \path [draw, thick,  fill=yellow!20] (2.7,0.3) rectangle (8.2,-5.8);
+        \path [draw, thick,  fill=yellow!20] (2.7,0.3) rectangle (8.4,-5.8);
     }
     \visible<4->{
-        \path [draw, thick] (2.7,0.3) rectangle (8.2,-5.8);
+        \path [draw, thick] (2.7,0.3) rectangle (8.4,-5.8);
     }
     
     % Draw the input layer nodes
@@ -769,10 +769,10 @@ Deep neural networks are interesting because:
     \node[annot,above of=H2-1, node distance=0.7cm] (xl) {$x_{latent}$};
     \node[annot,above of=H4-1, node distance=0.7cm] (xo) {$x_{output}$};
     \visible<2->{
-    \node[annot,above of=H1-1, node distance=2.1cm] (xl) {encoder};
+    \node[annot,above of=H1-1, node distance=1.8cm] (xl) {encoder};
     }
     \visible<3->{
-    \node[annot,above of=H3-1, node distance=2.1cm] (xo) {decoder};
+    \node[annot,above of=H3-1, node distance=1.8cm] (xo) {decoder};
     }
                 
         
@@ -782,8 +782,11 @@ Deep neural networks are interesting because:
 \end{tikzpicture}
     \end{figure}
     \centering
+    \visible<4->{
   	$x_{latent} = encoder(x_{input})$  \\
-  	$x_{output} = decoder(x_{latent}) \simeq x_{input}$
+  	$x_{output} = decoder(x_{latent}) \simeq x_{input}$ \\
+  	 
+    }
     \blfootnote{G.E. Hinton and R.R. Salakhutdinov, Reducing the Dimensionality of Data with Neural Networks, Science, 28 July 2006, Vol. 313. no. 5786, pp. 504 - 507}
   
 \end{frame}
