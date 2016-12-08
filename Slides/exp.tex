@@ -25,10 +25,31 @@
 
 
 \newcommand\blfootnote[1]{%
- http://stackoverflow.com/questions/3210205/how-to-get-rid-of-navigation-bars-in-beamer \begingroup
+ \begingroup
   \renewcommand\thefootnote{}\footnote{#1}%
   \addtocounter{footnote}{-1}%
   \endgroup
+}
+
+\institute[ENS Rennes] % (optional, but mostly needed)
+{
+  
+
+  \begin{columns}
+    \column{0.45\linewidth}
+    \center
+    \includegraphics[scale=0.15]{ENS}\\
+    Computer science department\\
+    ENS Rennes
+    
+    \column{0.45\linewidth}
+    \center
+    \includegraphics[scale=0.25]{Linkmedia}
+
+    Linkmedia project\\
+    IRISA
+  \end{columns}
+
 }
 
 \usetheme{AnnArbor}
@@ -40,7 +61,6 @@
 
 \author[Hutin,Sun,Truffet]{Rémi Hutin, Rémy Sun, Raphaël Truffet \\ Supervisors : Guillaume Gravier et Vedran Vukoti\'c}
 
-\institute{ENS Rennes, IRISA}
 
 \date{8 décembre 2016}
 
