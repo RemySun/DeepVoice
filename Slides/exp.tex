@@ -931,14 +931,14 @@ Deep neural networks are interesting because:
 }
 \only<2>{
   \begin{equation*}
-    M = \textcolor{red}{m} + s
+    M = \textcolor{red}{noise} + s_{speaker}
   \end{equation*}
     }
 \only<3>{
   
-  $  M_1 = m_1 + s $\\
- $   M_2 = m_2 + s $\\
-  $  s = encode(M)$
+  $  M_1 = noise_1 + s_{speaker} $\\
+ $   M_2 = noise_2 + s_{speaker} $\\
+  $  s_{speaker} = encode(M)$
 }
   \end{columns}
 \end{frame}
@@ -1087,7 +1087,9 @@ Deep neural networks are interesting because:
 
 \begin{frame}
   \frametitle{Goals \only<2>{and expected issues}}
-  What does it mean to improve on i-vectors?
+Numeric signals represented by i-vectors for speaker recognition
+tasks.\\ We seek to offer an alternative with deep neural networks.\\
+  \textcolor{red}{What does it mean to improve on i-vectors?}
   \begin{itemize}
 \setlength\itemsep{1em}
   \item Better compression
