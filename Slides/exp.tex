@@ -113,7 +113,7 @@
         
         \visible<3>
         {
-        \node[barre, color=red, text width = 1cm, text height = 1cm] {};
+        \node[barre, color=red, thick, text width = 1cm, text height = 1cm] {};
         }
         
         \visible<4->
@@ -145,7 +145,7 @@
         
         \visible<6->
         {
-            \node[bubble, below =3.5cm of eq] (eq2) {= ?};
+            \node[bubble, fill=green!40, thick, below =3.5cm of eq] (eq2) {= ?};
             
             \draw[->] (v13) -- (eq2);
             \draw[->] (v23) -- (eq2);
@@ -392,7 +392,7 @@
     \begin{itemize}
     \item \textcolor{blue}{$M$} : supervector
     \item \textcolor{red}{$m$} : speaker and channel independent supervector
-    \item $T$ : rectangular matrix, called Total-variability matrix
+    \item $T$ : rectangular matrix (Total-variability matrix)
     \item \textcolor{mygreen}{$w$} : intermediate vector, or \emph{i-vector}
       (dimension 60)
     \end{itemize}
