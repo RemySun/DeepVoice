@@ -4,6 +4,7 @@
 
 %\usepackage{fullpage}           
 \usepackage[french, english]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
 \usepackage{graphicx}
 \usepackage{todonotes}
 
@@ -20,10 +21,11 @@
   Campus de Ker lann, Bruz, France
 \and
   Guillaume Gravier, Vedran Vukotić\\
-  guig@irisa.fr, vedran.vukotic@irisa.fr\\
+  \{guig, vedran.vukotic\}@irisa.fr\\
   Linkmedia project, IRISA \\
   Campus de Beaulieu, Rennes, France
- }
+}
+
 \begin{document}
 
 \maketitle
@@ -54,8 +56,8 @@ signal, Fourier transform, spectral representation?
 Years of reasearch into the issue have yielded a solution called
 \emph{supervectors} which provide a probabilistic representation of the
 numeric signal's spectral features. Those supervectors however present the
-significant downside of being enormous and therefore evolving in a very sparse
-representation space, which makes them unfit for applications. What recent works
+significant downside of being enormous and containing information not relevant
+to the task at hand, which makes them unfit for applications. What recent works
 have had success with is the extraction of more condensed representations from
 those supervectors named \emph{i-vectors}.
 
@@ -68,8 +70,8 @@ intermediate representations from \emph{supervectors} and might provide
 representations that outperform the current state of the art \emph{i-vectors}.
 
 To begin with, we will give a brief exposition of signal representations used
-up until now \ref{sec:signal}. Afterwards, a brief explanation of the deep
-learning techniques we will need will be provided \ref{sec:Deep}. Finally, we
+up until now \ref{sec:signal}. Afterwards, a brief explanation of the Deep
+Learning techniques we will need will be provided \ref{sec:Deep}. Finally, we
 will give an overview of the study we plan to conduct \ref{sec:Method}
 
 \section{Sound signals}
@@ -78,7 +80,7 @@ An audio signal used for speaker recognition tasks is technically an analogical
 signal. To allow computer pocessing, those signals are sampled into a numeric
 signal (discrete set of measures that can a discrete set of values). Such a
 representation is highly vulnerable to noise and transformations however,
-and more developped means are usually used.
+and more developped means of representation are usually used.
 
 \subsection{Cepstral analysis}
 
@@ -86,10 +88,11 @@ The speech signal of a locutor is hardly suitable for statistical modeling or
 the calculation of a distance.
 In order to obtain a representation which is more compact and less redundant, we
 use a cepstral representation of the speech. 
-The cepstrum of a signal $x(t)$ is defined by :
+The cepstrum of a signal $x(t)$ is defined by \eqref{eq:cepstrum}
 
 \begin{equation}
-C(x(t)) = \mathcal{F}^{-1}(\ln(|\mathcal{F}(x(t))|)  
+  C(x(t)) = \mathcal{F}^{-1}(\ln(|\mathcal{F}(x(t))|)
+   \label{eq:cepstrum}
 \end{equation}
 
 where $\mathcal{F}$ is the Fourier transform.
@@ -104,14 +107,15 @@ computed using the Euclidean distance.
 \subsection{Gaussian mixture model (GMM) and supervectors}
 
 A Gaussian mixture model (GMM) is a probabilistic model used to approximate a 
-distribution of random variables as a sum of normal distributions. 
-Here, we suppose that cepstral vectors of a signal follow a probality
+distribution of random variables as a sum of normal distributions (\cite{Bimbot2004}). 
+Here, we suppose that cepstral vectors of a signal follow a probability
 distribution that is specific to the given signal. This distribution is the one
 that we try to approximate with the GMM using a reference model. In fact, even 
 if the distribution is specific to the given signal, the form of the 
 distribution is universal for the natural language and called the Universal 
 Background Model (UBM). The supervector is the vector that gather means of 
-all the normal distributions of the GMM.  \\
+all the normal distributions of the GMM. Such models are used to represent
+signals in speaker recognition tasks (Figure \ref{gmm})\\
 
 
 \begin{figure}[!h]
@@ -123,10 +127,10 @@ all the normal distributions of the GMM.  \\
 
 \subsection{I-vectors}
 
-\todo[inline]{Ajouter les références}
-
 A supervector presents a probabilistic representation of a signal's spectral features. 
-However, these supervectors are enormous, which makes them unfit for applications.
+However, these supervectors are enormous, which makes them unfit for
+applications and, since they contain information on the entire signal, contain
+information of little interest to us.
 That's why we want a more condensed version a these supervectors.
 
 
@@ -134,7 +138,8 @@ Let $M$ be the supervector, obtained as explained previously. $M$ depends on the
 We want to express $M$ as
 
 \begin{equation}
-M = m + Tw
+  M = m + Tw
+  \label{eq:i}
 \end{equation}
 
 \noindent where
@@ -144,28 +149,17 @@ M = m + Tw
 \item $w$ is an intermediate vector, or \emph{i-vector}
 \end{itemize}
 
-These \emph{i-vectors} provide lighter, and therefore more usable, data for application tasks.
+These lineraly extracted \emph{i-vectors} provide lighter, and therefore more usable, data for application tasks.
 
 \subsection{Previous works}
 
 
-Extracting the i-vector is interesting for speaker recognition because it is easier to apply usual classifications method on it as cosine distance scoring (CDS) and support vector machines (SVM) \cite{Senoussaoui_ani-vector, dehak2011front}. I-vectors are good tools for speaker recognition because they are channel independant and compact. We will try to keep these two characteristics in the new representation we will build using neural networks.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Extracting the i-vector is interesting for speaker recognition because it is
+easier to apply usual classifications method on it as cosine distance scoring
+(CDS) and support vector machines (SVM) \cite{Senoussaoui_ani-vector,
+  dehak2011front}. I-vectors are good tools for speaker recognition because they
+are channel independant and compact. We will try to keep these two
+characteristics in the new representation we will build using neural networks.
 
 
 
@@ -193,17 +187,22 @@ meaningful intermediate representation of supervectors through the use of deep a
   \begin{minipage}[b]{0.225\textwidth}
     \includegraphics[width=0.9\textwidth]{Neuron}
     \caption{Formal neuron}
+    \label{fig:neur}
   \end{minipage}
   \hfill
   \begin{minipage}[b]{0.225\textwidth}
     \includegraphics[width=\textwidth]{Deep}
     \caption{Deep neural network}
+    \label{fig:net}
   \end{minipage}
 \end{figure}
 
 
 \paragraph{Neuron}
-A neuron can be thought of as a function which takes an $n$-dimensional vector
+
+Neural networks can be fairly complicated to understand all at once, and
+therefore we will start by explaining how one of its basic units work.
+A neuron (Figure \ref{fig:neur}) can be thought of as a function which takes an $n$-dimensional vector
 $A$ as input and returns a scalar $e$ as output. This function typically has two
 internal parameters which are a bias $b$ and a weight matrix $W$. The function
 starts by calculating $WA+b$ before using a non-linear activation function (such
@@ -215,7 +214,8 @@ as sigmoid or tanh), i.e.,
 
 \paragraph{Adjusting the function}
 
-Our endgoal is to have the neuron, and by extension the neural network, perform
+Our endgoal is to have the neuron, and by extension the neural network (which we
+will introduce later), perform
 a certain task. The formal neuron \og learns\fg{} by adjusting its function to perform better on
 a designated task. For simplicity's sake, we will first explain how a
 process -- called \og backpropagation\fg{} -- works with a single neuron.
@@ -238,14 +238,16 @@ parameters: $d(W,b)=|e(W,b)-r|$. Therefore $\frac{\partial d}{\partial W}
    = \frac{\partial d}{\partial e}\frac{\partial e}{\partial W}$,
 $\frac{\partial d}{\partial b}
    = \frac{\partial d}{\partial e}\frac{\partial e}{\partial b}$. We then only
-   need to compute new internal parameters $W'$ and $b'$ with 
+   need to compute new internal parameters $W'$ and $b'$ with \ref{eq:W} and \ref{eq:b}.
 
 \begin{equation}
-     W'=W + s\frac{\partial d}{\partial W}=W-s\frac{\partial d}{\partial e}\frac{\partial e}{\partial W}
+  W'=W + s\frac{\partial d}{\partial W}=W-s\frac{\partial d}{\partial e}\frac{\partial e}{\partial W}
+  \label{eq:W}
 \end{equation}
 
 \begin{equation}
-     b'=b + s\frac{\partial d}{\partial b}=b-s\frac{\partial d}{\partial e}\frac{\partial e}{\partial b}
+  b'=b + s\frac{\partial d}{\partial b}=b-s\frac{\partial d}{\partial e}\frac{\partial e}{\partial b}
+  \label{eq:b}
 \end{equation}
 
 What we just demonstrated was a simple backpropagation algorithm called gradient
@@ -254,7 +256,7 @@ methods find their origins in this humble algorithm.
 
 \paragraph{Neural network}
 
-Typically, a neural \textbf{network} is made up of more than a single neuron. A
+Typically, a neural \textbf{network} (Figure \ref{fig:net}) is made up of more than a single neuron. A
 neural layer refers to multiple neurons working on the same input (or parts of
 the same input) and producing an output that can be construed as some form of
 concatenation of their respective outputs. This output can be in turn regarded
@@ -268,11 +270,15 @@ first processes simple geometrical forms before recognizing more complex
 compositions. Backpropagation is straight-forwardly computed on layer $B$. It is
 computed on layer $A$ by looking at $\frac{\partial d}{\partial input_B}$
 instead of $\frac{\partial d}{\partial e}$ which is simply calculated using the
-rule of chain derivation
+rule of chain derivation:
 
 \begin{equation}
   \frac{\partial f}{\partial x}=\frac{\partial f}{\partial x_1}...\frac{\partial x_k}{\partial x}.
 \end{equation}
+
+What is of particular interest to us is the intermediate representations the
+network acquires this way. Indeed, our goal is to obtain a representation of
+supervectors that outperforms the linear extraction of i-vectors.
 
 \subsection{Autoencoders}
 
@@ -296,20 +302,10 @@ capture features specific to the input so that it may be reconstructed.
 
 \paragraph{Structure}
 
-\todo{ref}
-
-\begin{equation}
-  x_{latent} = encoder(x_{input})
-\end{equation}
-
-\begin{equation}
-  x_{output} = decoder(x_{latent}) \simeq x_{input}
-\end{equation}
-
-Typically, the \textbf{input} is \textit{encoded} into a \textbf{latent
-  representation} which is then \textit{decoded} into an \textbf{output} that
+Typically, the \textbf{input} is \textit{encoded} \eqref{eq:enc} into a \textbf{latent
+  representation} which is then \textit{decoded} \eqref{eq:dec} into an \textbf{output} that
 should match the input as closely as possible, hence the autoencoder
-denomination. The main danger of such an approach is having the networks that
+denomination (Figure \ref{autoencoder_structure}). The main danger of such an approach is having the networks that
 does not transform the input at all and yields a latent representation that is
 no different to the raw input data. A multitude of solutions exist to avoid such
 a scenario:
@@ -317,7 +313,7 @@ a scenario:
 \item Compress the input into a latent representation of lower dimension
 \item Put the input through a corrupting input layer: the autoencoder cannot
   just do nothing and give back the same thing because it never had the actual
-  input to begin with
+  input to begin with. This particular structure is called denoising auto-encoder.
 \item Use various regularisation methods.
 \end{itemize}
 
@@ -327,6 +323,17 @@ a scenario:
     \includegraphics[width=7cm]{Autoencoder_structure.png}
     \label{autoencoder_structure}
 \end{figure}
+
+
+\begin{equation}
+  x_{latent} = encoder(x_{input})
+  \label{eq:enc}
+\end{equation}
+
+\begin{equation}
+  x_{output} = decoder(x_{latent}) \simeq x_{input}
+  \label{eq:dec}
+\end{equation}
 
 
 \paragraph{Why use autoencoders}
@@ -341,8 +348,9 @@ Since the problem is symmetrical, we can perform the learning in both directions
 \subsection{Tied weight autoencoder}
 
 
-We talk about tied weight autoencoder when the same weights appears in two different places in the autoencoder. For example, in the architecture proposed in \cite{vukotic:hal-01314302}
-(Fig. \ref{archi_vedran}), the weights in light blue in the upper part of the
+We talk about tied weight autoencoder when the same weights appears in two
+different places in the autoencoder. For example, in the architecture proposed
+in \cite{vukotic:hal-01314302}, the weights in light blue in the upper part of the
 autoencoder are the same as the weights in light blue in the lower part. So, if
 the function that transform the upper first hidden layer to the upper part of
 the representation is
@@ -354,7 +362,7 @@ next layer is
 \begin{equation}
  h_2(x) = f(W^T \times x + b_2) 
 \end{equation}
-In this architecture, the pink weights are also tied. 
+In this architecture (see Figure \ref{archi_vedran}), the pink weights are also tied. 
 
 \begin{figure}[!h]
     \centering
@@ -373,25 +381,13 @@ useful features of a given signal. i-vectors have built upon this representation
 to extract a more compact reprensentation that better reprensent the
 specificities of the signal.
 One task that naturally comes to mind is deciding whether two signals have been
-said by the same person. Unfortunately, computing Euclidian distance between the signals'
-respective supervector or i-vector does not yield satisfactory results.
+said by the same person. Our suspicion is that linear extraction of i-vectors
+provides suboptimal results for such computations.
 Therefore, we will use neural networks to extract an intermediate representation
 of each signal that might be better suited to this particular problem.
 
 \subsection{Prospective method}
 \label{subsec:prosp}
-
-\paragraph{Evaluating speaker-dependant similarities}
-
-We wish to acquire intermediate representations that draws different signals
-spoken by the same locutor closer together according to some measure of
-distance, therefore allowing for an easy classification. The distances we will
-mostly consider during our study will be angular distance and Euclidian
-distance.
-
-To this end, we will have to carefully chose the distance function used to
-evaluate the \og quality\fg{} of our output in order to make sure we will be
-optimizing this particular aspect of the acquisition.
 
 \paragraph{Phasing out non-speaker dependant noise}
 
@@ -406,6 +402,18 @@ speaker\fg{} sound vector which has polluted by non-speaker dependant noise.
 The latent representation thusly extracted should present salient features
 specific to the studied speaker. An autoencoder trained that way could allow for
 a sort of projection that we wish to study.
+
+\paragraph{Evaluating speaker-dependant similarities}
+
+We wish to acquire intermediate representations that draws different signals
+spoken by the same locutor closer together according to some measure of
+distance, therefore allowing for an easy classification. The distances we will
+mostly consider during our study will be angular distance and Euclidian
+distance.
+
+To this end, we will have to carefully chose the distance function used to
+evaluate the \og quality\fg{} of our output in order to make sure we will be
+optimizing this particular aspect of the acquisition.
 
 \paragraph{Prospective general model}
 
@@ -453,8 +461,6 @@ fifth and the fifth to sixth are tied to those used to compress from the second
 layer to the third and from the first
 layer to the second.
 
-\todo[inline]{figure}
-
 \subsubsection{Evaluating results}
 
 \paragraph{Evaluation method}
@@ -475,7 +481,8 @@ as a classification method.
 \paragraph{Comparing to i-vectors}
 
  To substantiate our claim that i-vector extraction does not lead to a
- clustering of same speaker vectors, we will apply our method to both our
+ clustering of same speaker vectors, we will apply the evaluation method
+ outlined above to both our
  extracted intermmediate vectors and standard \emph{i-vectors}. Those
  intermediate representations will be extracted from source files using the tool
  ALIZE \cite{larcher2013alize}.
@@ -484,7 +491,7 @@ as a classification method.
 
 \paragraph{Optimization function}
 
-It is likely we will end up tweaking the optimization function over the course
+It is likely we will end up tweaking the network's optimization function over the course
 of our study, be it by using a linear combination of the functions we already
 brought up or by using a completely different function.
 
