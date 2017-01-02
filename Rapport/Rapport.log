@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.4)  7 DEC 2016 11:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.4)  2 JAN 2017 20:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1183,6 +1183,13 @@ Package biblatex Info: ... file 'Rapport.bbl' found.
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
+(biblatex)                larcher2013alize
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
 (biblatex)                dehak2011front
 (biblatex)                Please verify the spelling and rerun
 (biblatex)                LaTeX afterwards.
@@ -1194,16 +1201,19 @@ Package biblatex Warning: The following entry could not be found
 (biblatex)                Please verify the spelling and rerun
 (biblatex)                LaTeX afterwards.
 
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                larcher2013alize
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
 )
 Package biblatex Info: Reference section=0 on input line 27.
 Package biblatex Info: Reference segment=0 on input line 27.
+
+
+LaTeX Warning: Reference `sec:signal' on page 1 undefined on input line 71.
+
+
+LaTeX Warning: Reference `sec:Deep' on page 1 undefined on input line 72.
+
+
+LaTeX Warning: Reference `sec:Method' on page 1 undefined on input line 73.
+
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 89.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -1248,6 +1258,9 @@ Package pdftex.def Info: Autoencoder_structure.png used on input line 327.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+
+LaTeX Warning: Reference `archi_vedran' on page 3 undefined on input line 345.
+
 <archi-vedran.pdf, id=29, 132.47697pt x 137.04517pt>
 File: archi-vedran.pdf Graphic file (type pdf)
  <use archi-vedran.pdf>
@@ -1257,7 +1270,11 @@ Package pdftex.def Info: archi-vedran.pdf used on input line 362.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[3 <./Autoencoder_structure.png>] [4 <./archi-vedran.pdf>]
+[3 <./Autoencoder_structure.png>]
+
+LaTeX Warning: Reference `subsec:prosp' on page 4 undefined on input line 465.
+
+[4 <./archi-vedran.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 507--511
  \T1/ptm/m/it/10 d) Net-work hyper-parameters: [][] \T1/ptm/m/n/10 The above hy
 per-
@@ -1275,6 +1292,17 @@ Before submitting the final camera ready copy, remember to:
  process uses the appropriate paper size.
 
 [5] (./Rapport.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                Rapport
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'Rapport.run.xml'.
 \openout1 = `Rapport.run.xml'.
 
@@ -1282,11 +1310,11 @@ Package logreq Info: Writing requests to 'Rapport.run.xml'.
 Here is how much of TeX's memory you used:
  19975 strings out of 493029
  381523 string characters out of 6136234
- 778742 words of memory out of 5000000
+ 778204 words of memory out of 5000000
  23175 multiletter control sequences out of 15000+600000
  104846 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,80p,820b,1415s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,80p,820b,1426s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/
@@ -1298,7 +1326,7 @@ cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rapport.pdf (5 pages, 348942 bytes).
+Output written on Rapport.pdf (5 pages, 349396 bytes).
 PDF statistics:
  97 PDF objects out of 1000 (max. 8388607)
  64 compressed objects within 1 object stream
