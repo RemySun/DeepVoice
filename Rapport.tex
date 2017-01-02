@@ -5,13 +5,25 @@
 %\usepackage{fullpage}           
 \usepackage[french, english]{babel}
 \usepackage{amsmath,amsfonts,amssymb}
-\usepackage{graphicx}
+\usepackage{graphicx, tikz}
 \usepackage{todonotes}
+\usetikzlibrary{shapes,snakes}
+\usepackage{ulem}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
 
+\definecolor{mygreen}{rgb}{0.55, 0.71, 0.0}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{rotating}
+\usepackage{lipsum}
 \usepackage[backend=biber]{biblatex}
 \bibliography{Biblio}{}
 
 
+\newenvironment{keywords}%
+{\description\item[Mots-clés.]}%
+{\enddescription}
 
 \title{PROJ: DeepVoice}
 
@@ -43,8 +55,11 @@ classification tasks due to their ability to
 build upon successive layers of data representation. We will
 strive to explore the possibility of using such techniques to acquire a
 representation of supervectors that is at least competitive with i-vectors.
-\end{abstract}
 
+\end{abstract}
+\begin{IEEEkeywords}
+  Speaker recognition; Deep learning;  i-vector; Latent representation
+\end{IEEEkeywords}
 \section{Introduction}
 
 Speaker recognition refers to the all too important identification of a locutor
@@ -395,7 +410,7 @@ In order to extract a representation of supervectors that makes speaker
 dependent features of the given signal more salient, we use a model derived from
 the design of a denoising autoencoder. Indeed, we have no need for any
 information pertaining to what is actually being said or what kind of microphone
-was used: this is all noise to us. Therefore, if two supervectors originate from
+was used: this is all noise to us. Therefore, if two supervectors $v_1$ and $v_2$ originate from
 the same speaker, it seems reasonnable to think of them as the same original \og
 speaker\fg{} sound vector which has polluted by non-speaker dependant noise.
 
@@ -419,7 +434,89 @@ optimizing this particular aspect of the acquisition.
 
 We will therefore train an autoencoder on supervectors. Given good results of
 \cite{vukotic:hal-01314302}, we will tie all but the extreme weights to reflect the
-symmetrical nature of the task at hand.
+symmetrical nature of the task at hand. A rough outline of the general model is
+shown in Figure \ref{fig:mod}.
+
+\begin{figure}
+  \centering
+  \def\layersep{1.8cm}
+
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron, fill=green!50];
+    \tikzstyle{output neuron}=[neuron, fill=red!50];
+    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+    \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
+    \tikzstyle{annot} = [text width=10em, text centered]
+
+    % Draw the input layer nodes
+    \foreach \name / \y in {1,...,5}
+    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+    	{
+        	\node[input neuron, pin=left:] (I-\name) at (0,-\y) {};
+		}
+    % Draw the hidden layer nodes
+    \foreach \name / \y in {1,...,4}
+        {
+        	\path[yshift=-0.5cm]
+            node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};
+        }
+            
+    \foreach \name / \y in {1,...,3}
+        {
+            \path[yshift=-1cm]
+            node[hidden neuron back] (H2-\name) at (2*\layersep,-\y cm) {};
+            
+        }
+            
+    \foreach \name / \y in {1,...,4}
+        {
+        	\path[yshift=-0.5cm]
+            node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};
+        }
+
+    % Draw the output layer nodes            
+    \foreach \name / \y in {1,...,5}
+        {
+        	\path
+            node[output neuron,pin={[pin edge={->}]right:}] (H4-\name) at (4*\layersep,-\y cm) {};
+        }
+
+    % Connect every node in the input layer with every node in the
+    % hidden layer.
+    
+    
+    \foreach \source in {1,...,5}
+        \foreach \dest in {1,...,4}
+            \path (I-\source) edge (H1-\dest);
+    
+    
+            
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,3}
+            \path (H1-\source) edge (H2-\dest);
+    
+            
+    \foreach \source in {1,...,3}
+        \foreach \dest in {1,...,4}
+            \path (H2-\source) edge (H3-\dest);
+    
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            \path (H3-\source) edge (H4-\dest);
+                
+        
+        
+    % Annotate the layers
+    \node[annot,above of=H2-1] (iv) {Deep vector};
+    \node[annot,right =-0.4cm of iv] (ol)  {Supervector $v_2$};
+    \node[annot,left =-0.4cm of iv] (il) {Supervector $v_1$};
+    
+\end{tikzpicture}
+\caption{General prospective model}
+\label{fig:mod}
+\end{figure}
 
 \subsection{First experimentation}
 
