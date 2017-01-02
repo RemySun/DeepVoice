@@ -197,19 +197,130 @@ meaningful intermediate representation of supervectors through the use of deep a
 
 \subsection{Formal neuron}
 
+\def\layersep{2cm}
+
 \begin{figure}[!tbp]
-\centering  
-  \begin{minipage}[b]{0.225\textwidth}
-    \includegraphics[width=0.9\textwidth]{Neuron}
+
+\centering
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[ellipse,fill=black!25,minimum size=17pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron, fill=green!50];
+    \tikzstyle{output neuron}=[neuron, fill=red!50];
+    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+    \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
+    \tikzstyle{annot} = [text width=8em, text centered]
+
+    % Draw the input layer nodes
+    \foreach \name / \y in {1,...,4}
+    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+        \node[input neuron, pin=left:] (I-\name) at (0,-\y) {$a_\y$};
+
+    % Draw the hidden layer nodes
+    \foreach \name / \y in {1,...,1}
+        {
+        \path[yshift=-1.5cm]
+        node[hidden neuron] (H-\name) at (\layersep,-\y cm) {};
+        }
+
+    % Draw the output layer node
+    \node[output neuron, right of=H-1] (O) {$e = f(WA + b)$};
+
+    % Connect every node in the input layer with every node in the
+    % hidden layer.
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,1}
+            \path (I-\source) edge (H-\dest);
+
+    % Connect every node in the hidden layer with the output layer
+    \foreach \source in {1,...,1}
+        \path (H-\source) edge (O);
+
+    % Annotate the layers
+    \node[annot,below of=H-1, node distance=1cm] (wb) {Weight $W$\\Bias $b$};
+    \node[annot,above of=H-1, node distance=1cm] (n) {Neuron};
+    \node[annot,above of=I-1, node distance=1cm] (ia) {Input A};
+    
+\end{tikzpicture}
+
     \caption{Formal neuron}
     \label{fig:neur}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[b]{0.225\textwidth}
-    \includegraphics[width=\textwidth]{Deep}
+\end{figure}
+\def\layersep{1.5cm}  
+\begin{figure}[!tbp]
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron, fill=green!50];
+    \tikzstyle{output neuron}=[neuron, fill=red!50];
+    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+    \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
+    \tikzstyle{annot} = [text width=4em, text centered]
+
+    % Draw the input layer nodes
+    \foreach \name / \y in {1,...,4}
+    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+        \node[input neuron, pin=left:] (I-\name) at (0,-\y) {$a_\y$};
+
+    % Draw the hidden layer nodes
+    \foreach \name / \y in {1,...,5}
+        {
+        \path[yshift=0.5cm]
+        node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};
+        }
+            
+    \foreach \name / \y in {1,...,4}
+        {
+        \path
+        node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};
+        }
+            
+    \foreach \name / \y in {1,...,5}
+        {
+        \path[yshift=0.5cm]
+        node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};
+        }
+    % Draw the output layer node
+    \node[output neuron,pin={[pin edge={->}]right:Output}, right of=H3-3] (O) {};
+
+    % Connect every node in the input layer with every node in the
+    % hidden layer.
+            
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            \path (I-\source) edge (H1-\dest);
+    
+    
+            
+    \foreach \source in {1,...,5}
+        \foreach \dest in {1,...,4}
+            \path (H1-\source) edge (H2-\dest);
+    
+            
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            \path (H2-\source) edge (H3-\dest);
+    
+            
+    \foreach \source in {1,...,5}
+        \path (H3-\source) edge (O);
+    
+        
+        
+    % Annotate the layers
+    \node[annot,above of=H1-1, node distance=1cm] (hl1) {Hidden layer 1};
+    \node[annot,right of=hl1] (hl2) {Hidden layer 2};
+    \node[annot,right of=hl2] (hl3) {Hidden layer 3};
+    \node[annot,right of=hl3] {Output layer};
+    \node[annot,left of=hl1] {Input layer};
+    
+    \node[annot,below of=H1-5, node distance=1cm] (wb1) {$W_1$, $b_1$};
+    \node[annot,right of=wb1] (wb2) {$W_2$, $b_2$};
+    \node[annot,right of=wb2] (wb3) {$W_3$, $b_3$};
+\end{tikzpicture}
+
     \caption{Deep neural network}
     \label{fig:net}
-  \end{minipage}
 \end{figure}
 
 
@@ -335,7 +446,89 @@ a scenario:
 \begin{figure}[!h]
     \centering
     \caption{Structure of an autoencoder}
-    \includegraphics[width=7cm]{Autoencoder_structure.png}
+
+\begin{tikzpicture}[yscale=0.7, shorten >=1pt,->,draw=black!50, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron, fill=green!50];
+    \tikzstyle{output neuron}=[neuron, fill=red!50];
+    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+    \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
+    \tikzstyle{annot} = [text width=10em, text centered]
+    
+    \path [draw, thick] (-1.2,0.5) rectangle (3.7,-5.6);
+    \path [draw, thick] (2.3,0.3) rectangle (7,-5.8);
+    
+    
+    % Draw the input layer nodes
+    \foreach \name / \y in {1,...,5}
+    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+    	{
+        	\node[input neuron, pin=left:] (I-\name) at (0,-\y) {};
+		}
+    % Draw the hidden layer nodes
+    \foreach \name / \y in {1,...,4}
+        {
+        	\path[yshift=-0.5cm]
+            node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};
+        }
+            
+    \foreach \name / \y in {1,...,5}
+        {
+            \path
+            node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};
+            
+        }
+            
+    \foreach \name / \y in {1,...,4}
+        {
+        	\path[yshift=-0.5cm]
+            node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};
+        }
+
+    % Draw the output layer nodes            
+    \foreach \name / \y in {1,...,5}
+        {
+        	\path
+            node[output neuron,pin={[pin edge={->}]right:}] (H4-\name) at (4*\layersep,-\y cm) {};
+        }
+
+    % Connect every node in the input layer with every node in the
+    % hidden layer.
+    
+    
+    \foreach \source in {1,...,5}
+        \foreach \dest in {1,...,4}
+            \path (I-\source) edge (H1-\dest);
+    
+    
+            
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            \path (H1-\source) edge (H2-\dest);
+    
+            
+    \foreach \source in {1,...,5}
+        \foreach \dest in {1,...,4}
+            \path (H2-\source) edge (H3-\dest);
+    
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            \path (H3-\source) edge (H4-\dest);
+            
+    \node[annot,above of=I-1, node distance=0.7cm] (xi) {$x_{input}$};
+    \node[annot,above of=H2-1, node distance=0.7cm] (xl) {$x_{latent}$};
+    \node[annot,above of=H4-1, node distance=0.7cm] (xo) {$x_{output}$};
+    \node[annot,above of=H1-1, node distance=1.8cm] (xl) {encoder};
+    \node[annot,above of=H3-1, node distance=1.8cm] (xo) {decoder};
+    
+                
+        
+        
+    
+\end{tikzpicture}
+
+    
     \label{autoencoder_structure}
 \end{figure}
 
