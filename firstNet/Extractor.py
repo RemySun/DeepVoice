@@ -43,13 +43,15 @@ for i, s in enumerate(Files):
 print("Dumping data")
 
 # Write data and labels
-f_data = open("data.csv", "w")
+f_data = open("data.p", "wb")
 f_labels = open("labels.p", "wb")
 
-w_data = csv.writer(f_data)
+#w_data = csv.writer(f_data)
+
+pickle.dump(data, f_data)
 pickle.dump(labels, f_labels)
 
-w_data.writerows(data)
+#w_data.writerows(data)
 
 f_data.close()
 f_labels.close()

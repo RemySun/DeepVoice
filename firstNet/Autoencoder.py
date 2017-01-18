@@ -8,17 +8,17 @@ import pickle
 
 print("Loading data...")
 
-data = pd.io.parsers.read_csv("data.csv")
-data = data.as_matrix()
-
+#data = pd.io.parsers.read_csv("data.csv")
+#data = data.as_matrix()
+data = pickle.load(open("data.p", "rb"))
 labels = pickle.load(open("labels.p", "rb"))
 
 print("Preparing data...")
 
 pairs = []
 
-for i in range(data.shape[0]-1):
-    for j in range(data.shape[0]-i-1):
+for i in range(len(data)-1):
+    for j in range(len(data)-i-1):
         if labels[i] == labels[i+j+1]:
             pairs.append([data[i],data[i+j+1]])
 
@@ -44,7 +44,7 @@ n_hidden = 50
 x = tf.placeholder("float", [None, n_input])
 
 # Weights and biases to first layer
-Wl1 = tf.Variabl&e(tf.random_uniform((n_input, n_layer1), -1.0 / math.sqrt(n_input), 1.0 / math.sqrt(n_input)))
+Wl1 = tf.Variable(tf.random_uniform((n_input, n_layer1), -1.0 / math.sqrt(n_input), 1.0 / math.sqrt(n_input)))
 bl1 = tf.Variable(tf.zeros([n_layer1]))
 l1 = tf.nn.tanh(tf.matmul(x,Wl1) + bl1)
 l1_drop = tf.nn.dropout(l1, keep_prob=0.90)
@@ -72,16 +72,16 @@ h_drop = tf.nn.dropout(h, keep_prob=0.90)
 
 # Weights and biases to fifth layer tied to hidden
 
-Wl5 = tf.transpose(Wlh)
+Wl5 = tf.transpose(Wh)
 bl5 = tf.Variable(tf.zeros([n_layer3]))
 l5 = tf.nn.tanh(tf.matmul(h_drop,Wl5) + bl5)
-l5_drop = tf.nn.dropout(l15, keep_prob=0.90)
+l5_drop = tf.nn.dropout(l5, keep_prob=0.90)
 
 # Weights and biases to sixth layer tied to third
 
 Wl6 = tf.transpose(Wl3)
 bl6 = tf.Variable(tf.zeros([n_layer2]))
-l6 = tf.nn.tanh(tf.matmul(l5-drop,Wl6) + bl6)
+l6 = tf.nn.tanh(tf.matmul(l5_drop,Wl6) + bl6)
 l6_drop = tf.nn.dropout(l6, keep_prob=0.90)
 
 # Weights and biases to seventh layer tied to first
@@ -128,9 +128,9 @@ for i in range(n_rounds):
         print("Starting epoch ", i)
         batch_xs = np.array([input[ind][:] for ind in index[j*batch_size:j*(batch_size+1)-1]])
         batch_ys = np.array([output[ind][:] for ind in index[j*batch_size:j*(batch_size+1)-1]])
+        print("training on batch of size ", len(batch_xs))
         sess.run(train_step, feed_dict={x: batch_xs, y_:batch_ys})
-        if j % 100 == 0:
-            print("batch ", j," out of ",n_samp//batch_size, " with error ", sess.run(meansq, feed_dict={x: batch_xs, y_:batch_ys}))
+        print("round ", i, " batch ", j," out of ",n_samp//batch_size, " with error ", sess.run(meansq, feed_dict={x: batch_xs, y_:batch_ys}))
     # Save the variables to disk.
     save_path = saver.save(sess, "model.ckpt")
     print("Model saved in file: %s" % save_path)
