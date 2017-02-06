@@ -5,11 +5,15 @@ import random
 import pandas as pd
 import sys
 import pickle
+import matplotlib.pyplot as plt
 
 print("Loading data...")
 
-data = pickle.load(open("valid_data.p", "rb"))
-labels = pickle.load(open("valid_labels.p", "rb"))
+data = pickle.load(open("train_data.p", "rb"))
+labels = pickle.load(open("train_labels.p", "rb"))
+
+data = data[0:1000]
+labels = labels[0:1000]
 
 print("Generating neural network...")
 
@@ -74,7 +78,7 @@ saver = tf.train.Saver()
 init = tf.initialize_all_variables()
 sess = tf.Session()
 sess.run(init)
-
+3
 print("Loading trained model...")
 saver.restore(sess, "model.ckpt")
 
@@ -92,7 +96,7 @@ for i in range(len(deep_vectors)-1):
             pairs.append([deep_vectors[i],deep_vectors[i+j+1]])
 
 
-print("Computing threshold...")
+print("Computing distribution on same speaker...")
 
 def norm(a):
     d = 0
@@ -102,30 +106,34 @@ def norm(a):
 
 def cosine(a,b):
     dot = [i*j for i,j in zip(a,b)]
-    return sum([d/(norm(a)*norm(b)) for d in dot])
+    return abs(sum([d/(norm(a)*norm(b)) for d in dot]))
+
+def index_hist(n):
+    return int(n*20)
 
 dist_same = [cosine(p[0],p[1]) for p in pairs]
 
-threshold = min(dist_same)
+hist_same = np.zeros(20)
 
-oops = 0
-alright = 0
+for d in dist_same:
+    hist_same[index_hist(d)] += 1
 
 print("Computing results...")
+
+hist_diff = np.zeros(20)
 
 for i in range(len(deep_vectors)):
     for j in range(len(deep_vectors)-i):
         if labels[i] != labels[i+j]:
             tmp = cosine(deep_vectors[i],deep_vectors[i+j])
-            if tmp >= threshold:
-                oops += 1
-            else:
-                alright += 1
+            hist_diff[index_hist(tmp)] += 1
 
-print("Threshold:")
-print(threshold)
-print("\nFine:")
-print(alright)
-print("\nless fine...")
-print(oops)
+hist_scale = [i/20 for i in range(20)]
 
+plt.figure(1)
+plt.bar(hist_scale, hist_same,0.05)
+
+plt.figure(2)
+plt.bar(hist_scale, hist_diff,0.05)
+
+plt.show()
