@@ -98,8 +98,8 @@ init = tf.initialize_all_variables()
 sess = tf.Session()
 sess.run(init)
 
-#print("Loading trained model...")
-#saver.restore(sess, "model.ckpt")
+print("Loading trained model...")
+saver.restore(sess, "model.ckpt")
 
 n_rounds = 30
 batch_size = min(50, n_samp)
@@ -112,12 +112,15 @@ batch_ys = np.zeros((50,n_input))
 for i in range(n_rounds):
     print("Starting epoch ", i)
     np.random.shuffle(index)
+    err = 0
     for j in range(n_samp // batch_size -1):
         for k in range(batch_size):
             batch_xs[k][:] = input[index[j*batch_size + k]]
             batch_ys[k][:] = output[index[j*batch_size + k]]
         sess.run(train_step, feed_dict={x: batch_xs, y_:batch_ys})
-        print("Epoch ", i, " batch ", j," out of ",n_samp//batch_size, " with error ", sess.run(meansq, feed_dict={x: batch_xs, y_:batch_ys}))
+        #print("Epoch ", i, " batch ", j," out of ",n_samp//batch_size, " with error ", sess.run(meansq, feed_dict={x: batch_xs, y_:batch_ys}))
+        err += sess.run(meansq, feed_dict={x: batch_xs, y_:batch_ys})
+    print("Average error: ", err/(n_samp // batch_size -1))
     # Save the variables to disk.
     save_path = saver.save(sess, "model.ckpt")
     print("Model saved in file: %s" % save_path)
