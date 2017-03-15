@@ -1,7 +1,8 @@
 import numpy as np
 from sklearn.manifold import TSNE
 import shelve
-
+import pickle
+import matplotlib.pyplot as plt
 
 d = shelve.open('deep_vectors')
 deep_vectors = d['deep_vectors']
@@ -10,7 +11,7 @@ d.close()
 model = TSNE(n_components=2, random_state=0)
 np.set_printoptions(suppress=True)
 X = deep_vectors
-res = model.fit_transform(X) 
+res = model.fit_transform(X)
 
 labels = pickle.load(open("train_labels.p", "rb"))
 
@@ -26,3 +27,7 @@ def plot_tsne(name, couleur):
   plt.scatter(res[ind,0], res[ind,1], color = couleur)
 
 
+#plot_tsne(labels[350], "red")
+#plot_tsne(labels[500], "blue")
+
+#plt.show()
