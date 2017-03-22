@@ -32,7 +32,8 @@ pairs = np.array(pairs)
 data = np.zeros(pairs.shape+(9216,))
 
 for i, s in enumerate(Files):
-    print("File "+str(i+1)+"/"+str(nb_files))
+    if (i%1000 == 999):
+        print("File "+str(i+1)+"/"+str(nb_files))
     # Handling name recognition
     fname = ".".join(s.split("/")[1].split(".")[0:3])
     files_name.append(fname)
