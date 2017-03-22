@@ -29,7 +29,7 @@ for line in ind:
 
 
 pairs = np.array(pairs)
-data = np.zeros(pairs.shape+(2304,))
+data = np.zeros(pairs.shape+(9216,))
 
 for i, s in enumerate(Files):
     print("File "+str(i+1)+"/"+str(nb_files))
