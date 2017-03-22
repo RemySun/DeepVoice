@@ -7,8 +7,7 @@ import numpy as np
 import shelve
 
 Files = glob.glob("data2/*.txt")
-ind = open("dev0-1.ndx")
-
+ind = open("sanity-1.ndx")
 files_name = []
 labels = []
 
@@ -21,8 +20,8 @@ speakers = []
 same = []
 for line in ind:
     [f1, f2] = line.split(" ")
-    pairs.append([f1,f2])
-    speakers.append([f1.split(".")[1], f1.split(".")[2]])
+    pairs.append([f1,f2[:-1]])
+    speakers.append([f1.split(".")[1], f2.split(".")[1]])
     if (f1.split(".")[1] == f2.split(".")[1]):
         same.append(True)
     else:
@@ -42,14 +41,12 @@ for i, s in enumerate(Files):
     file = open(s,'r')
     lines = file.read().split("\n")
     file.close()
-    supervector_t = [re.split(' *',lines[2 + 3*i])[:-1] for i in range((len(lines)-1)//3)]
-    supervector_t = [[float(s) for s in l] for l in supervector_t]
+    supervector_t = [re.split(' *',lines[2 + 3*k])[:-1] for k in range((len(lines)-1)//3)]
+    supervector_t = [[float(x) for x in l] for l in supervector_t]
     supervector = []
     for l in supervector_t:
         supervector += l
-
     ## Stroring supervector in data
-
     for j in range(data.shape[0]):
         if fname == pairs[j,0]:
             data[j,0,:] = supervector

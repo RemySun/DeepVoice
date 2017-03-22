@@ -24,7 +24,7 @@ for i, s in enumerate(Files):
     # Creating supervector
 
     ## storing supervector in tmp file
-    bashCommand = 'sgmcopy -x -o "tmp" ' + s
+    bashCommand = './sgmcopy -x -o "tmp" ' + s
     os.system(bashCommand)
 
     ## Reading supervector from tmp file

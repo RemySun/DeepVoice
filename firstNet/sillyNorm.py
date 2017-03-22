@@ -6,6 +6,7 @@ import pandas as pd
 import sys
 import pickle
 import matplotlib.pyplot as plt
+import os
 
 print("Loading data...")
 
@@ -80,7 +81,9 @@ sess = tf.Session()
 sess.run(init)
 
 print("Loading trained model...")
-saver.restore(sess, "model.ckpt")
+
+path = os.getcwd() + "/model.ckpt"
+saver.restore(sess, path)
 
 print("Computing intermediate representations")
 
