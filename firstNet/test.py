@@ -6,6 +6,7 @@ import random
 import sys
 import pickle
 import sys
+import os
 
 #sys.stdout = open('training.log', 'w')
 
@@ -99,4 +100,6 @@ sess = tf.Session()
 sess.run(init)
 
 print("Loading trained model...")
-saver.restore(sess, "model.ckpt")
+
+path = os.getcwd() + "/model.ckpt"
+saver.restore(sess, path)
