@@ -36,7 +36,7 @@ index = [i for i in range(len(input))]
 print("Generating neural network...")
 
 # Autoencoder with 3 hidden layer
-n_samp = len(input)
+n_samp = len(input) # 2304
 n_input = len(input[0])
 
 n_layer1 = 1000
@@ -88,7 +88,8 @@ y = tf.nn.tanh(tf.matmul(l4_drop,Wo) + bo)
 y_ = tf.placeholder("float", [None,n_input])
 cross_entropy = -tf.reduce_sum(y_*tf.log(y))
 meansq = tf.reduce_mean(tf.square(y_-y))
-train_step = tf.train.GradientDescentOptimizer(0.05).minimize(meansq)
+train_step = tf.train.AdamOptimizer(0.01).minimize(meansq)
+
 
 # Add ops to save and restore all the variables.
 saver = tf.train.Saver()
