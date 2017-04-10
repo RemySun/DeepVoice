@@ -29,8 +29,8 @@ for line in ind:
 
 
 pairs = np.array(pairs)
-data = np.zeros(pairs.shape+(9216,))
-
+data = np.zeros(pairs.shape)
+supervectors=[]
 for i, s in enumerate(Files):
     if (i%1000 == 999):
         print("File "+str(i+1)+"/"+str(nb_files))
@@ -45,20 +45,26 @@ for i, s in enumerate(Files):
     supervector_t = [re.split(' *',lines[2 + 3*k])[:-1] for k in range((len(lines)-1)//3)]
     supervector_t = [[float(x) for x in l] for l in supervector_t]
     supervector = []
+    supervectors.append(supervector)
     for l in supervector_t:
         supervector += l
     ## Stroring supervector in data
     for j in range(data.shape[0]):
         if fname == pairs[j,0]:
-            data[j,0,:] = supervector
+            data[j,0] = i
         elif fname == pairs[j,1]:
-            data[j,1,:] = supervector
+            data[j,1] = i
 
     
 
-d = shelve.open("pairs")
+d = shelve.open("infos_pairs")
 d['fnames'] = pairs
 d['speakers'] = speakers
 d['same'] = same
-d['supervectors'] = data
+d['index'] = data
 d.close()
+
+sup = open("supervectors")
+pickle.dump(supervectors, sup)
+sup.close()
+

@@ -13,15 +13,15 @@ import shelve
 
 
 print("Loading shelve...")
-d = shelve.open("pairs")
+d = shelve.open("infos_pairs")
 
 print("Loading supervectors...")
-input = d["supervectors"]
+input = pickle.load(open("supervectors", "rb"))
 
 print("Generating neural network...")
 
 # Autoencoder with 3 hidden layer
-n_input = len(input[0][0])
+n_input = len(input[0])
 
 print(">>>>>>>>>>>>>>>>>>>" + str(n_input))
 
@@ -94,8 +94,7 @@ saver.restore(sess, path)
 
 
 print("Computing Deepvectors...")
-deep_vectors = [sess.run(h, feed_dict={x: input[i]}) for i in range(len(input))]
-
+deep_vectors = sess.run(h, feed_dict={x: input})
 
 def norm(a):
     d = 0
@@ -111,21 +110,25 @@ def cosine(a,b):
     dot = [i*j for i,j in zip(a,b)]
     return abs(sum([d/(norm(a)*norm(b)) for d in dot]))
 
+index = d['index']
+nb_pairs = index.shape[0]
 print("Computing distance for the pairs...")
-distances = [dist(deep_vectors[i][0], deep_vectors[i][1]) for i in range(len(input))]
-distances_cos = [cosine(deep_vectors[i][0], deep_vectors[i][1]) for i in range(len(input))]
+distances = [dist(deep_vectors[index[i,0]], deep_vectors[index[i,1]]) for i in range(nb_pairs)]
+distances_cos = [cosine(deep_vectors[index[i,0]], deep_vectors[index[i,1]]) for i in range(nb_pairs)]
 
 
 fscores = open("deep.scores", "w")
+fnames = d["fnames"]
+speakers = np.array(d["speakers"])
 print("Printing output to 'deep.scores'...")
-for i in range(len(input)):
+for i in range(nb_pairs):
     if i%100 == 0:
-        print(str(i) + "/" + str(len(input)))
-    fscores.write(d["fnames"][i][0].split(".")[1] + " ")
-    fscores.write(d["fnames"][i][0] + " ")
-    fscores.write(d["fnames"][i][1].split(".")[1] + " ")
-    fscores.write(d['fnames'][i][1][:-1] + " ")
-    fscores.write(str(distances_cos[i]) + "\n")
+        print(str(i) + "/" + str(nb_pairs))
+    fscores.write(speakers[i, 0] + " ")
+    fscores.write(fnames[i, 0] + " ")
+    fscores.write(speakers[i, 1] + " ")
+    fscores.write(fnames[i, 1][:-1] + " ")
+    fscores.write(str(distances[i]) + "\n")
 
 fscores.close();
 
