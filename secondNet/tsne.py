@@ -27,7 +27,7 @@ def plot_tsne(name, couleur):
   plt.scatter(res[ind,0], res[ind,1], color = couleur)
 
 
-#plot_tsne(labels[350], "red")
-#plot_tsne(labels[500], "blue")
+plot_tsne(labels[350], "red")
+plot_tsne(labels[500], "blue")
 
-#plt.show()
+plt.show()
