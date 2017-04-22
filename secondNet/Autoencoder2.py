@@ -39,9 +39,11 @@ print("Generating neural network...")
 n_samp = len(input) # 2304
 n_input = len(input[0])
 
-n_layer1 = 1000
-#n_layer2 = 500
-n_hidden = 50
+n_layer1 = 720
+n_layer2 = 225
+n_hidden = 70
+
+print("Model will be saved to : " + "exp_" + str(n_input) + "_" + str(n_layer1) + "_" + str(n_layer2) + "_" + str(n_hidden) + "_model.ckpt")
 
 x = tf.placeholder("float", [None, n_input])
 
@@ -53,48 +55,48 @@ l1_drop = tf.nn.dropout(l1, keep_prob=0.90)
 
 # Weights and biases to second layer
 
-#Wl2 = tf.Variable(tf.random_uniform((n_layer1, n_layer2), -1.0 / math.sqrt(n_layer1), 1.0 / math.sqrt(n_layer1)))
-#bl2 = tf.Variable(tf.zeros([n_layer2]))
-#l2 = tf.nn.tanh(tf.matmul(l1_drop,Wl2) + bl2)
-#l2_drop = tf.nn.dropout(l2, keep_prob=0.90)
+Wl2 = tf.Variable(tf.random_uniform((n_layer1, n_layer2), -1.0 / math.sqrt(n_layer1), 1.0 / math.sqrt(n_layer1)))
+bl2 = tf.Variable(tf.zeros([n_layer2]))
+l2 = tf.nn.tanh(tf.matmul(l1_drop,Wl2) + bl2)
+l2_drop = tf.nn.dropout(l2, keep_prob=0.90)
 
 # Weights and biases to hidden layer
 
-Wh = tf.Variable(tf.random_uniform((n_layer1, n_hidden), -1.0 / math.sqrt(n_layer1), 1.0 / math.sqrt(n_layer1)))
+Wh = tf.Variable(tf.random_uniform((n_layer2, n_hidden), -1.0 / math.sqrt(n_layer2), 1.0 / math.sqrt(n_layer2)))
 bh = tf.Variable(tf.zeros([n_hidden]))
-h = tf.nn.tanh(tf.matmul(l1_drop,Wh) + bh)
+h = tf.nn.tanh(tf.matmul(l2_drop,Wh) + bh)
 h_drop = tf.nn.dropout(h, keep_prob=0.90)
 
 # Weights and biases to fifth layer tied to hidden
 
-Wl4 = tf.Variable(tf.random_uniform((n_hidden, n_layer1), -1.0 / math.sqrt(n_hidden), 1.0 / math.sqrt(n_hidden)))
-bl4 = tf.Variable(tf.zeros([n_layer1]))
+Wl4 = tf.Variable(tf.random_uniform((n_hidden, n_layer2), -1.0 / math.sqrt(n_hidden), 1.0 / math.sqrt(n_hidden)))
+bl4 = tf.Variable(tf.zeros([n_layer2]))
 l4 = tf.nn.tanh(tf.matmul(h_drop,Wl4) + bl4)
 l4_drop = tf.nn.dropout(l4, keep_prob=0.90)
 
 # Weights and biases to seventh layer tied to first
 
-#Wl5 = tf.transpose(Wl2)
-#bl5 = tf.Variable(tf.zeros([n_layer1]))
-#l5 = tf.nn.tanh(tf.matmul(l4_drop,Wl5) + bl5)
-#l5_drop = tf.nn.dropout(l5, keep_prob=0.90)
+Wl5 = tf.Variable(tf.random_uniform((n_layer2, n_layer1), -1.0 / math.sqrt(n_layer2), 1.0 / math.sqrt(n_layer2)))
+bl5 = tf.Variable(tf.zeros([n_layer1]))
+l5 = tf.nn.tanh(tf.matmul(l4_drop,Wl5) + bl5)
+l5_drop = tf.nn.dropout(l5, keep_prob=0.90)
 
 # Weights and biases to output layer
 Wo = tf.Variable(tf.random_uniform((n_layer1, n_input), -1.0 / math.sqrt(n_layer1), 1.0 / math.sqrt(n_layer1)))
 bo = tf.Variable(tf.zeros([n_input]))
-y = tf.nn.tanh(tf.matmul(l4_drop,Wo) + bo)
+y = tf.nn.tanh(tf.matmul(l5_drop,Wo) + bo)
 
 # Objective functions
 y_ = tf.placeholder("float", [None,n_input])
 cross_entropy = -tf.reduce_sum(y_*tf.log(y))
 meansq = tf.reduce_mean(tf.square(y_-y))
-train_step = tf.train.AdamOptimizer(0.01).minimize(meansq)
+train_step = tf.train.AdamOptimizer(0.001).minimize(meansq)
 
 
 # Add ops to save and restore all the variables.
 saver = tf.train.Saver()
 
-gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.8)
+gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.5)
 
 init = tf.initialize_all_variables()
 
@@ -127,5 +129,5 @@ for i in range(n_rounds):
         err += sess.run(meansq, feed_dict={x: batch_xs, y_:batch_ys})
     print("Average error: ", err/(n_samp // batch_size -1))
     # Save the variables to disk.
-    save_path = saver.save(sess, "model.ckpt")
+    save_path = saver.save(sess, "exp_" + str(n_input) + "_" + str(n_layer1) + "_" + str(n_layer2) + "_" + str(n_hidden) + "_model.ckpt")
     print("Model saved in file: %s" % save_path)
