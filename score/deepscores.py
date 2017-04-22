@@ -113,7 +113,7 @@ def cosine(a,b):
 index = d['index']
 nb_pairs = index.shape[0]
 print("Computing distance for the pairs...")
-distances = [dist(deep_vectors[index[i,0]], deep_vectors[index[i,1]]) for i in range(nb_pairs)]
+distances = [1-dist(deep_vectors[index[i,0]], deep_vectors[index[i,1]]) for i in range(nb_pairs)]
 distances_cos = [cosine(deep_vectors[index[i,0]], deep_vectors[index[i,1]]) for i in range(nb_pairs)]
 
 
@@ -129,6 +129,22 @@ for i in range(nb_pairs):
     fscores.write(speakers[i, 1] + " ")
     fscores.write(fnames[i, 1][:-1] + " ")
     fscores.write(str(distances[i]) + "\n")
+
+fscores.close();
+
+
+fscores = open("deep_cos.scores", "w")
+fnames = d["fnames"]
+speakers = np.array(d["speakers"])
+print("Printing output to 'deep.scores'...")
+for i in range(nb_pairs):
+    if i%100 == 0:
+        print(str(i) + "/" + str(nb_pairs))
+    fscores.write(speakers[i, 0] + " ")
+    fscores.write(fnames[i, 0] + " ")
+    fscores.write(speakers[i, 1] + " ")
+    fscores.write(fnames[i, 1][:-1] + " ")
+    fscores.write(str(distances_cos[i]) + "\n")
 
 fscores.close();
 
