@@ -1,0 +1,2 @@
+model_checkpoint_path: "exp_2304_720_225_70_model.ckpt"
+all_model_checkpoint_paths: "exp_2304_720_225_70_model.ckpt"
