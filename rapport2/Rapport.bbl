@@ -1,0 +1,517 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.6 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nty/global}
+    \entry{Bimbot2004}{article}{}
+      \name{author}{10}{}{%
+        {{hash=a28675bb36d00f03a0de74b21500cba5}{%
+           family={Bimbot},
+           family_i={B\bibinitperiod},
+           given={Frédéric},
+           given_i={F\bibinitperiod}}}%
+        {{hash=2677f4a0dc403782aadcdc4f7f15ae52}{%
+           family={Bonastre},
+           family_i={B\bibinitperiod},
+           given={Jean-François},
+           given_i={J\bibinithyphendelim F\bibinitperiod}}}%
+        {{hash=1c3d91808f272ff9436107eecc4c5346}{%
+           family={Fredouille},
+           family_i={F\bibinitperiod},
+           given={Corinne},
+           given_i={C\bibinitperiod}}}%
+        {{hash=55a5f11a329674c150b3185dd236f3d8}{%
+           family={Gravier},
+           family_i={G\bibinitperiod},
+           given={Guillaume},
+           given_i={G\bibinitperiod}}}%
+        {{hash=d16d3804092f8af0bd7059c4e9dee3be}{%
+           family={Magrin-Chagnolleau},
+           family_i={M\bibinithyphendelim C\bibinitperiod},
+           given={Ivan},
+           given_i={I\bibinitperiod}}}%
+        {{hash=e2f44f6ccb87dec078238127fc88cea7}{%
+           family={Meignier},
+           family_i={M\bibinitperiod},
+           given={Sylvain},
+           given_i={S\bibinitperiod}}}%
+        {{hash=f47ece58aec42bb93c7ab5079b2f8981}{%
+           family={Merlin},
+           family_i={M\bibinitperiod},
+           given={Teva},
+           given_i={T\bibinitperiod}}}%
+        {{hash=a42462e9d50681017c1bc445b040772b}{%
+           family={Ortega-García},
+           family_i={O\bibinithyphendelim G\bibinitperiod},
+           given={Javier},
+           given_i={J\bibinitperiod}}}%
+        {{hash=afb8e06e38c14edba9f6622e00cdedce}{%
+           family={Petrovska-Delacrétaz},
+           family_i={P\bibinithyphendelim D\bibinitperiod},
+           given={Dijana},
+           given_i={D\bibinitperiod}}}%
+        {{hash=a27d59bb990594e22b18c43a24e16cd7}{%
+           family={Reynolds},
+           family_i={R\bibinitperiod},
+           given={Douglas\bibnamedelima A.},
+           given_i={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{42deb7018da131d820a0a272354b77e1}
+      \strng{fullhash}{81a27485caf674b8f2c58bb2d51e90da}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper presents an overview of a state-of-the-art text-independent speaker verification system. First, an introduction proposes a modular scheme of the training and test phases of a speaker verification system. Then, the most commonly speech parameterization used in speaker verification, namely, cepstral analysis, is detailed. Gaussian mixture modeling, which is the speaker modeling technique used in most systems, is then explained. A few speaker modeling alternatives, namely, neural networks and support vector machines, are mentioned. Normalization of scores is then explained, as this is a very important step to deal with real-world data. The evaluation of a speaker verification system is then detailed, and the detection error trade-off (DET) curve is explained. Several extensions of speaker verification are then enumerated, including speaker tracking and segmentation by speakers. Then, some applications of speaker verification are proposed, including on-site applications, remote applications, applications relative to structuring audio information, and games. Issues concerning the forensic area are then recalled, as we believe it is very important to inform people about the actual performance and limitations of speaker verification systems. This paper concludes by giving a few research trends in speaker verification for the next couple of years.}
+      \field{issn}{1687-6180}
+      \field{journaltitle}{EURASIP Journal on Advances in Signal Processing}
+      \field{number}{4}
+      \field{title}{A Tutorial on Text-Independent Speaker Verification}
+      \field{volume}{2004}
+      \field{year}{2004}
+      \field{pages}{101962}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1155/S1110865704310024
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1155/S1110865704310024
+      \endverb
+    \endentry
+    \entry{bordes2012joint}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=f1733e10bf044cbd7be63e10e5689d78}{%
+           family={Bordes},
+           family_i={B\bibinitperiod},
+           given={Antoine},
+           given_i={A\bibinitperiod}}}%
+        {{hash=0b3943c3bfdbb5867b3760f7c7d488c2}{%
+           family={Glorot},
+           family_i={G\bibinitperiod},
+           given={Xavier},
+           given_i={X\bibinitperiod}}}%
+        {{hash=417a25f3511d7c21e76d4a15e67dd679}{%
+           family={Weston},
+           family_i={W\bibinitperiod},
+           given={Jason},
+           given_i={J\bibinitperiod}}}%
+        {{hash=40a8e4774982146adc2688546f54efb2}{%
+           family={Bengio},
+           family_i={B\bibinitperiod},
+           given={Yoshua},
+           given_i={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{339de127d2ac97fb73a98efe7d8dc83f}
+      \strng{fullhash}{da3315ac2c25559cb07a986e8313c238}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{AISTATS}
+      \field{title}{Joint Learning of Words and Meaning Representations for Open-Text Semantic Parsing.}
+      \field{volume}{351}
+      \field{year}{2012}
+      \field{pages}{423\bibrangedash 424}
+      \range{pages}{2}
+    \endentry
+    \entry{dehak2011front}{article}{}
+      \name{author}{5}{}{%
+        {{hash=9ef1218926f64b1a8195d87985fdf23f}{%
+           family={Dehak},
+           family_i={D\bibinitperiod},
+           given={Najim},
+           given_i={N\bibinitperiod}}}%
+        {{hash=a111f24d0d242d7ff68c466f95211a2c}{%
+           family={Kenny},
+           family_i={K\bibinitperiod},
+           given={Patrick\bibnamedelima J},
+           given_i={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=085aed3d005386afc3cf31b8ab0a34cb}{%
+           family={Dehak},
+           family_i={D\bibinitperiod},
+           given={Réda},
+           given_i={R\bibinitperiod}}}%
+        {{hash=62f7e8cc4c49d2b60b2adda23bef68b0}{%
+           family={Dumouchel},
+           family_i={D\bibinitperiod},
+           given={Pierre},
+           given_i={P\bibinitperiod}}}%
+        {{hash=a020015756e3d1d2b7d3f6deff822c91}{%
+           family={Ouellet},
+           family_i={O\bibinitperiod},
+           given={Pierre},
+           given_i={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{a122d70c04239827083ed53d2e950f69}
+      \strng{fullhash}{d650a8e0fb8542d7cba6bbffcbcd2b9a}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Audio, Speech, and Language Processing}
+      \field{number}{4}
+      \field{title}{Front-end factor analysis for speaker verification}
+      \field{volume}{19}
+      \field{year}{2011}
+      \field{pages}{788\bibrangedash 798}
+      \range{pages}{11}
+    \endentry
+    \entry{ghahabi2014deep}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=3809db9d20228c3336ee6f184650198a}{%
+           family={Ghahabi},
+           family_i={G\bibinitperiod},
+           given={Omid},
+           given_i={O\bibinitperiod}}}%
+        {{hash=e4b4979603c8b16c404b6441d053ef5e}{%
+           family={Hernando},
+           family_i={H\bibinitperiod},
+           given={Javier},
+           given_i={J\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{3983ea206285d26233356be0a4036bfc}
+      \strng{fullhash}{3983ea206285d26233356be0a4036bfc}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2014 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}
+      \field{title}{Deep belief networks for i-vector based speaker recognition}
+      \field{year}{2014}
+      \field{pages}{1700\bibrangedash 1704}
+      \range{pages}{5}
+    \endentry
+    \entry{DBLP:journals/corr/GhahabiH15}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3809db9d20228c3336ee6f184650198a}{%
+           family={Ghahabi},
+           family_i={G\bibinitperiod},
+           given={Omid},
+           given_i={O\bibinitperiod}}}%
+        {{hash=e4b4979603c8b16c404b6441d053ef5e}{%
+           family={Hernando},
+           family_i={H\bibinitperiod},
+           given={Javier},
+           given_i={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{3983ea206285d26233356be0a4036bfc}
+      \strng{fullhash}{3983ea206285d26233356be0a4036bfc}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{CoRR}
+      \field{title}{Deep Learning for Single and Multi-Session i-Vector Speaker Recognition}
+      \field{volume}{abs/1512.02560}
+      \field{year}{2015}
+      \verb{url}
+      \verb http://arxiv.org/abs/1512.02560
+      \endverb
+    \endentry
+    \entry{Hinton504}{article}{}
+      \name{author}{2}{}{%
+        {{hash=6b9475455390bf75201935e23fe0804d}{%
+           family={Hinton},
+           family_i={H\bibinitperiod},
+           given={G.\bibnamedelimi E.},
+           given_i={G\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=40bcefc2a7b2d16872b87a8b769bcc43}{%
+           family={Salakhutdinov},
+           family_i={S\bibinitperiod},
+           given={R.\bibnamedelimi R.},
+           given_i={R\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Association for the Advancement of Science}%
+      }
+      \strng{namehash}{ac77ffe4460cdb0adc9bf9a7791e7c97}
+      \strng{fullhash}{ac77ffe4460cdb0adc9bf9a7791e7c97}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{High-dimensional data can be converted to low-dimensional codes by training a multilayer neural network with a small central layer to reconstruct high-dimensional input vectors. Gradient descent can be used for fine-tuning the weights in such {“}autoencoder{”} networks, but this works well only if the initial weights are close to a good solution. We describe an effective way of initializing the weights that allows deep autoencoder networks to learn low-dimensional codes that work much better than principal components analysis as a tool to reduce the dimensionality of data.}
+      \field{issn}{0036-8075}
+      \field{journaltitle}{Science}
+      \field{number}{5786}
+      \field{title}{Reducing the Dimensionality of Data with Neural Networks}
+      \field{volume}{313}
+      \field{year}{2006}
+      \field{pages}{504\bibrangedash 507}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1126/science.1127647
+      \endverb
+      \verb{eprint}
+      \verb http://science.sciencemag.org/content/313/5786/504.full.pdf
+      \endverb
+      \verb{url}
+      \verb http://science.sciencemag.org/content/313/5786/504
+      \endverb
+    \endentry
+    \entry{larcher2013alize}{inproceedings}{}
+      \name{author}{8}{}{%
+        {{hash=a65e5ab1065f870f59faf0c3a6ec0857}{%
+           family={Larcher},
+           family_i={L\bibinitperiod},
+           given={Anthony},
+           given_i={A\bibinitperiod}}}%
+        {{hash=8f3f7385c858767657c651692feb000a}{%
+           family={Bonastre},
+           family_i={B\bibinitperiod},
+           given={Jean-Francois},
+           given_i={J\bibinithyphendelim F\bibinitperiod}}}%
+        {{hash=7080dc2b268c909842ae563e88675675}{%
+           family={Fauve},
+           family_i={F\bibinitperiod},
+           given={Benoit\bibnamedelima GB},
+           given_i={B\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=6659c35ecf540dbca687dc0cece87094}{%
+           family={Lee},
+           family_i={L\bibinitperiod},
+           given={Kong-Aik},
+           given_i={K\bibinithyphendelim A\bibinitperiod}}}%
+        {{hash=84878cbd2bd2507986c8f03025d64c95}{%
+           family={Lévy},
+           family_i={L\bibinitperiod},
+           given={Christophe},
+           given_i={C\bibinitperiod}}}%
+        {{hash=f397ee85433a25b75738faa0b764e496}{%
+           family={Li},
+           family_i={L\bibinitperiod},
+           given={Haizhou},
+           given_i={H\bibinitperiod}}}%
+        {{hash=1f7b2aa635beb28cfd56261120087845}{%
+           family={Mason},
+           family_i={M\bibinitperiod},
+           given={John\bibnamedelima SD},
+           given_i={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=c50f796ad196312ac15856a799b656f8}{%
+           family={Parfait},
+           family_i={P\bibinitperiod},
+           given={Jean-Yves},
+           given_i={J\bibinithyphendelim Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{e4e7188342ae09fae3357a6ca6ce622f}
+      \strng{fullhash}{3fb422bff17dafb66cc53da66cc72188}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Interspeech}
+      \field{title}{ALIZE 3.0-open source toolkit for state-of-the-art speaker recognition.}
+      \field{year}{2013}
+      \field{pages}{2768\bibrangedash 2772}
+      \range{pages}{5}
+    \endentry
+    \entry{lecun1998gradient}{article}{}
+      \name{author}{4}{}{%
+        {{hash=6a1aa6b7eab12b931ca7c7e3f927231d}{%
+           family={LeCun},
+           family_i={L\bibinitperiod},
+           given={Yann},
+           given_i={Y\bibinitperiod}}}%
+        {{hash=ac762f2592005edf6bad58f566967c6c}{%
+           family={Bottou},
+           family_i={B\bibinitperiod},
+           given={Léon},
+           given_i={L\bibinitperiod}}}%
+        {{hash=40a8e4774982146adc2688546f54efb2}{%
+           family={Bengio},
+           family_i={B\bibinitperiod},
+           given={Yoshua},
+           given_i={Y\bibinitperiod}}}%
+        {{hash=844e183692f08a63f99285330fcf90cc}{%
+           family={Haffner},
+           family_i={H\bibinitperiod},
+           given={Patrick},
+           given_i={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{9e4c6012409dc8dd9b2aa198a2059804}
+      \strng{fullhash}{c397b2e6efe8e5c6ca906410fc9e0ff9}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE}
+      \field{number}{11}
+      \field{title}{Gradient-based learning applied to document recognition}
+      \field{volume}{86}
+      \field{year}{1998}
+      \field{pages}{2278\bibrangedash 2324}
+      \range{pages}{47}
+    \endentry
+    \entry{richardson2015deep}{article}{}
+      \name{author}{3}{}{%
+        {{hash=7162f701a617536c7b5da48af2c474b7}{%
+           family={Richardson},
+           family_i={R\bibinitperiod},
+           given={Fred},
+           given_i={F\bibinitperiod}}}%
+        {{hash=018a7d536ec534153231e58512c8deec}{%
+           family={Reynolds},
+           family_i={R\bibinitperiod},
+           given={Douglas},
+           given_i={D\bibinitperiod}}}%
+        {{hash=9ef1218926f64b1a8195d87985fdf23f}{%
+           family={Dehak},
+           family_i={D\bibinitperiod},
+           given={Najim},
+           given_i={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{f7d93bd0579b5f810d4a4872a62352dd}
+      \strng{fullhash}{f7d93bd0579b5f810d4a4872a62352dd}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Signal Processing Letters}
+      \field{number}{10}
+      \field{title}{Deep neural network approaches to speaker and language recognition}
+      \field{volume}{22}
+      \field{year}{2015}
+      \field{pages}{1671\bibrangedash 1675}
+      \range{pages}{5}
+    \endentry
+    \entry{DBLP:journals/corr/SaonSRK16}{article}{}
+      \name{author}{4}{}{%
+        {{hash=ce2fc3785ea81b5ffeca97427d45bbab}{%
+           family={Saon},
+           family_i={S\bibinitperiod},
+           given={George},
+           given_i={G\bibinitperiod}}}%
+        {{hash=21e17f70ffb714b5a29005c2a54cec93}{%
+           family={Sercu},
+           family_i={S\bibinitperiod},
+           given={Tom},
+           given_i={T\bibinitperiod}}}%
+        {{hash=b5f7bf0963fd0783db5938a2e87ee4cc}{%
+           family={Rennie},
+           family_i={R\bibinitperiod},
+           given={Steven\bibnamedelima J.},
+           given_i={S\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=a2d6ccb6ccdbe7499cf8f407d44bd370}{%
+           family={Kuo},
+           family_i={K\bibinitperiod},
+           given={Hong{-}Kwang\bibnamedelima Jeff},
+           given_i={H\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{641c05dcaf0a4d55e2f2f43739c81084}
+      \strng{fullhash}{3fb0553cd6b3eef4440b72f035483a61}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{CoRR}
+      \field{title}{The {IBM} 2016 English Conversational Telephone Speech Recognition System}
+      \field{volume}{abs/1604.08242}
+      \field{year}{2016}
+      \verb{url}
+      \verb http://arxiv.org/abs/1604.08242
+      \endverb
+    \endentry
+    \entry{Senoussaoui_ani-vector}{misc}{}
+      \name{author}{4}{}{%
+        {{hash=511c81e8b3edd55276a17fe82c576152}{%
+           family={Senoussaoui},
+           family_i={S\bibinitperiod},
+           given={Mohammed},
+           given_i={M\bibinitperiod}}}%
+        {{hash=75c075a7cc18bd6575e3dd55e550f17d}{%
+           family={Kenny},
+           family_i={K\bibinitperiod},
+           given={Patrick},
+           given_i={P\bibinitperiod}}}%
+        {{hash=9ef1218926f64b1a8195d87985fdf23f}{%
+           family={Dehak},
+           family_i={D\bibinitperiod},
+           given={Najim},
+           given_i={N\bibinitperiod}}}%
+        {{hash=62f7e8cc4c49d2b60b2adda23bef68b0}{%
+           family={Dumouchel},
+           family_i={D\bibinitperiod},
+           given={Pierre},
+           given_i={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{bba478426bc50e3de451b9c94726c5d7}
+      \strng{fullhash}{1ce0e4e78c286d97d99efe60132dd563}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{An i-vector Extractor Suitable for Speaker Recognition with both Microphone and Telephone Speech}
+    \endentry
+    \entry{vukotic:hal-01314302}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=c54f972977036ececd9066f6af5bff0e}{%
+           family={Vukotic},
+           family_i={V\bibinitperiod},
+           given={Vedran},
+           given_i={V\bibinitperiod}}}%
+        {{hash=7b2fedaab4d8843b758cfe184a07ad38}{%
+           family={Raymond},
+           family_i={R\bibinitperiod},
+           given={Christian},
+           given_i={C\bibinitperiod}}}%
+        {{hash=55a5f11a329674c150b3185dd236f3d8}{%
+           family={Gravier},
+           family_i={G\bibinitperiod},
+           given={Guillaume},
+           given_i={G\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, United States}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{0739307ec5dfb2dd83dce332e0844173}
+      \strng{fullhash}{0739307ec5dfb2dd83dce332e0844173}
+      \field{sortinit}{V}
+      \field{sortinithash}{d18f5ce25ce0b5ca7f924e3f6c04870e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{{ICMR}}
+      \field{month}{06}
+      \field{title}{{Bidirectional Joint Representation Learning with Symmetrical Deep Neural Networks for Multimodal and Crossmodal Applications}}
+      \field{year}{2016}
+      \verb{file}
+      \verb https://hal.inria.fr/hal-01314302/file/vukotic_BiDNN.pdf
+      \endverb
+      \verb{url}
+      \verb https://hal.inria.fr/hal-01314302
+      \endverb
+      \keyw{neural networks ; deep learning ; representation ; embedding ; multimodal ; crossmodal ; retrieval ; video retrieval ; video hyperlinking ; image and text ; autoencoder ; bidirectional learning ; tied weights ; shared weights}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
