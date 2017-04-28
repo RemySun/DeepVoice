@@ -832,13 +832,11 @@ In order to clearly represent our results, we used Detection Error Tradeoff (DET
 
 We ran many experiments and therefore cannot present them all. We will only present the most interesting.
 
-\subsubsection{Experiment 0}
+\newpage
 
-The table below presents the configration we ised for this experiment:
-
+%Experiment 0
 \begin{table}[!h]
 \centering
-\caption{Experiment 0 configuration}
 \begin{tabular}{|l|c|c|c|c|c|}
 \hline
 Number of layers & \multicolumn{5}{c|}{5}                \\ \hline
@@ -851,48 +849,144 @@ Dropout          & \multicolumn{5}{c|}{0.90} \\ \hline
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=8cm]{../scores/det0.pdf}
+    \includegraphics[width=7.5cm]{../scores/det0.pdf}
+    \caption{Experiment 0}
 \end{figure}
+
+\hrule
+\vspace{0.5cm}
+
+%Experiment 1
+\begin{table}[!h]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Number of layers & \multicolumn{5}{c|}{5}                \\ \hline
+Size of layers   & 2304   & 1000   & 50  & 1000  & 2304  \\ \hline
+Tied weights     & \multicolumn{5}{c|}{No}               \\ \hline
+Optimizer        & \multicolumn{5}{c|}{Adam} \\ \hline
+Dropout          & \multicolumn{5}{c|}{0.90} \\ \hline
+\end{tabular}
+\end{table}
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=8cm]{../scores/det1.pdf}
+    \includegraphics[width=7.5cm]{../scores/det1.pdf}
+    \caption{Experiment 1}
 \end{figure}
+
+
+\newpage
+
+%Experiment 2
+\begin{table}[!h]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Number of layers & \multicolumn{5}{c|}{5}                \\ \hline
+Size of layers   & 2304   & 480   & 100  & 480  & 2304   \\ \hline
+Tied weights     & \multicolumn{5}{c|}{No}               \\ \hline
+Optimizer        & \multicolumn{5}{c|}{Adam} \\ \hline
+Dropout          & \multicolumn{5}{c|}{0.90} \\ \hline
+\end{tabular}
+\end{table}
 
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=8cm]{../scores/det2.pdf}
+    \includegraphics[width=7.5cm]{../scores/det2bis.pdf}
+    \caption{Experiment 2}
 \end{figure}
+
+\hrule
+\vspace{0.5cm}
+
+%Experiment 3
+\begin{table}[!h]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+Number of layers & \multicolumn{7}{c|}{7}                \\ \hline
+Size of layers   & 2304 & 720 & 225 & 70 & 225 & 720 & 2304  \\ \hline
+Tied weights     & \multicolumn{7}{c|}{No}               \\ \hline
+Optimizer        & \multicolumn{7}{c|}{Adam} \\ \hline
+Dropout          & \multicolumn{7}{c|}{0.90} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=7.5cm]{../scores/det3.pdf}
+    \caption{Experiment 3}
+\end{figure}
+
+
+\newpage
+
+%Experiment 4
+\begin{table}[!h]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+Number of layers & \multicolumn{7}{c|}{7}                \\ \hline
+Size of layers   & 2304 & 720 & 225 & 70 & 225 & 720 & 2304  \\ \hline
+Tied weights     & \multicolumn{7}{c|}{Yes}               \\ \hline
+Optimizer        & \multicolumn{7}{c|}{Adam} \\ \hline
+Dropout          & \multicolumn{7}{c|}{0.90} \\ \hline
+\end{tabular}
+\end{table}
 
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=8cm]{../scores/det2bis.pdf}
+    \includegraphics[width=7.5cm]{../scores/det4.pdf}
+    \caption{Experiment 4}
 \end{figure}
+
+\hrule
+\vspace{0.5cm}
+
+
+%Experiment 5
+\begin{table}[!h]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+Number of layers & \multicolumn{7}{c|}{7}                \\ \hline
+Size of layers   & 2304 & 1000 & 300 & 60 & 300 & 1000 & 2304  \\ \hline
+Tied weights     & \multicolumn{7}{c|}{No}               \\ \hline
+Optimizer        & \multicolumn{7}{c|}{Adam} \\ \hline
+Dropout          & \multicolumn{7}{c|}{0.90} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=7.5cm]{../scores/det5.pdf}
+    \caption{Experiment 5}
+\end{figure}
+
+
+\newpage
+
+
+%Experiment 7
+\begin{table}[!h]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Number of layers & \multicolumn{5}{c|}{5}                \\ \hline
+Size of layers   & 2304   & 500   & 80  & 500  & 2304   \\ \hline
+Tied weights     & \multicolumn{5}{c|}{No}               \\ \hline
+Optimizer        & \multicolumn{5}{c|}{Adam} \\ \hline
+Dropout          & \multicolumn{5}{c|}{0.80} \\ \hline
+\end{tabular}
+\end{table}
 
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=8cm]{../scores/det3.pdf}
-\end{figure}
-
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=8cm]{../scores/det4.pdf}
-\end{figure}
-
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=8cm]{../scores/det5.pdf}
-\end{figure}
-
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=8cm]{../scores/det7.pdf}
+    \includegraphics[width=7.5cm]{../scores/det7.pdf}
 \end{figure}
 
 \section{Further work}
