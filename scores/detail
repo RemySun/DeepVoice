@@ -1,24 +1,44 @@
+exp 0:
+	2304 > 1000 > 50
+	GradientDescent 0.05
+	keep_proba = 0.9
+
 exp 1:
 	2304 > 1000 > 50
-	adam 0.001
+	Adam 0.001
+	keep_proba = 0.9
 
 
 exp 2:
 	2304 > 480 > 100
-	adam 0.001 
+	Adam 0.001 
+	keep_proba = 0.9
 
 
 exp 3:
 	2304 > 720 > 225 > 70
-	adam 0.001 
+	Adam 0.001 
+	keep_proba = 0.9
 
 
 exp 4:
 	2304 > 720 > 225 > 70
-	adam 0.001 
+	Adam 0.001 
 	tied weights
+	keep_proba = 0.9
 
 exp 5:
 	2304 > 1000 > 300 > 60
-	adam 0.001 
+	Adam 0.001 
 	tied weights
+	keep_proba = 0.9
+
+exp 6:
+	FAIL
+
+
+exp 7:
+	2304 > 500 > 80
+	Adam 0.001 
+	keep_proba = 0.8
+	training_data2

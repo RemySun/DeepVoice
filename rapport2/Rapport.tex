@@ -2,7 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-%\usepackage{fullpage}           
+%\usepackage{fullpage}
 \usepackage[french, english]{babel}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{graphicx, tikz}
@@ -44,8 +44,8 @@
 \begin{abstract}
   To carry out a speaker recognition task, i.e., to identify the speaker in an
 audio signal, one must first obtain a serviceable representation
-of said signal. Improvements upon the raw numeric signal have been made over the 
-years, one of which is the creation of a Gaussian mixture model supervector 
+of said signal. Improvements upon the raw numeric signal have been made over the
+years, one of which is the creation of a Gaussian mixture model supervector
 representing the probabilistic distribution of the signal's
 spectral features. Due to the enormous size of such supervectors, condensed
 forms such as i-vectors have been created to provide usable data for application
@@ -65,7 +65,7 @@ Speaker recognition refers to the all too important identification of a speaker
 from an unlabeled audio signal. However, the resolution of this essential issue
 is no trivial matter as it raises a number of questions along the way. The most
 immediate one, is the manner in which the data will be represented: raw numeric
-signal, Fourier transform, spectral representation? 
+signal, Fourier transform, spectral representation?
 
 Years of research into the issue have yielded a solution called
 \emph{supervectors} which provide a probabilistic representation of the
@@ -101,7 +101,7 @@ and more developed means of representation are usually used.
 The speech signal of a speaker is hardly suitable for statistical modeling or
 the calculation of a distance.
 In order to obtain a representation which is more compact and less redundant, we
-use a cepstral representation of the speech. 
+use a cepstral representation of the speech.
 The cepstrum of a signal $x(t)$ is defined by \eqref{eq:cepstrum}
 
 \begin{equation}
@@ -110,24 +110,24 @@ The cepstrum of a signal $x(t)$ is defined by \eqref{eq:cepstrum}
 \end{equation}
 
 where $\mathcal{F}$ is the Fourier transform.
-We can analyze a signal locally by applying a short-term window. Then, we 
-extract a vector of cepstral coefficients of this part of signal. We repeat 
-this operation for several windows, until the end of the signal is reached. 
+We can analyze a signal locally by applying a short-term window. Then, we
+extract a vector of cepstral coefficients of this part of signal. We repeat
+this operation for several windows, until the end of the signal is reached.
 
 In the cepstral domain, the distance between two speech signals may be easily
-computed using the Euclidean distance. 
+computed using the Euclidean distance.
 
 
 \subsection{Gaussian mixture model (GMM) and supervectors}
 
-A Gaussian mixture model (GMM) is a probabilistic model used to approximate a 
-distribution of random variables as a sum of normal distributions (\cite{Bimbot2004}). 
+A Gaussian mixture model (GMM) is a probabilistic model used to approximate a
+distribution of random variables as a sum of normal distributions (\cite{Bimbot2004}).
 Here, we suppose that cepstral vectors of a signal follow a probability
 distribution that is specific to the given signal. This distribution is the one
-that we try to approximate with the GMM using a reference model. In fact, even 
-if the distribution is specific to the given signal, the form of the 
-distribution is universal for the natural language and called the Universal 
-Background Model (UBM). The supervector is the vector that gather means of 
+that we try to approximate with the GMM using a reference model. In fact, even
+if the distribution is specific to the given signal, the form of the
+distribution is universal for the natural language and called the Universal
+Background Model (UBM). The supervector is the vector that gather means of
 all the normal distributions of the GMM. Such models are used to represent
 signals in speaker recognition tasks (Figure \ref{gmm})\\
 
@@ -141,14 +141,14 @@ signals in speaker recognition tasks (Figure \ref{gmm})\\
 
 \subsection{I-vectors}
 
-A supervector presents a probabilistic representation of a signal's spectral features. 
+A supervector presents a probabilistic representation of a signal's spectral features.
 However, these supervectors are enormous, which makes them unfit for
 applications and, since they contain information on the entire signal, contain
 information of little interest to us.
 That's why we want a more condensed version a these supervectors.
 
 
-Let $M$ be the supervector, obtained as explained previously. $M$ depends on the speaker and on the channel. 
+Let $M$ be the supervector, obtained as explained previously. $M$ depends on the speaker and on the channel.
 We will perform a \emph{linear projection}, to express $M$ as
 
 \begin{equation}
@@ -239,13 +239,13 @@ meaningful intermediate representation of supervectors through the use of deep a
     \node[annot,below of=H-1, node distance=1cm] (wb) {Weight $W$\\Bias $b$};
     \node[annot,above of=H-1, node distance=1cm] (n) {Neuron};
     \node[annot,above of=I-1, node distance=1cm] (ia) {Input A};
-    
+
 \end{tikzpicture}
 
     \caption{Formal neuron}
     \label{fig:neur}
 \end{figure}
-\def\layersep{1.5cm}  
+\def\layersep{1.5cm}
 \begin{figure}[!tbp]
 \begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
     \tikzstyle{every pin edge}=[<-,shorten <=1pt]
@@ -267,13 +267,13 @@ meaningful intermediate representation of supervectors through the use of deep a
         \path[yshift=0.5cm]
         node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};
         }
-            
+
     \foreach \name / \y in {1,...,4}
         {
         \path
         node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};
         }
-            
+
     \foreach \name / \y in {1,...,5}
         {
         \path[yshift=0.5cm]
@@ -284,35 +284,35 @@ meaningful intermediate representation of supervectors through the use of deep a
 
     % Connect every node in the input layer with every node in the
     % hidden layer.
-            
+
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
             \path (I-\source) edge (H1-\dest);
-    
-    
-            
+
+
+
     \foreach \source in {1,...,5}
         \foreach \dest in {1,...,4}
             \path (H1-\source) edge (H2-\dest);
-    
-            
+
+
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
             \path (H2-\source) edge (H3-\dest);
-    
-            
+
+
     \foreach \source in {1,...,5}
         \path (H3-\source) edge (O);
-    
-        
-        
+
+
+
     % Annotate the layers
     \node[annot,above of=H1-1, node distance=1cm] (hl1) {Hidden layer 1};
     \node[annot,right of=hl1] (hl2) {Hidden layer 2};
     \node[annot,right of=hl2] (hl3) {Hidden layer 3};
     \node[annot,right of=hl3] {Output layer};
     \node[annot,left of=hl1] {Input layer};
-    
+
     \node[annot,below of=H1-5, node distance=1cm] (wb1) {$W_1$, $b_1$};
     \node[annot,right of=wb1] (wb2) {$W_2$, $b_2$};
     \node[annot,right of=wb2] (wb3) {$W_3$, $b_3$};
@@ -351,7 +351,7 @@ they are not. A natural way to evaluate how accurate our neuron consists in look
 distance between its output $e$ and the desired result r :
 
 \begin{equation}
-d(e)=|e-r|  
+d(e)=|e-r|
 \end{equation}
 
 \noindent We want to modify our neuron/function to minimize this distance. That means
@@ -416,7 +416,7 @@ Neural networks' ability to extract internal meaningful representation from the
 original raw data is very enticing. Indeed, providing a meaningful
 representation of the initial data is one of the biggest hurdles of classical
 machine learning. However, neural networks need to be trained on a task, and
-require labeled data to that end. 
+require labeled data to that end.
 
 Since we are no longer interested in the specific task needed to train the
 network, it is possible to default to a task that is not interesting in itself
@@ -453,11 +453,11 @@ a scenario:
     \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
     \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
     \tikzstyle{annot} = [text width=10em, text centered]
-    
+
     \path [draw, thick] (-1.2,0.5) rectangle (3.7,-5.6);
     \path [draw, thick] (2.3,0.3) rectangle (7,-5.8);
-    
-    
+
+
     % Draw the input layer nodes
     \foreach \name / \y in {1,...,5}
     % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
@@ -470,21 +470,21 @@ a scenario:
         	\path[yshift=-0.5cm]
             node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};
         }
-            
+
     \foreach \name / \y in {1,...,5}
         {
             \path
             node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};
-            
+
         }
-            
+
     \foreach \name / \y in {1,...,4}
         {
         	\path[yshift=-0.5cm]
             node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};
         }
 
-    % Draw the output layer nodes            
+    % Draw the output layer nodes
     \foreach \name / \y in {1,...,5}
         {
         	\path
@@ -493,40 +493,40 @@ a scenario:
 
     % Connect every node in the input layer with every node in the
     % hidden layer.
-    
-    
+
+
     \foreach \source in {1,...,5}
         \foreach \dest in {1,...,4}
             \path (I-\source) edge (H1-\dest);
-    
-    
-            
+
+
+
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
             \path (H1-\source) edge (H2-\dest);
-    
-            
+
+
     \foreach \source in {1,...,5}
         \foreach \dest in {1,...,4}
             \path (H2-\source) edge (H3-\dest);
-    
+
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
             \path (H3-\source) edge (H4-\dest);
-            
+
     \node[annot,above of=I-1, node distance=0.7cm] (xi) {$x_{input}$};
     \node[annot,above of=H2-1, node distance=0.7cm] (xl) {$x_{latent}$};
     \node[annot,above of=H4-1, node distance=0.7cm] (xo) {$x_{output}$};
     \node[annot,above of=H1-1, node distance=1.8cm] (xl) {encoder};
     \node[annot,above of=H3-1, node distance=1.8cm] (xo) {decoder};
-    
-                
-        
-        
-    
+
+
+
+
+
 \end{tikzpicture}
 
-    
+
     \caption{Structure of an autoencoder}
     \label{autoencoder_structure}
 \end{figure}
@@ -562,14 +562,14 @@ autoencoder are the same as the weights in light blue in the lower part. So, if
 the function that transform the upper first hidden layer to the upper part of
 the representation is
 \begin{equation}
- h_1(x) = f(W \times x + b_1) 
+ h_1(x) = f(W \times x + b_1)
 \end{equation}
 then  the function that transform the lower part of the representation to the
 next layer is
 \begin{equation}
- h_2(x) = f(W^T \times x + b_2) 
+ h_2(x) = f(W^T \times x + b_2)
 \end{equation}
-In this architecture (see Figure \ref{archi_vedran}), the pink weights are also tied. 
+In this architecture (see Figure \ref{archi_vedran}), the pink weights are also tied.
 
 \begin{figure}[!h]
     \centering
@@ -654,21 +654,21 @@ shown in Figure \ref{fig:mod}.
         	\path[yshift=-0.5cm]
             node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};
         }
-            
+
     \foreach \name / \y in {1,...,3}
         {
             \path[yshift=-1cm]
             node[hidden neuron back] (H2-\name) at (2*\layersep,-\y cm) {};
-            
+
         }
-            
+
     \foreach \name / \y in {1,...,4}
         {
         	\path[yshift=-0.5cm]
             node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};
         }
 
-    % Draw the output layer nodes            
+    % Draw the output layer nodes
     \foreach \name / \y in {1,...,5}
         {
         	\path
@@ -677,34 +677,34 @@ shown in Figure \ref{fig:mod}.
 
     % Connect every node in the input layer with every node in the
     % hidden layer.
-    
-    
+
+
     \foreach \source in {1,...,5}
         \foreach \dest in {1,...,4}
             \path (I-\source) edge (H1-\dest);
-    
-    
-            
+
+
+
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,3}
             \path (H1-\source) edge (H2-\dest);
-    
-            
+
+
     \foreach \source in {1,...,3}
         \foreach \dest in {1,...,4}
             \path (H2-\source) edge (H3-\dest);
-    
+
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
             \path (H3-\source) edge (H4-\dest);
-                
-        
-        
+
+
+
     % Annotate the layers
     \node[annot,above of=H2-1] (iv) {Deep vector};
     \node[annot,right =-0.4cm of iv] (ol)  {Supervector $v_2$};
     \node[annot,left =-0.4cm of iv] (il) {Supervector $v_1$};
-    
+
 \end{tikzpicture}
 \caption{General prospective model}
 \label{fig:mod}
@@ -719,31 +719,31 @@ a preliminary study on a small dataset will first be conducted.
 
 \paragraph{Processing raw data}
 
-15311 audio signals were extracted from BFMTV's various programs and labeled
+15308 audio signals were extracted from BFMTV's various programs and labeled
 with the name of their respective speaker. Those sound files were then processed
-into 15311 supervectors of length 9216 with the \emph{AudioSeg} tool.
+into 15308 supervectors of length 2304 with the \emph{AudioSeg} tool.
 We then create 1 839 235 pairs of supervectors that originate from the same
 speaker.
 
 \paragraph{Input}
 
 For each computed pair, we feed both of its supervectors to the neural network as
-input. Therefore, we train the network on 3 678 470 supervectors of size 9216.
+input. Therefore, we train the network on 3 678 470 supervectors of size 2304.
 
 \paragraph{Output and task}
 
-The neural network outputs a vector of size 9216 that we try to match as closely
+The neural network outputs a vector of size 2304 that we try to match as closely
 as possible to the supervector the original input was paired with.
 
 \subsubsection{Neural approach}
 
 We will start by training a 7-hidden layer auto-encoder.
 The encoder is 3 layer
-deep and encodes the input of size 9216 into a latent representation of size 40.
+deep and encodes the input of size 2304 into a latent representation of size 40.
 This is done by successively compressing into representations of size 5000
 (first layer), 500 (second layer) and 100 (third layer).
 The decoder is 3 layer deep and inflates the 40 dimensional latent
-representation back into a 9216 dimensional supervector by successively
+representation back into a 2304 dimensional supervector by successively
 inflating into representations of size 100 (fifth layer), 500 (sixth layer) and
 5000 (seventh layer). The weights used to inflate from the latent layer to the
 fifth and the fifth to sixth are tied to those used to compress from the second
@@ -804,6 +804,99 @@ The above hyper-parameters (number of layers, dimension of each layer, ...) have
 mostly been chosen arbitrarily. The values chosen seemed reasonable in light of
 the pursued goal and the task at hand, but will most likely evolve depending on
 experiments' results.
+
+
+\section{Technical issues}
+
+\section{Results}
+
+\subsection{Parameters}
+
+We ran several experiments, using different values for the parameters mentionned before.
+Here is an exhaustive list of the parameters that we changed from one experiment to another.
+
+\begin{itemize}
+\item{Number of layer}: we used from 3 to 5 hidden layers in our architecture.
+\item{Size of the layers}: we used different sizes of the hidden layers of our architecture.
+\item{Tied weights}: we tried different configurations, in which we tied or not some layers of our architecture.
+\item{Optimizer}: \todo{compléter, Descente de gradient, Adam...}
+\item{Dropout}: \todo{keep proba}
+\end{itemize}
+
+
+\subsection{Graphical representation}
+
+In order to clearly represent our results, we used Detection Error Tradeoff (DET) graph. A DET graph plots the false rejection rate vs. the false acceptance rate. \todo{Compléter}
+
+\subsection{Results}
+
+We ran many experiments and therefore cannot present them all. We will only present the most interesting.
+
+\subsubsection{Experiment 0}
+
+The table below presents the configration we ised for this experiment:
+
+\begin{table}[!h]
+\centering
+\caption{Experiment 0 configuration}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Number of layers & \multicolumn{5}{c|}{5}                \\ \hline
+Size of layers   & 2304   & 1000   & 50  & 1000  & 2304  \\ \hline
+Tied weights     & \multicolumn{5}{c|}{No}               \\ \hline
+Optimizer        & \multicolumn{5}{c|}{Gradient Descent} \\ \hline
+Dropout          & \multicolumn{5}{c|}{0.90} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=8cm]{../scores/det0.pdf}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=8cm]{../scores/det1.pdf}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=8cm]{../scores/det2.pdf}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=8cm]{../scores/det2bis.pdf}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=8cm]{../scores/det3.pdf}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=8cm]{../scores/det4.pdf}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=8cm]{../scores/det5.pdf}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=8cm]{../scores/det7.pdf}
+\end{figure}
+
+\section{Further work}
+
 
 \appendix
 
