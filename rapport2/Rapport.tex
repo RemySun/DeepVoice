@@ -780,13 +780,13 @@ We had to face several technical issues:
 \begin{itemize}
 \item The first dataset we had access to was not good, there have been a problem during the extraction.
 We ran a few experiments, and we began to think that our method doesn't allow the separability of the speakers before finding the origin of the problem.
-\item As a training proceeds in many optimizations, and several times, its execution is very long (several hours)
+\item As a training proceeds in many optimizations, repeated several times, its execution is very long (several hours).
 \item A supervector is a big object (vector of size 2304 in our case) and we train on many of them, so we need a lot of memory.
 \item Because of the two previous points, we needed more powerful machines. We got access to INRIA's servers,
 but only for two weeks because of administrative delays
 \end{itemize}
 Even if we started out with a fairly small training set, and small data, it remains big.
-All these prevented us from doing many experiments, there are only a few.
+All these prevented us from doing many experiments. We will still present some of them in the next section.
 
 
 \section{Results}
@@ -794,12 +794,12 @@ All these prevented us from doing many experiments, there are only a few.
 
 \subsection{Parameters}
 
-We ran several experiments, using different values for the parameters mentioned before.
+We ran several experiments, using different values for the parameters mentioned previously.
 Here is an exhaustive list of the parameters that we changed from one experiment to another.
 
 \begin{itemize}
 \item{Number of layer}: we used from 3 to 5 hidden layers in our architecture.
-\item{Size of the layers}: we used different sizes of the hidden layers of our architecture.
+\item{Size of the layers}: we used different sizes for the hidden layers of our architecture.
 \item{Tied weights}: we tried different configurations, in which we tied or not some layers of our architecture.
 \item{Optimizer}: we tried two different optimizing methods. First, we used a gradient descent, in which the partial derivatives of the objective function are locally computed, that provides us the direction in which the function decreases the most. The second optimizer is the Adam optimizer \cite{DBLP:journals/corr/KingmaB14}, which is also gradient-based, but moreover on an adaptive moment estimation.
 \item{Dropout} \cite{Srivastava:2014:DSW:2627435.2670313}: in order to avoid over-fitting, it is good to limit the size of the neural networks. This is done by dropping randomly some nodes. At each stage, a node is kept with a probability keep\_proba. We tried several values of keep\_proba.
@@ -838,11 +838,11 @@ In order to check if we are on the good way, we plot histograms of the results o
 
 Figure \ref{tSNE} also encourages us to believe that the deep vectors will provide a good separability. In fact, t-Distributed Stochastic Neighbor Embedding (t-SNE) provides a reduction of the vectors in a 2 dimensions space in order to have a good visualization of high dimensional data \cite{ictdbid:2777}.
 
-We ran many experiments and therefore cannot present them all. We will only present the most interesting. The configuration and DET graphs of our experiments are presented in the annex. Every DET graph plots 3 DET curves:
+We ran many experiments and therefore cannot present them all. We will only present the most interesting. The configuration and DET graphs of our experiments are presented in the appendix. Every DET graph plots 3 DET curves:
 \begin{itemize}
 \item \texttt{g64\_norm}: baseline, using a distance computed on the GMMs
-\item \texttt{expi\_dist}: using Euclidean distance
-\item \texttt{expi\_cos}: using Cosine distance
+\item \texttt{expi\_dist}: our results, using Euclidean distance
+\item \texttt{expi\_cos}: our results, using Cosine distance
 \end{itemize}
 Here are some details about these results.
 
@@ -856,14 +856,14 @@ Here are some details about these results.
 
 \subsubsection{Experiment 4} We used the same experiment as previously, and we tied 2nd layer to the 6th layer. Our results were now much better.
 
-\subsubsection{Experiment 7} We came back to a simple architecture, as during our first experiment, we ran an experiment that used different data for the training phase and for the validation phase. Our results were not as good as before, which was predictable, but they were encouraging.
+\subsubsection{Experiment 7} We came back to a simple architecture, as during our first experiment, and we ran an experiment that used different data for the training phase and for the validation phase. Our results were not as good as before, which was predictable, but they were encouraging.
 
 
 
 \section{Further work}
 \label{sec:Further}
 
-As mentionned before, the last experiment we ran used different data for the training phase and for the validation phase. In figure \ref{exp7ivectors}, we compare these results to the i-vectors, using the same data sets. We can notice that our results are not yet as good as the i-vectors.
+As mentionned before, the last experiment we ran used different data for the training phase and for the validation phase. In figure \ref{exp7ivectors}, we compare these results with the i-vectors, using the same data sets. We can notice that our results are not yet as good as the i-vectors.
 
 
 \begin{figure}[!h]
@@ -873,7 +873,7 @@ As mentionned before, the last experiment we ran used different data for the tra
 	\label{exp7ivectors}
 \end{figure}
 
-We didn't have enough time to run further experiments using these different data sets. Our future work will consist in running more experiments, using more hidden layers for instance, in order to finally have better results than i-vectors. We are confident that we will soon be able to obtain better results than i-vectors.
+We didn't have enough time to run further experiments using these different data sets. Our future work will consist in running additional experiments, using more hidden layers for instance, in order to finally have better results than i-vectors. We are confident that we will soon be able to obtain better results than i-vectors.
 
 \section{Conclusion}
 
@@ -881,12 +881,12 @@ We proposed a new approach in order to use deep learning techniques in a speaker
 Our objective was to obtain a representation of a speaker that is at least competitive with i-vectors.
 We first ran experiments using the same data for the training phase and for the validation phase, as we were more likely to obtain good results. We then ran an experiment with different data for the training phase and for the validation phase, and compared the results with the i-vectors. We unfortunately didn't have time to run additional experiments. Although the i-vectors approach still has better results than our, we are confident that additional work and optimization could make deep-vectors more efficient than i-vectors.
 
-\newpage
+
+\appendix
 \printbibliography
 
 \newpage
 
-\appendix
 
 %Experiment 0
 \begin{table}[!h]
