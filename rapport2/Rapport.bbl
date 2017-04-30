@@ -393,6 +393,35 @@
       \field{pages}{2278\bibrangedash 2324}
       \range{pages}{47}
     \endentry
+    \entry{ictdbid:2777}{article}{}
+      \name{author}{2}{}{%
+        {{hash=1e774c410f25c7f8df4a4e3a899bea7d}{%
+           prefix={van\bibnamedelima der},
+           prefix_i={v\bibinitperiod\bibinitdelim d\bibinitperiod},
+           family={Maaten},
+           family_i={M\bibinitperiod},
+           given={Laurens},
+           given_i={L\bibinitperiod}}}%
+        {{hash=881b7655f3886f90a9400902a521acdb}{%
+           family={Hinton},
+           family_i={H\bibinitperiod},
+           given={Geoffrey\bibnamedelima E.},
+           given_i={G\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{ebbbe3de79472bfce3497ffad2772357}
+      \strng{fullhash}{ebbbe3de79472bfce3497ffad2772357}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present a new technique called {“}t-SNE{”} that visualizes high-dimensional data by giving each datapoint a location in a two or three-dimensional map. The technique is a variation of Stochastic Neighbor Embedding (Hinton and Roweis, 2002) that is much easier to optimize, and produces signi\&$\#$64257;cantly better visualizations by reducing the tendency to crowd points together in the center of the map. t-SNE is better than existing techniques at creating a single map that reveals structure at many different scales. This is particularly important for high-dimensional data that lie on several different, but related, low-dimensional manifolds, such as images of objects from multiple classes seen from multiple viewpoints. For visualizing the structure of very large datasets, we show how t-SNE can use random walks on neighborhood graphs to allow the implicit structure of all of the data to in\&$\#$64258;uence the way in which a subset of the data is displayed. We illustrate the performance of t-SNE on a wide variety of datasets and compare it with many other non-parametric visualization techniques, including Sammon mapping, Isomap, and Locally Linear Embedding. The visualizations produced by t-SNE are signi\&$\#$64257;cantly better than those produced by the other techniques on almost all of the datasets.}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{Visualizing High-Dimensional Data Using t-SNE}
+      \field{volume}{9}
+      \field{year}{2008}
+      \field{pages}{2579\bibrangedash 2605}
+      \range{pages}{27}
+    \endentry
     \entry{richardson2015deep}{article}{}
       \name{author}{3}{}{%
         {{hash=7162f701a617536c7b5da48af2c474b7}{%

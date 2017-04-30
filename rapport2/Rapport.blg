@@ -1,18 +1,18 @@
 [0] Config.pm:340> INFO - This is Biber 2.4
 [0] Config.pm:343> INFO - Logfile is 'Rapport.blg'
-[41] biber:287> INFO - === dim. avril 30, 2017, 15:34:29
-[126] Biber.pm:348> INFO - Reading 'Rapport.bcf'
-[261] Biber.pm:742> INFO - Found 13 citekeys in bib section 0
-[266] Biber.pm:3151> INFO - Processing section 0
-[296] Biber.pm:3308> INFO - Looking for bibtex format file 'Biblio.bib' for section 0
-[330] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
-[360] bibtex.pm:974> INFO - Found BibTeX data source 'Biblio.bib'
-[477] Utils.pm:147> WARN - BibTeX subsystem: /tmp/KGhRrGxuWB/Biblio.bib_10182.utf8, line 144, warning: 7 characters of junk seen at toplevel
-[478] Utils.pm:147> WARN - The field 'year' in entry 'Senoussaoui_ani-vector' cannot be null, deleting it
-[620] UCollate.pm:65> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[621] UCollate.pm:65> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[621] Biber.pm:3028> INFO - Sorting list 'nty/global' of type 'entry' with scheme 'nty' and locale 'en-US'
-[621] Biber.pm:3032> INFO - No sort tailoring available for locale 'en-US'
-[645] bbl.pm:519> INFO - Writing 'Rapport.bbl' with encoding 'UTF-8'
-[707] bbl.pm:615> INFO - Output to Rapport.bbl
-[707] Biber.pm:109> INFO - WARNINGS: 2
+[43] biber:287> INFO - === dim. avril 30, 2017, 17:53:24
+[134] Biber.pm:348> INFO - Reading 'Rapport.bcf'
+[284] Biber.pm:742> INFO - Found 14 citekeys in bib section 0
+[289] Biber.pm:3151> INFO - Processing section 0
+[322] Biber.pm:3308> INFO - Looking for bibtex format file 'Biblio.bib' for section 0
+[367] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
+[407] bibtex.pm:974> INFO - Found BibTeX data source 'Biblio.bib'
+[541] Utils.pm:147> WARN - BibTeX subsystem: /tmp/AsmkX6lN_I/Biblio.bib_11983.utf8, line 144, warning: 7 characters of junk seen at toplevel
+[542] Utils.pm:147> WARN - The field 'year' in entry 'Senoussaoui_ani-vector' cannot be null, deleting it
+[676] UCollate.pm:65> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[676] UCollate.pm:65> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[677] Biber.pm:3028> INFO - Sorting list 'nty/global' of type 'entry' with scheme 'nty' and locale 'en-US'
+[677] Biber.pm:3032> INFO - No sort tailoring available for locale 'en-US'
+[701] bbl.pm:519> INFO - Writing 'Rapport.bbl' with encoding 'UTF-8'
+[775] bbl.pm:615> INFO - Output to Rapport.bbl
+[775] Biber.pm:109> INFO - WARNINGS: 2

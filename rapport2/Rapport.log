@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.2.24)  30 APR 2017 15:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.2.24)  30 APR 2017 17:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1528,72 +1528,114 @@ Overfull \hbox (30.41943pt too wide) in paragraph at lines 829--829
 [][][][]\T1/ptm/m/n/10 Compléter  
  []
 
-[5] <../scores/det0.pdf, id=56, 578.16pt x 563.70598pt>
+<../secondNet/cosine_same.pdf, id=53, 578.16pt x 433.62pt>
+File: ../secondNet/cosine_same.pdf Graphic file (type pdf)
+
+<use ../secondNet/cosine_same.pdf>
+Package pdftex.def Info: ../secondNet/cosine_same.pdf used on input line 838.
+(pdftex.def)             Requested size: 213.39566pt x 160.04651pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../secondNet/cosine_diff.pdf, id=54, 578.16pt x 433.62pt>
+File: ../secondNet/cosine_diff.pdf Graphic file (type pdf)
+
+<use ../secondNet/cosine_diff.pdf>
+Package pdftex.def Info: ../secondNet/cosine_diff.pdf used on input line 844.
+(pdftex.def)             Requested size: 213.39566pt x 160.04651pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../secondNet/tSNE_HOUDIN_TRUCHOT.pdf, id=55, 578.16pt x 433.62pt>
+File: ../secondNet/tSNE_HOUDIN_TRUCHOT.pdf Graphic file (type pdf)
+
+<use ../secondNet/tSNE_HOUDIN_TRUCHOT.pdf>
+Package pdftex.def Info: ../secondNet/tSNE_HOUDIN_TRUCHOT.pdf used on input lin
+e 851.
+(pdftex.def)             Requested size: 213.39566pt x 160.04651pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5] <../scores/det0.pdf, id=59, 578.16pt x 563.70598pt>
 File: ../scores/det0.pdf Graphic file (type pdf)
 
 <use ../scores/det0.pdf>
-Package pdftex.def Info: ../scores/det0.pdf used on input line 852.
+Package pdftex.def Info: ../scores/det0.pdf used on input line 878.
 (pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
- <../scores/det1.pdf, id=57, 578.16pt x 563.70598pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../scores/det1.pdf, id=60, 578.16pt x 563.70598pt>
 File: ../scores/det1.pdf Graphic file (type pdf)
-
-<use ../scores/det1.pdf>
-Package pdftex.def Info: ../scores/det1.pdf used on input line 874.
+ <use ../scores/det1.pdf>
+Package pdftex.def Info: ../scores/det1.pdf used on input line 900.
 (pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
 
-<../scores/det2bis.pdf, id=58, 578.16pt x 563.70598pt>
-File: ../scores/det2bis.pdf Graphic file (type pdf)
+[6 <../secondNet/cosine_same.pdf> <../secondNet/cosine_diff.pdf
 
-<use ../scores/det2bis.pdf>
-Package pdftex.def Info: ../scores/det2bis.pdf used on input line 897.
-(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+pdfTeX warning: pdflatex (file ../secondNet/cosine_diff.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+> <../secondNet/tSNE_HOUDIN_TRUCHOT.pdf
 
-<../scores/det3.pdf, id=59, 578.16pt x 563.70598pt>
-File: ../scores/det3.pdf Graphic file (type pdf)
- <use ../scores/det3.pdf>
-Package pdftex.def Info: ../scores/det3.pdf used on input line 919.
-(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+pdfTeX warning: pdflatex (file ../secondNet/tSNE_HOUDIN_TRUCHOT.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+> <../scores/det0.pdf
 
-[6 <../scores/det0.pdf> <../scores/det1.pdf
+pdfTeX warning: pdflatex (file ../scores/det0.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+> <../scores/det1.pdf
 
 pdfTeX warning: pdflatex (file ../scores/det1.pdf): PDF inclusion: multiple pdf
 s with page group included in a single page
-> <../scores/det2bis.pdf
+>] <../scores/det2bis.pdf, id=182, 578.16pt x 563.70598pt>
+File: ../scores/det2bis.pdf Graphic file (type pdf)
 
-pdfTeX warning: pdflatex (file ../scores/det2bis.pdf): PDF inclusion: multiple 
-pdfs with page group included in a single page
-> <../scores/det3.pdf
+<use ../scores/det2bis.pdf>
+Package pdftex.def Info: ../scores/det2bis.pdf used on input line 923.
+(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+
+<../scores/det3.pdf, id=183, 578.16pt x 563.70598pt>
+File: ../scores/det3.pdf Graphic file (type pdf)
+ <use ../scores/det3.pdf>
+Package pdftex.def Info: ../scores/det3.pdf used on input line 945.
+(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+
+<../scores/det4.pdf, id=184, 578.16pt x 563.70598pt>
+File: ../scores/det4.pdf Graphic file (type pdf)
+ <use ../scores/det4.pdf>
+Package pdftex.def Info: ../scores/det4.pdf used on input line 968.
+(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+
+<../scores/det5.pdf, id=185, 578.16pt x 563.70598pt>
+File: ../scores/det5.pdf Graphic file (type pdf)
+ <use ../scores/det5.pdf>
+Package pdftex.def Info: ../scores/det5.pdf used on input line 991.
+(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+
+[7 <../scores/det2bis.pdf> <../scores/det3.pdf
 
 pdfTeX warning: pdflatex (file ../scores/det3.pdf): PDF inclusion: multiple pdf
 s with page group included in a single page
->] <../scores/det4.pdf, id=226, 578.16pt x 563.70598pt>
-File: ../scores/det4.pdf Graphic file (type pdf)
+> <../scores/det4.pdf
 
-<use ../scores/det4.pdf>
-Package pdftex.def Info: ../scores/det4.pdf used on input line 942.
-(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
- <../scores/det5.pdf, id=227, 578.16pt x 563.70598pt>
-File: ../scores/det5.pdf Graphic file (type pdf)
-
-<use ../scores/det5.pdf>
-Package pdftex.def Info: ../scores/det5.pdf used on input line 965.
-(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
- <../scores/det7.pdf, id=228, 578.16pt x 563.70598pt>
-File: ../scores/det7.pdf Graphic file (type pdf)
-
-<use ../scores/det7.pdf>
-Package pdftex.def Info: ../scores/det7.pdf used on input line 989.
-(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
- [7 <../scores/det4.pdf> <../scores/det5.pdf
+pdfTeX warning: pdflatex (file ../scores/det4.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+> <../scores/det5.pdf
 
 pdfTeX warning: pdflatex (file ../scores/det5.pdf): PDF inclusion: multiple pdf
 s with page group included in a single page
-> <../scores/det7.pdf
+>] <../scores/det7.pdf, id=353, 578.16pt x 563.70598pt>
+File: ../scores/det7.pdf Graphic file (type pdf)
 
-pdfTeX warning: pdflatex (file ../scores/det7.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
->]
-Underfull \hbox (badness 1924) in paragraph at lines 998--998
+<use ../scores/det7.pdf>
+Package pdftex.def Info: ../scores/det7.pdf used on input line 1015.
+(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+
+Underfull \hbox (badness 1924) in paragraph at lines 1024--1024
 \T1/ptm/m/n/10 for state-of-the-art speaker recog-ni-tion.'' In: \T1/ptm/m/it/1
 0 In-ter-
  []
@@ -1609,21 +1651,16 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[8
-
-] (./Rapport.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+[8 <../scores/det7.pdf>] (./Rapport.aux)
 Package logreq Info: Writing requests to 'Rapport.run.xml'.
 \openout1 = `Rapport.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25197 strings out of 494883
- 505597 string characters out of 6178693
- 1019466 words of memory out of 5000000
- 28028 multiletter control sequences out of 15000+600000
+ 25217 strings out of 494883
+ 506148 string characters out of 6178693
+ 1019527 words of memory out of 5000000
+ 28044 multiletter control sequences out of 15000+600000
  109645 words of font info for 123 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  55i,9n,76p,1456b,1416s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1640,10 +1677,10 @@ usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmri8a.pfb>
-Output written on Rapport.pdf (8 pages, 327810 bytes).
+Output written on Rapport.pdf (8 pages, 345266 bytes).
 PDF statistics:
- 402 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
+ 443 PDF objects out of 1000 (max. 8388607)
+ 130 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 58 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
