@@ -16,6 +16,7 @@
 \usepackage{xcolor}
 \usepackage{rotating}
 \usepackage{lipsum}
+\usepackage{caption}
 \usepackage[backend=biber]{biblatex}
 \bibliography{Biblio}{}
 
@@ -736,7 +737,7 @@ The neural network outputs a vector of size 2304 that we try to match as closely
 as possible to the supervector the original input was paired with.
 
 \subsubsection{Neural approach}
-
+\todo{changer, voire supprimer}
 We will start by training a 7-hidden layer auto-encoder.
 The encoder is 3 layer
 deep and encodes the input of size 2304 into a latent representation of size 40.
@@ -826,13 +827,20 @@ Here is an exhaustive list of the parameters that we changed from one experiment
 
 \subsection{Graphical representation}
 
-In order to clearly represent our results, we used Detection Error Tradeoff (DET) graph. A DET graph plots the false rejection rate vs. the false acceptance rate. \todo{Compléter}
+In order to clearly represent our results, we used Detection Error Tradeoff (DET) graphs. A DET graph plots the false rejection rate vs. the false acceptance rate. \todo{Compléter}
 
 \subsection{Results}
 
-We ran many experiments and therefore cannot present them all. We will only present the most interesting.
+We ran many experiments and therefore cannot present them all. We will only present the most interesting. The configuration and DET graphs of our experiments are presented in the annex.
+
+\section{Further work}
+
+
+\printbibliography
 
 \newpage
+
+\appendix
 
 %Experiment 0
 \begin{table}[!h]
@@ -850,6 +858,7 @@ Dropout          & \multicolumn{5}{c|}{0.90} \\ \hline
 \begin{figure}[!h]
     \centering
     \includegraphics[width=7.5cm]{../scores/det0.pdf}
+    \captionsetup{labelformat=empty}
     \caption{Experiment 0}
 \end{figure}
 
@@ -872,6 +881,7 @@ Dropout          & \multicolumn{5}{c|}{0.90} \\ \hline
 \begin{figure}[!h]
     \centering
     \includegraphics[width=7.5cm]{../scores/det1.pdf}
+    \captionsetup{labelformat=empty}
     \caption{Experiment 1}
 \end{figure}
 
@@ -895,6 +905,7 @@ Dropout          & \multicolumn{5}{c|}{0.90} \\ \hline
 \begin{figure}[!h]
     \centering
     \includegraphics[width=7.5cm]{../scores/det2bis.pdf}
+    \captionsetup{labelformat=empty}
     \caption{Experiment 2}
 \end{figure}
 
@@ -917,6 +928,7 @@ Dropout          & \multicolumn{7}{c|}{0.90} \\ \hline
 \begin{figure}[!h]
     \centering
     \includegraphics[width=7.5cm]{../scores/det3.pdf}
+    \captionsetup{labelformat=empty}
     \caption{Experiment 3}
 \end{figure}
 
@@ -940,6 +952,7 @@ Dropout          & \multicolumn{7}{c|}{0.90} \\ \hline
 \begin{figure}[!h]
     \centering
     \includegraphics[width=7.5cm]{../scores/det4.pdf}
+    \captionsetup{labelformat=empty}
     \caption{Experiment 4}
 \end{figure}
 
@@ -948,26 +961,26 @@ Dropout          & \multicolumn{7}{c|}{0.90} \\ \hline
 
 
 %Experiment 5
-\begin{table}[!h]
-\centering
-\begin{tabular}{|l|c|c|c|c|c|c|c|}
-\hline
-Number of layers & \multicolumn{7}{c|}{7}                \\ \hline
-Size of layers   & 2304 & 1000 & 300 & 60 & 300 & 1000 & 2304  \\ \hline
-Tied weights     & \multicolumn{7}{c|}{No}               \\ \hline
-Optimizer        & \multicolumn{7}{c|}{Adam} \\ \hline
-Dropout          & \multicolumn{7}{c|}{0.90} \\ \hline
-\end{tabular}
-\end{table}
+%\begin{table}[!h]
+%\centering
+%\begin{tabular}{|l|c|c|c|c|c|c|c|}
+%\hline
+%Number of layers & \multicolumn{7}{c|}{7}                \\ \hline
+%Size of layers   & 2304 & 1000 & 300 & 60 & 300 & 1000 & 2304  \\ \hline
+%Tied weights     & \multicolumn{7}{c|}{Yes}               \\ \hline
+%Optimizer        & \multicolumn{7}{c|}{Adam} \\ \hline
+%Dropout          & \multicolumn{7}{c|}{0.90} \\ \hline
+%\end{tabular}
+%\end{table}
 
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=7.5cm]{../scores/det5.pdf}
-    \caption{Experiment 5}
-\end{figure}
+%\begin{figure}[!h]
+%    \centering
+%    \includegraphics[width=7.5cm]{../scores/det5.pdf}
+%    \caption{Experiment 5}
+%\end{figure}
 
 
-\newpage
+%\newpage
 
 
 %Experiment 7
@@ -987,14 +1000,11 @@ Dropout          & \multicolumn{5}{c|}{0.80} \\ \hline
 \begin{figure}[!h]
     \centering
     \includegraphics[width=7.5cm]{../scores/det7.pdf}
+    \captionsetup{labelformat=empty}
+    \caption{Experiment 7}
 \end{figure}
 
-\section{Further work}
 
-
-\appendix
-
-\printbibliography
 
 
 
