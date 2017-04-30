@@ -783,35 +783,6 @@ improve the hyper-parameters.
  intermediate representations will be extracted from source files using the tool
  ALIZE \cite{larcher2013alize}.
 
-\subsection{Anticipated issues}
-
-\paragraph{Optimization function}
-
-It is likely we will end up tweaking the network's optimization function over the course
-of our study, be it by using a linear combination of the functions we already
-brought up or by using a completely different function.
-
-\paragraph{Training set}
-
-We intentionally started out with a fairly small training set in order to be
-able to put forth some preliminary results faster so that early decisions can be
-made. It is possible we will not have enough training examples to train very
-deep architectures and will end up using bigger training set.
-
-\paragraph{Evaluation method}
-
-The evaluation method detailed above is fairly clumsy in that it is extremely
-vulnerable to outliers. Various improvements on it could be explored if we
-notice that we consistently have some outliers that artificially skew the
-results in favour of one type of intermediate representation.
-
-\paragraph{Network hyper-parameters}
-
-The above hyper-parameters (number of layers, dimension of each layer, ...) have
-mostly been chosen arbitrarily. The values chosen seemed reasonable in light of
-the pursued goal and the task at hand, but will most likely evolve depending on
-experiments' results.
-
 
 \section{Technical issues}
 
