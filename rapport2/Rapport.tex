@@ -824,10 +824,11 @@ Here is an exhaustive list of the parameters that we changed from one experiment
 \item{Dropout} \cite{Srivastava:2014:DSW:2627435.2670313}: in order to avoid overfitting, it is good to limit the size of the neural networks. This is done by dropping randomly some nodes. At each stage, a node is kept with a probability keep\_proba. We tried several values of keep\_proba.
 \end{itemize}
 
+After the training, we can compute, for each input, the latent representation $x_{latent} = encoder(x_{input})$. We will call it deep vector, by opposition with i-vectors. Then, Euclidian distances and cosine distances can be computed for every pair of deep vectors.
 
 \subsection{Graphical representation}
 
-In order to clearly represent our results, we used Detection Error Tradeoff (DET) graphs. A DET graph plots the false rejection rate vs. the false acceptance rate. \todo{Compléter}
+In order to clearly represent our results, we used Detection Error Tradeoff (DET) graphs. A DET graph plots the false rejection rate vs. the false acceptance rate. Knowing the distances between deep vectors of a list of pairs and a value of threshold, we can compute the classification of the pairs (same speaker or different speakers).Then, as we know the speaker of each deep vector, we can check for every pair whether the result is correct or not. This gives us a false acceptance rate and a false rejection rate. The DET graph can be obtained by doing this for several values of threshold.
 
 \subsection{Results}
 
