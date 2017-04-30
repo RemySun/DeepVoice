@@ -792,18 +792,18 @@ All these prevented us from doing many experiments, there are only a few.
 
 \subsection{Parameters}
 
-We ran several experiments, using different values for the parameters mentionned before.
+We ran several experiments, using different values for the parameters mentioned before.
 Here is an exhaustive list of the parameters that we changed from one experiment to another.
 
 \begin{itemize}
 \item{Number of layer}: we used from 3 to 5 hidden layers in our architecture.
 \item{Size of the layers}: we used different sizes of the hidden layers of our architecture.
 \item{Tied weights}: we tried different configurations, in which we tied or not some layers of our architecture.
-\item{Optimizer}: we tried two different optimizing methods. First, we used a gradient descent, in which the partial deravatives of the objective function are locally computed, that provides us the direction in which the function decreases the most. The second optimizer is the Adam optimizer \cite{DBLP:journals/corr/KingmaB14}, which is also gradient-based, but moreover on an adaptive moment estimation.
-\item{Dropout} \cite{Srivastava:2014:DSW:2627435.2670313}: in order to avoid overfitting, it is good to limit the size of the neural networks. This is done by dropping randomly some nodes. At each stage, a node is kept with a probability keep\_proba. We tried several values of keep\_proba.
+\item{Optimizer}: we tried two different optimizing methods. First, we used a gradient descent, in which the partial derivatives of the objective function are locally computed, that provides us the direction in which the function decreases the most. The second optimizer is the Adam optimizer \cite{DBLP:journals/corr/KingmaB14}, which is also gradient-based, but moreover on an adaptive moment estimation.
+\item{Dropout} \cite{Srivastava:2014:DSW:2627435.2670313}: in order to avoid over-fitting, it is good to limit the size of the neural networks. This is done by dropping randomly some nodes. At each stage, a node is kept with a probability keep\_proba. We tried several values of keep\_proba.
 \end{itemize}
 
-After the training, we can compute, for each input, the latent representation $x_{latent} = encoder(x_{input})$. We will call it deep vector, by opposition with i-vectors. Then, Euclidian distances and cosine distances can be computed for every pair of deep vectors.
+After the training, we can compute, for each input, the latent representation $x_{latent} = encoder(x_{input})$. We will call it deep vector, by opposition with i-vectors. Then, Euclidean distances and cosine distances can be computed for every pair of deep vectors.
 
 \subsection{Graphical representation}
 
@@ -811,7 +811,7 @@ In order to clearly represent our results, we used Detection Error Tradeoff (DET
 
 \subsection{Results}
 
-In order to check if we are on the good way, we plot histograms of the results of the first experiment, to check that pairs from the same speaker don't give results to similar from pairs from two different speakers. We finally reached a repartition in which cosine distances are closer to 1 when the deep vectors come from the same speaker (Figures \ref{cos_same} and \ref{cos_diff}, which is what we expected. The results for the Euclidian distance are also coherent.
+In order to check if we are on the good way, we plot histograms of the results of the first experiment, to check that pairs from the same speaker don't give results to similar from pairs from two different speakers. We finally reached a repartition in which cosine distances are closer to 1 when the deep vectors come from the same speaker (Figures \ref{cos_same} and \ref{cos_diff}, which is what we expected. The results for the Euclidean distance are also coherent.
 
 \begin{figure}[!h]
     \centering
@@ -834,7 +834,7 @@ In order to check if we are on the good way, we plot histograms of the results o
 \end{figure}
 
 
-Figure \ref{tSNE} also encourages us to believe that the deep vectors will provide a good separabiliy. In fact, t-Distributed Stochastic Neighbor Embedding (t-SNE) provides a reduction of the vectors in a 2 dimensions space in order to have a good visualization of high dimensional data \cite{ictdbid:2777}.
+Figure \ref{tSNE} also encourages us to believe that the deep vectors will provide a good separability. In fact, t-Distributed Stochastic Neighbor Embedding (t-SNE) provides a reduction of the vectors in a 2 dimensions space in order to have a good visualization of high dimensional data \cite{ictdbid:2777}.
 
 We ran many experiments and therefore cannot present them all. We will only present the most interesting. The configuration and DET graphs of our experiments are presented in the annex. Every DET graph plots 3 DET curves:
 \begin{itemize}
@@ -877,7 +877,7 @@ We didn't have enough time to run further experiments using these different data
 
 We proposed a new approach in order to use deep learning techniques in a speaker recognition task.
 Our objective was to obtain a representation of a speaker that is at least competitive with i-vectors.
-We first ran experiments using the same data for the training phase and for the validation phase, as we were more likely to obtain good results. We then ran an experiment with different data for the training phase and for the validation phase, and compared the results with the i-vectors. We unfortunately didn't have time to run additional experiments. Althought the i-vectors approach still has better results than our, we are confident that additional work and optimization could make deep-vectors more efficient than i-vectors.
+We first ran experiments using the same data for the training phase and for the validation phase, as we were more likely to obtain good results. We then ran an experiment with different data for the training phase and for the validation phase, and compared the results with the i-vectors. We unfortunately didn't have time to run additional experiments. Although the i-vectors approach still has better results than our, we are confident that additional work and optimization could make deep-vectors more efficient than i-vectors.
 
 \newpage
 \printbibliography
