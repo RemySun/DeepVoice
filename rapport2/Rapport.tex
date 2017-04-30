@@ -55,6 +55,7 @@ classification tasks due to their ability to
 build upon successive layers of data representation. We will
 strive to explore the possibility of using such techniques to acquire a
 representation of supervectors that is at least competitive with i-vectors.
+We will then present the results of our experiments.
 
 \end{abstract}
 \begin{IEEEkeywords}
@@ -85,9 +86,12 @@ intermediate representations from \emph{supervectors} and might provide
 representations that outperform the current state of the art \emph{i-vectors}.
 
 To begin with, we will give a brief exposition of signal representations used
-up until now \ref{sec:signal}. Afterwards, a brief explanation of the Deep
-Learning techniques we will need will be provided \ref{sec:Deep}. Finally, we
-will give an overview of the study we plan to conduct \ref{sec:Method}
+up until now \ref{sec:signal}. Next, a brief explanation of the Deep
+Learning techniques we will need will be provided \ref{sec:Deep}. We
+will then give an overview of the study we plan to conduct \ref{sec:Method}.
+Then, we will present the issues we encountered \ref{sec:Issues}.
+Afterwards, we will detail our results \ref{sec:Results}.
+Finally, we will present our future work \ref{sec:Further}.
 
 \section{Sound signals}
 \label{sec:signal}
@@ -768,7 +772,7 @@ then count the number of pairs of unmatched vectors whose corresponding distance
 is below our threshold. and would be misclassified if our threshold is was used
 as a classification method.
 
-In order to compare our results to previous work, we have been provided a list 
+In order to compare our results to previous work, we have been provided a list
 of 9049 pairs of sound files that belong to our dataset. We have access to results
 on this list that come from another method. Firstly,  we will not use a training
 set disjoint from the test set. This allows a sanity check, and it is enough to
@@ -785,19 +789,21 @@ improve the hyper-parameters.
 
 
 \section{Technical issues}
+\label{sec:Issues}
 
 We had to face several technical issues:
 \begin{itemize}
 \item As a training proceeds in many optimizations, and several times, its execution is very long (several hours)
 \item A supervector is a big object (vector of size 2304 in our case) and we train on many of them, so we need a lot of memory.
-\item Because of the two previous points, we needed more powerful machines. We got access to INRIA's servers, 
+\item Because of the two previous points, we needed more powerful machines. We got access to INRIA's servers,
 but only for two weeks because of administrative delays
 \end{itemize}
-Even if we started out with a fairly small training set, and small data, it remains big. 
+Even if we started out with a fairly small training set, and small data, it remains big.
 All these prevented us from doing many experiments, there are only a few.
 
 
 \section{Results}
+\label{sec:Results}
 
 \subsection{Parameters}
 
@@ -868,6 +874,7 @@ Here are some details about these results.
 
 
 \section{Further work}
+\label{sec:Further}
 
 As mentionned before, the last experiment we ran used different data for the training phase and for the validation phase. In figure \ref{exp7ivectors}, we compare these results to the i-vectors, using the same data sets. We can notice that our results are not yet as good as the i-vectors.
 
