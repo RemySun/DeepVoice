@@ -271,6 +271,33 @@
       \verb http://science.sciencemag.org/content/313/5786/504
       \endverb
     \endentry
+    \entry{DBLP:journals/corr/KingmaB14}{article}{}
+      \name{author}{2}{}{%
+        {{hash=1e072d74f4ac1094c9c26e1b592cea4a}{%
+           family={Kingma},
+           family_i={K\bibinitperiod},
+           given={Diederik\bibnamedelima P.},
+           given_i={D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=8aa66e8231cc2fdbe67aa4f18ca970c6}{%
+           family={Ba},
+           family_i={B\bibinitperiod},
+           given={Jimmy},
+           given_i={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{c1670936fba733d1cb2d4c23bce95c6e}
+      \strng{fullhash}{c1670936fba733d1cb2d4c23bce95c6e}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{CoRR}
+      \field{title}{Adam: {A} Method for Stochastic Optimization}
+      \field{volume}{abs/1412.6980}
+      \field{year}{2014}
+      \verb{url}
+      \verb http://arxiv.org/abs/1412.6980
+      \endverb
+    \endentry
     \entry{larcher2013alize}{inproceedings}{}
       \name{author}{8}{}{%
         {{hash=a65e5ab1065f870f59faf0c3a6ec0857}{%
