@@ -820,7 +820,7 @@ Here is an exhaustive list of the parameters that we changed from one experiment
 \item{Number of layer}: we used from 3 to 5 hidden layers in our architecture.
 \item{Size of the layers}: we used different sizes of the hidden layers of our architecture.
 \item{Tied weights}: we tried different configurations, in which we tied or not some layers of our architecture.
-\item{Optimizer}: \todo{compléter, Descente de gradient, Adam...}
+\item{Optimizer}: we tried two different optimizing method. First, we used a gradient descent, in which the partial deravatives of the objective function are locally computed, that provides us the direction in which the function decreases the most. The second optimizer is the Adam optimizer \cite{DBLP:journals/corr/KingmaB14}, which is also gradient-based, but moreover on an adaptive moment estimation.
 \item{Dropout}: \todo{keep proba}
 \end{itemize}
 
