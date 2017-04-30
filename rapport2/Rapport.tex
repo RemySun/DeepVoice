@@ -821,7 +821,7 @@ Here is an exhaustive list of the parameters that we changed from one experiment
 \item{Size of the layers}: we used different sizes of the hidden layers of our architecture.
 \item{Tied weights}: we tried different configurations, in which we tied or not some layers of our architecture.
 \item{Optimizer}: we tried two different optimizing methods. First, we used a gradient descent, in which the partial deravatives of the objective function are locally computed, that provides us the direction in which the function decreases the most. The second optimizer is the Adam optimizer \cite{DBLP:journals/corr/KingmaB14}, which is also gradient-based, but moreover on an adaptive moment estimation.
-\item{Dropout} \cite{Srivastava:2014:DSW:2627435.2670313}: in order to avoid overfitting, it is good to limit the size of the neural networks. This is done by dropping randomly some nodes. At each stage, a node is kept with a probability keep_proba. We tried several values of keep_proba.
+\item{Dropout} \cite{Srivastava:2014:DSW:2627435.2670313}: in order to avoid overfitting, it is good to limit the size of the neural networks. This is done by dropping randomly some nodes. At each stage, a node is kept with a probability keep\_proba. We tried several values of keep\_proba.
 \end{itemize}
 
 
