@@ -736,21 +736,6 @@ input. Therefore, we train the network on 3 678 470 supervectors of size 2304.
 The neural network outputs a vector of size 2304 that we try to match as closely
 as possible to the supervector the original input was paired with.
 
-\subsubsection{Neural approach}
-\todo{changer, voire supprimer}
-We will start by training a 7-hidden layer auto-encoder.
-The encoder is 3 layer
-deep and encodes the input of size 2304 into a latent representation of size 40.
-This is done by successively compressing into representations of size 5000
-(first layer), 500 (second layer) and 100 (third layer).
-The decoder is 3 layer deep and inflates the 40 dimensional latent
-representation back into a 2304 dimensional supervector by successively
-inflating into representations of size 100 (fifth layer), 500 (sixth layer) and
-5000 (seventh layer). The weights used to inflate from the latent layer to the
-fifth and the fifth to sixth are tied to those used to compress from the second
-layer to the third and from the first
-layer to the second.
-
 \subsubsection{Evaluating results}
 
 \paragraph{Evaluation method}
