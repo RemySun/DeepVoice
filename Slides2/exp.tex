@@ -972,6 +972,17 @@ tasks.\\ We seek to offer an alternative with deep neural networks.\\
 
 \section{Results}
 
+\begin{frame}
+  \frametitle{Parameters}
+  \begin{itemize}
+    \item{Number of layer}
+    \item{Size of the layers}
+    \item{Tied weights}
+    \item{Optimizer}
+    \item{Dropout}
+  \end{itemize}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Repartition histograms}
@@ -1015,6 +1026,56 @@ tasks.\\ We seek to offer an alternative with deep neural networks.\\
   	\label{cos_diff}
   \end{figure}
 \end{frame}
+
+
+\begin{frame}
+  \frametitle{tSNE}
+  \begin{figure}[!h]
+      \centering
+      \includegraphics[width=8cm]{../secondNet/tSNE_HOUDIN_TRUCHOT.pdf}
+      \caption{t-SNE of the deep vectors of two different speakers}
+  \end{figure}
+\end{frame}
+
+
+\newcommand\experiment[6]{%
+  \begin{frame}
+    \frametitle{Experiment #1}
+    \begin{columns}
+      \only<1>{\column{0.6\textwidth}}
+      \only<2>{\column{0.35\textwidth}}
+        \begin{table}
+          \centering
+          \resizebox{\columnwidth}{!}{%
+          \begin{tabular}{|c|c|c|c|c|c|c|c|}
+            \hline
+            Number of layers & \multicolumn{#2}{c|}{#2} \\ \hline
+            Size of layers   & #3                       \\ \hline
+            Tied weights     & \multicolumn{#2}{c|}{#4} \\ \hline
+            Optimizer        & \multicolumn{#2}{c|}{#5} \\ \hline
+            Dropout          & \multicolumn{#2}{c|}{#6} \\ \hline
+          \end{tabular}
+          }
+        \end{table}
+      \only<1>{\column{0.35\textwidth}}
+      \only<2>{\column{0.6\textwidth}}
+      \begin{figure}[!h]
+          \centering
+          \includegraphics[width=\columnwidth]{../scores/det#1.pdf}
+      \end{figure}
+    \end{columns}
+  \end{frame}
+}
+
+
+
+\experiment{0}{5}{2304 & 1000 & 50 & 10000 & 2304}{No}{Gradient Descent}{0.90}
+\experiment{1}{5}{2304 & 1000 & 50 & 10000 & 2304}{No}{Adam}{0.90}
+\experiment{2}{5}{2304 & 480 & 100 & 480 & 2304}{No}{Adam}{0.90}
+\experiment{3}{7}{2304 & 720 & 225 & 70 & 225 & 720 & 2304}{No}{Adam}{0.90}
+\experiment{4}{7}{2304 & 720 & 225 & 70 & 225 & 720 & 2304}{Yes}{Adam}{0.90}
+\experiment{7}{5}{2304 & 500 & 80 & 500 & 2304}{No}{Adam}{0.80}
+
 
 \section{Further work}
  plop
