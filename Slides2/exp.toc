@@ -1,0 +1,13 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\beamer@endinputifotherversion {3.36pt}
+\defcounter {refsection}{0}\relax 
+\select@language {french}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {1}{Signal representation for speaker recognition}{12}{0}{1}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {2}{Deep learning}{20}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {3}{Methods}{50}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {4}{Discussion}{58}{0}{4}
