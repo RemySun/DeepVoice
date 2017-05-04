@@ -27,9 +27,9 @@ print(">>>>>>>>>>>>>>>>>>>" + str(n_input))
 
 
 
-n_layer1 = 1000
-#n_layer2 = 500
-n_hidden = 50
+n_layer1 = 800
+n_layer2 = 200
+n_hidden = 40
 
 x = tf.placeholder("float", [None, n_input])
 
@@ -37,40 +37,40 @@ x = tf.placeholder("float", [None, n_input])
 Wl1 = tf.Variable(tf.random_uniform((n_input, n_layer1), -1.0 / math.sqrt(n_input), 1.0 / math.sqrt(n_input)))
 bl1 = tf.Variable(tf.zeros([n_layer1]))
 l1 = tf.nn.tanh(tf.matmul(x,Wl1) + bl1)
-l1_drop = tf.nn.dropout(l1, keep_prob=0.90)
+l1_drop = tf.nn.dropout(l1, keep_prob=0.80)
 
 # Weights and biases to second layer
 
-#Wl2 = tf.Variable(tf.random_uniform((n_layer1, n_layer2), -1.0 / math.sqrt(n_layer1), 1.0 / math.sqrt(n_layer1)))
-#bl2 = tf.Variable(tf.zeros([n_layer2]))
-#l2 = tf.nn.tanh(tf.matmul(l1_drop,Wl2) + bl2)
-#l2_drop = tf.nn.dropout(l2, keep_prob=0.90)
+Wl2 = tf.Variable(tf.random_uniform((n_layer1, n_layer2), -1.0 / math.sqrt(n_layer1), 1.0 / math.sqrt(n_layer1)))
+bl2 = tf.Variable(tf.zeros([n_layer2]))
+l2 = tf.nn.tanh(tf.matmul(l1_drop,Wl2) + bl2)
+l2_drop = tf.nn.dropout(l2, keep_prob=0.80)
 
 # Weights and biases to hidden layer
 
-Wh = tf.Variable(tf.random_uniform((n_layer1, n_hidden), -1.0 / math.sqrt(n_layer1), 1.0 / math.sqrt(n_layer1)))
+Wh = tf.Variable(tf.random_uniform((n_layer2, n_hidden), -1.0 / math.sqrt(n_layer2), 1.0 / math.sqrt(n_layer2)))
 bh = tf.Variable(tf.zeros([n_hidden]))
-h = tf.nn.tanh(tf.matmul(l1_drop,Wh) + bh)
-h_drop = tf.nn.dropout(h, keep_prob=0.90)
+h = tf.nn.tanh(tf.matmul(l2_drop,Wh) + bh)
+h_drop = tf.nn.dropout(h, keep_prob=0.80)
 
 # Weights and biases to fifth layer tied to hidden
 
-Wl4 = tf.Variable(tf.random_uniform((n_hidden, n_layer1), -1.0 / math.sqrt(n_hidden), 1.0 / math.sqrt(n_hidden)))
-bl4 = tf.Variable(tf.zeros([n_layer1]))
+Wl4 = tf.Variable(tf.random_uniform((n_hidden, n_layer2), -1.0 / math.sqrt(n_hidden), 1.0 / math.sqrt(n_hidden)))
+bl4 = tf.Variable(tf.zeros([n_layer2]))
 l4 = tf.nn.tanh(tf.matmul(h_drop,Wl4) + bl4)
-l4_drop = tf.nn.dropout(l4, keep_prob=0.90)
+l4_drop = tf.nn.dropout(l4, keep_prob=0.80)
 
 # Weights and biases to seventh layer tied to first
 
-#Wl5 = tf.transpose(Wl2)
-#bl5 = tf.Variable(tf.zeros([n_layer1]))
-#l5 = tf.nn.tanh(tf.matmul(l4_drop,Wl5) + bl5)
-#l5_drop = tf.nn.dropout(l5, keep_prob=0.90)
+Wl5 = tf.Variable(tf.random_uniform((n_layer2, n_layer1), -1.0 / math.sqrt(n_layer2), 1.0 / math.sqrt(n_layer2)))
+bl5 = tf.Variable(tf.zeros([n_layer1]))
+l5 = tf.nn.tanh(tf.matmul(l4_drop,Wl5) + bl5)
+l5_drop = tf.nn.dropout(l5, keep_prob=0.80)
 
 # Weights and biases to output layer
 Wo = tf.Variable(tf.random_uniform((n_layer1, n_input), -1.0 / math.sqrt(n_layer1), 1.0 / math.sqrt(n_layer1)))
 bo = tf.Variable(tf.zeros([n_input]))
-y = tf.nn.tanh(tf.matmul(l4_drop,Wo) + bo)
+y = tf.nn.tanh(tf.matmul(l5_drop,Wo) + bo)
 
 # Objective functions
 y_ = tf.placeholder("float", [None,n_input])
@@ -88,7 +88,8 @@ sess = tf.Session()
 sess.run(init)
 
 print("Loading trained model...")
-path = os.getcwd() + "/model.ckpt"
+path = os.getcwd() + "/../exp_2304_800_200_40/exp_2304_800_200_40_model.ckpt"
+print(path)
 saver.restore(sess, path)
 
 
@@ -111,10 +112,11 @@ def cosine(a,b):
     return abs(sum([d/(norm(a)*norm(b)) for d in dot]))
 
 index = d['index']
+print("index shape:", index.shape)
 nb_pairs = index.shape[0]
 print("Computing distance for the pairs...")
-distances = [1-dist(deep_vectors[index[i,0]], deep_vectors[index[i,1]]) for i in range(nb_pairs)]
-distances_cos = [cosine(deep_vectors[index[i,0]], deep_vectors[index[i,1]]) for i in range(nb_pairs)]
+distances = [1-dist(deep_vectors[int(index[i,0])], deep_vectors[int(index[i,1])]) for i in range(nb_pairs)]
+distances_cos = [cosine(deep_vectors[int(index[i,0])], deep_vectors[int(index[i,1])]) for i in range(nb_pairs)]
 
 
 fscores = open("deep.scores", "w")

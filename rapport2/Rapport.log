@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.2.24)  30 APR 2017 17:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.4)  30 APR 2017 23:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Rapport
 (./Rapport.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 7 language(s) loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/base/IEEEtran.cls
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/IEEEtran/IEEEtran.cls
 Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
 -- http://www.michaelshell.org/tex/ieeetran/
@@ -1034,7 +1034,43 @@ Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
 Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count138
 )
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen259
+\captionmargin@=\dimen260
+\captionwidth=\dimen261
+\caption@tempdima=\dimen262
+\caption@indent=\dimen263
+\caption@parindent=\dimen264
+\caption@hangindent=\dimen265
+Package caption Info: The definition of \@makecaption has been changed,
+(caption)             frenchb will NOT customize it.
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\ifx \@captype \@IEEEta
+blestring \footnotesize \bgroup \par \centering \@IEEEtabletopskipstrut {\norma
+lfont \footnotesize #1}\\{\normalfont \footnotesize \scshape #2}\par \addvspace
+ {0.5\baselineskip }\egroup \@IEEEtablecaptionsepspace \else \@IEEEfigurecaptio
+nsepspace \setbox \@tempboxa \hbox {\normalfont \footnotesize {#1.}\nobreakspac
+e \nobreakspace #2}\ifdim \wd \@tempboxa >\hsize \setbox \@tempboxa \hbox {\nor
+malfont \footnotesize {#1.}\nobreakspace \nobreakspace }\parbox [t]{\hsize }{\n
+ormalfont \footnotesize \noindent \unhbox \@tempboxa #2}\else \ifCLASSOPTIONcon
+ference \hbox to\hsize {\normalfont \footnotesize \hfil \box \@tempboxa \hfil }
+\else \hbox to\hsize {\normalfont \footnotesize \box \@tempboxa \hfil }\fi \fi 
+\fi .
+\c@ContinuedFloat=\count139
+Package caption Info: rotating package is loaded.
+) (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2016/03/03 v3.3 programmable bibliographies (PK/JW/AB)
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex_.sty
@@ -1043,7 +1079,7 @@ B)
 
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count139
+\etb@tempcnta=\count140
 )
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
@@ -1065,7 +1101,7 @@ Package etexcmds Info: Could not find \expanded.
 )))
 (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count140
+\lrq@indent=\count141
 
 (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
@@ -1074,44 +1110,44 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@tabx@nest=\count141
-\c@listtotal=\count142
-\c@listcount=\count143
-\c@liststart=\count144
-\c@liststop=\count145
-\c@citecount=\count146
-\c@citetotal=\count147
-\c@multicitecount=\count148
-\c@multicitetotal=\count149
-\c@instcount=\count150
-\c@maxnames=\count151
-\c@minnames=\count152
-\c@maxitems=\count153
-\c@minitems=\count154
-\c@citecounter=\count155
-\c@savedcitecounter=\count156
-\c@uniquelist=\count157
-\c@uniquename=\count158
-\c@refsection=\count159
-\c@refsegment=\count160
-\c@maxextratitle=\count161
-\c@maxextratitleyear=\count162
-\c@maxextrayear=\count163
-\c@maxextraalpha=\count164
-\c@abbrvpenalty=\count165
-\c@highnamepenalty=\count166
-\c@lownamepenalty=\count167
-\c@maxparens=\count168
-\c@parenlevel=\count169
-\blx@tempcnta=\count170
-\blx@tempcntb=\count171
-\blx@tempcntc=\count172
-\blx@maxsection=\count173
-\blx@maxsegment@0=\count174
-\blx@notetype=\count175
-\blx@parenlevel@text=\count176
-\blx@parenlevel@foot=\count177
-\blx@sectionciteorder@0=\count178
+\c@tabx@nest=\count142
+\c@listtotal=\count143
+\c@listcount=\count144
+\c@liststart=\count145
+\c@liststop=\count146
+\c@citecount=\count147
+\c@citetotal=\count148
+\c@multicitecount=\count149
+\c@multicitetotal=\count150
+\c@instcount=\count151
+\c@maxnames=\count152
+\c@minnames=\count153
+\c@maxitems=\count154
+\c@minitems=\count155
+\c@citecounter=\count156
+\c@savedcitecounter=\count157
+\c@uniquelist=\count158
+\c@uniquename=\count159
+\c@refsection=\count160
+\c@refsegment=\count161
+\c@maxextratitle=\count162
+\c@maxextratitleyear=\count163
+\c@maxextrayear=\count164
+\c@maxextraalpha=\count165
+\c@abbrvpenalty=\count166
+\c@highnamepenalty=\count167
+\c@lownamepenalty=\count168
+\c@maxparens=\count169
+\c@parenlevel=\count170
+\blx@tempcnta=\count171
+\blx@tempcntb=\count172
+\blx@tempcntc=\count173
+\blx@maxsection=\count174
+\blx@maxsegment@0=\count175
+\blx@notetype=\count176
+\blx@parenlevel@text=\count177
+\blx@parenlevel@foot=\count178
+\blx@sectionciteorder@0=\count179
 \labelnumberwidth=\skip59
 \labelalphawidth=\skip60
 \biblabelsep=\skip61
@@ -1122,81 +1158,81 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \bibhang=\skip66
 \blx@bcfin=\read2
 \blx@bcfout=\write4
-\c@mincomprange=\count179
-\c@maxcomprange=\count180
-\c@mincompwidth=\count181
+\c@mincomprange=\count180
+\c@maxcomprange=\count181
+\c@mincompwidth=\count182
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def)
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count182
-\c@savedafterword=\count183
-\c@annotator=\count184
-\c@savedannotator=\count185
-\c@author=\count186
-\c@savedauthor=\count187
-\c@bookauthor=\count188
-\c@savedbookauthor=\count189
-\c@commentator=\count190
-\c@savedcommentator=\count191
-\c@editor=\count192
-\c@savededitor=\count193
-\c@editora=\count194
-\c@savededitora=\count195
-\c@editorb=\count196
-\c@savededitorb=\count197
-\c@editorc=\count198
-\c@savededitorc=\count199
-\c@foreword=\count266
-\c@savedforeword=\count267
-\c@holder=\count268
-\c@savedholder=\count269
-\c@introduction=\count270
-\c@savedintroduction=\count271
-\c@namea=\count272
-\c@savednamea=\count273
-\c@nameb=\count274
-\c@savednameb=\count275
-\c@namec=\count276
-\c@savednamec=\count277
-\c@translator=\count278
-\c@savedtranslator=\count279
-\c@shortauthor=\count280
-\c@savedshortauthor=\count281
-\c@shorteditor=\count282
-\c@savedshorteditor=\count283
-\c@labelname=\count284
-\c@savedlabelname=\count285
-\c@institution=\count286
-\c@savedinstitution=\count287
-\c@lista=\count288
-\c@savedlista=\count289
-\c@listb=\count290
-\c@savedlistb=\count291
-\c@listc=\count292
-\c@savedlistc=\count293
-\c@listd=\count294
-\c@savedlistd=\count295
-\c@liste=\count296
-\c@savedliste=\count297
-\c@listf=\count298
-\c@savedlistf=\count299
-\c@location=\count300
-\c@savedlocation=\count301
-\c@organization=\count302
-\c@savedorganization=\count303
-\c@origlocation=\count304
-\c@savedoriglocation=\count305
-\c@origpublisher=\count306
-\c@savedorigpublisher=\count307
-\c@publisher=\count308
-\c@savedpublisher=\count309
-\c@language=\count310
-\c@savedlanguage=\count311
-\c@pageref=\count312
-\c@savedpageref=\count313
+\c@afterword=\count183
+\c@savedafterword=\count184
+\c@annotator=\count185
+\c@savedannotator=\count186
+\c@author=\count187
+\c@savedauthor=\count188
+\c@bookauthor=\count189
+\c@savedbookauthor=\count190
+\c@commentator=\count191
+\c@savedcommentator=\count192
+\c@editor=\count193
+\c@savededitor=\count194
+\c@editora=\count195
+\c@savededitora=\count196
+\c@editorb=\count197
+\c@savededitorb=\count198
+\c@editorc=\count199
+\c@savededitorc=\count266
+\c@foreword=\count267
+\c@savedforeword=\count268
+\c@holder=\count269
+\c@savedholder=\count270
+\c@introduction=\count271
+\c@savedintroduction=\count272
+\c@namea=\count273
+\c@savednamea=\count274
+\c@nameb=\count275
+\c@savednameb=\count276
+\c@namec=\count277
+\c@savednamec=\count278
+\c@translator=\count279
+\c@savedtranslator=\count280
+\c@shortauthor=\count281
+\c@savedshortauthor=\count282
+\c@shorteditor=\count283
+\c@savedshorteditor=\count284
+\c@labelname=\count285
+\c@savedlabelname=\count286
+\c@institution=\count287
+\c@savedinstitution=\count288
+\c@lista=\count289
+\c@savedlista=\count290
+\c@listb=\count291
+\c@savedlistb=\count292
+\c@listc=\count293
+\c@savedlistc=\count294
+\c@listd=\count295
+\c@savedlistd=\count296
+\c@liste=\count297
+\c@savedliste=\count298
+\c@listf=\count299
+\c@savedlistf=\count300
+\c@location=\count301
+\c@savedlocation=\count302
+\c@organization=\count303
+\c@savedorganization=\count304
+\c@origlocation=\count305
+\c@savedoriglocation=\count306
+\c@origpublisher=\count307
+\c@savedorigpublisher=\count308
+\c@publisher=\count309
+\c@savedpublisher=\count310
+\c@language=\count311
+\c@savedlanguage=\count312
+\c@pageref=\count313
+\c@savedpageref=\count314
 \shorthandwidth=\skip67
 \shortjournalwidth=\skip68
 \shortserieswidth=\skip69
@@ -1214,13 +1250,13 @@ Package biblatex Info: ... file 'biblatex_.def' found.
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex_.def
 File: biblatex_.def 
-\c@textcitecount=\count314
-\c@textcitetotal=\count315
-\c@textcitemaxnames=\count316
-\c@biburlnumpenalty=\count317
-\c@biburlucpenalty=\count318
-\c@biburllcpenalty=\count319
-\c@smartand=\count320
+\c@textcitecount=\count315
+\c@textcitetotal=\count316
+\c@textcitemaxnames=\count317
+\c@biburlnumpenalty=\count318
+\c@biburlucpenalty=\count319
+\c@biburllcpenalty=\count320
+\c@smartand=\count321
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
@@ -1232,8 +1268,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2016/03/03 v3.3 biblatex bibliography style (PK/JW/AB)
-\c@bbx:relatedcount=\count321
-\c@bbx:relatedtotal=\count322
+\c@bbx:relatedcount=\count322
+\c@bbx:relatedtotal=\count323
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
@@ -1274,86 +1310,86 @@ File: french.lbx 2016/03/03 v3.3 biblatex localization (PK/JW/AB)
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count323
-\@quotereset=\count324
+\@quotelevel=\count324
+\@quotereset=\count325
 (./Rapport.aux)
 \openout1 = `Rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <5> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <7> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <8> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <9> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <11> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <11> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <17> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <20> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <24> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 40.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 41.
 
 -- Lines per column: 56 (exact).
-LaTeX Info: Redefining \degres on input line 40.
+LaTeX Info: Redefining \degres on input line 41.
 
 Package frenchb.ldf Warning: Figures' and tables' captions might look like
 (frenchb.ldf)                `Figure 1:' which is wrong in French.
 (frenchb.ldf)                Check your class or packages to change this;
-(frenchb.ldf)                reported on input line 40.
+(frenchb.ldf)                reported on input line 41.
 
-LaTeX Info: Redefining \dots on input line 40.
-LaTeX Info: Redefining \up on input line 40.
+LaTeX Info: Redefining \dots on input line 41.
+LaTeX Info: Redefining \up on input line 41.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count325
-\scratchdimen=\dimen259
+\scratchcounter=\count326
+\scratchdimen=\dimen266
 \scratchbox=\box63
-\nofMPsegments=\count326
-\nofMParguments=\count327
+\nofMPsegments=\count327
+\nofMParguments=\count328
 \everyMPshowfont=\toks39
-\MPscratchCnt=\count328
-\MPscratchDim=\dimen260
-\MPnumerator=\count329
-\makeMPintoPDFobject=\count330
+\MPscratchCnt=\count329
+\MPscratchDim=\dimen267
+\MPnumerator=\count330
+\makeMPintoPDFobject=\count331
 \everyMPtoPDFconversion=\toks40
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -1387,6 +1423,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
@@ -1395,26 +1433,26 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Rapport.bbl' found.
  (./Rapport.bbl)
-Package biblatex Info: Reference section=0 on input line 40.
-Package biblatex Info: Reference segment=0 on input line 40.
-LaTeX Font Info:    Try loading font information for U+msa on input line 105.
+Package biblatex Info: Reference section=0 on input line 41.
+Package biblatex Info: Reference segment=0 on input line 41.
+LaTeX Font Info:    Try loading font information for U+msa on input line 110.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 105.
+LaTeX Font Info:    Try loading font information for U+msb on input line 110.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 123--133
+Underfull \hbox (badness 10000) in paragraph at lines 128--138
 
  []
 
 <GMM.jpg, id=4, 435.6275pt x 253.94875pt>
 File: GMM.jpg Graphic file (type jpg)
  <use GMM.jpg>
-Package pdftex.def Info: GMM.jpg used on input line 137.
+Package pdftex.def Info: GMM.jpg used on input line 142.
 (pdftex.def)             Requested size: 199.16928pt x 116.10484pt.
 
 
@@ -1433,7 +1471,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (4.62805pt too wide) in paragraph at lines 319--320
+Overfull \hbox (4.62805pt too wide) in paragraph at lines 324--325
 [][] 
  []
 
@@ -1443,7 +1481,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (25.38245pt too wide) in paragraph at lines 527--528
+Overfull \hbox (25.38245pt too wide) in paragraph at lines 532--533
  [][] 
  []
 
@@ -1451,129 +1489,53 @@ Overfull \hbox (25.38245pt too wide) in paragraph at lines 527--528
 File: archi-vedran.pdf Graphic file (type pdf)
 
 <use archi-vedran.pdf>
-Package pdftex.def Info: archi-vedran.pdf used on input line 576.
+Package pdftex.def Info: archi-vedran.pdf used on input line 581.
 (pdftex.def)             Requested size: 142.26378pt x 147.17638pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (46.03601pt too wide) in paragraph at lines 708--709
+Overfull \hbox (46.03601pt too wide) in paragraph at lines 713--714
  [][] 
  []
 
-[4 <./archi-vedran.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 803--807
- \T1/ptm/m/it/10 d) Net-work hyper-parameters: [][] \T1/ptm/m/n/10 The above hy
-per-
- []
-
-
-Overfull \hbox (6.97989pt too wide) in paragraph at lines 823--823
-[][][][]\T1/ptm/m/n/10 keep 
- []
-
-
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 823--823
-\T1/ptm/m/n/10 proba  
- []
-
-
-Overfull \hbox (6.97989pt too wide) in paragraph at lines 823--823
-[][][][]\T1/ptm/m/n/10 keep 
- []
-
-
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 823--823
-\T1/ptm/m/n/10 proba  
- []
-
-
-Overfull \hbox (6.97989pt too wide) in paragraph at lines 823--823
-[][][][]\T1/ptm/m/n/10 keep 
- []
-
-
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 823--823
-\T1/ptm/m/n/10 proba  
- []
-
-
-Overfull \hbox (6.97989pt too wide) in paragraph at lines 823--823
-[][][][]\T1/ptm/m/n/10 keep 
- []
-
-
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 823--823
-\T1/ptm/m/n/10 proba  
- []
-
-
-Overfull \hbox (30.41943pt too wide) in paragraph at lines 829--829
-[][][][]\T1/ptm/m/n/10 Compléter  
- []
-
-
-Overfull \hbox (30.41943pt too wide) in paragraph at lines 829--829
-[][][][]\T1/ptm/m/n/10 Compléter  
- []
-
-
-Overfull \hbox (30.41943pt too wide) in paragraph at lines 829--829
-[][][][]\T1/ptm/m/n/10 Compléter  
- []
-
-
-Overfull \hbox (30.41943pt too wide) in paragraph at lines 829--829
-[][][][]\T1/ptm/m/n/10 Compléter  
- []
-
-<../secondNet/cosine_same.pdf, id=53, 578.16pt x 433.62pt>
+[4 <./archi-vedran.pdf>] [5]
+<../secondNet/cosine_same.pdf, id=56, 578.16pt x 433.62pt>
 File: ../secondNet/cosine_same.pdf Graphic file (type pdf)
 
 <use ../secondNet/cosine_same.pdf>
-Package pdftex.def Info: ../secondNet/cosine_same.pdf used on input line 838.
+Package pdftex.def Info: ../secondNet/cosine_same.pdf used on input line 820.
 (pdftex.def)             Requested size: 213.39566pt x 160.04651pt.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../secondNet/cosine_diff.pdf, id=54, 578.16pt x 433.62pt>
+<../secondNet/cosine_diff.pdf, id=57, 578.16pt x 433.62pt>
 File: ../secondNet/cosine_diff.pdf Graphic file (type pdf)
 
 <use ../secondNet/cosine_diff.pdf>
-Package pdftex.def Info: ../secondNet/cosine_diff.pdf used on input line 844.
+Package pdftex.def Info: ../secondNet/cosine_diff.pdf used on input line 826.
 (pdftex.def)             Requested size: 213.39566pt x 160.04651pt.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../secondNet/tSNE_HOUDIN_TRUCHOT.pdf, id=55, 578.16pt x 433.62pt>
+<../secondNet/tSNE_HOUDIN_TRUCHOT.pdf, id=58, 578.16pt x 433.62pt>
 File: ../secondNet/tSNE_HOUDIN_TRUCHOT.pdf Graphic file (type pdf)
 
 <use ../secondNet/tSNE_HOUDIN_TRUCHOT.pdf>
 Package pdftex.def Info: ../secondNet/tSNE_HOUDIN_TRUCHOT.pdf used on input lin
-e 851.
+e 833.
 (pdftex.def)             Requested size: 213.39566pt x 160.04651pt.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 843.
 
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+<../scores/exp7_et_gabi.pdf, id=59, 578.16pt x 563.70598pt>
+File: ../scores/exp7_et_gabi.pdf Graphic file (type pdf)
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[5] <../scores/det0.pdf, id=59, 578.16pt x 563.70598pt>
-File: ../scores/det0.pdf Graphic file (type pdf)
-
-<use ../scores/det0.pdf>
-Package pdftex.def Info: ../scores/det0.pdf used on input line 878.
+<use ../scores/exp7_et_gabi.pdf>
+Package pdftex.def Info: ../scores/exp7_et_gabi.pdf used on input line 871.
 (pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../scores/det1.pdf, id=60, 578.16pt x 563.70598pt>
-File: ../scores/det1.pdf Graphic file (type pdf)
- <use ../scores/det1.pdf>
-Package pdftex.def Info: ../scores/det1.pdf used on input line 900.
-(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
 
 [6 <../secondNet/cosine_same.pdf> <../secondNet/cosine_diff.pdf
 
@@ -1583,62 +1545,62 @@ ltiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ../secondNet/tSNE_HOUDIN_TRUCHOT.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
-> <../scores/det0.pdf
-
-pdfTeX warning: pdflatex (file ../scores/det0.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
-> <../scores/det1.pdf
-
-pdfTeX warning: pdflatex (file ../scores/det1.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
->] <../scores/det2bis.pdf, id=182, 578.16pt x 563.70598pt>
-File: ../scores/det2bis.pdf Graphic file (type pdf)
-
-<use ../scores/det2bis.pdf>
-Package pdftex.def Info: ../scores/det2bis.pdf used on input line 923.
-(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
-
-<../scores/det3.pdf, id=183, 578.16pt x 563.70598pt>
-File: ../scores/det3.pdf Graphic file (type pdf)
- <use ../scores/det3.pdf>
-Package pdftex.def Info: ../scores/det3.pdf used on input line 945.
-(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
-
-<../scores/det4.pdf, id=184, 578.16pt x 563.70598pt>
-File: ../scores/det4.pdf Graphic file (type pdf)
- <use ../scores/det4.pdf>
-Package pdftex.def Info: ../scores/det4.pdf used on input line 968.
-(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
-
-<../scores/det5.pdf, id=185, 578.16pt x 563.70598pt>
-File: ../scores/det5.pdf Graphic file (type pdf)
- <use ../scores/det5.pdf>
-Package pdftex.def Info: ../scores/det5.pdf used on input line 991.
-(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
-
-[7 <../scores/det2bis.pdf> <../scores/det3.pdf
-
-pdfTeX warning: pdflatex (file ../scores/det3.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
-> <../scores/det4.pdf
-
-pdfTeX warning: pdflatex (file ../scores/det4.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
-> <../scores/det5.pdf
-
-pdfTeX warning: pdflatex (file ../scores/det5.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
->] <../scores/det7.pdf, id=353, 578.16pt x 563.70598pt>
-File: ../scores/det7.pdf Graphic file (type pdf)
-
-<use ../scores/det7.pdf>
-Package pdftex.def Info: ../scores/det7.pdf used on input line 1015.
-(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
-
-Underfull \hbox (badness 1924) in paragraph at lines 1024--1024
+>]
+Underfull \hbox (badness 1924) in paragraph at lines 887--887
 \T1/ptm/m/n/10 for state-of-the-art speaker recog-ni-tion.'' In: \T1/ptm/m/it/1
 0 In-ter-
  []
+
+[7 <../scores/exp7_et_gabi.pdf>]
+<../scores/det0.pdf, id=205, 578.16pt x 563.70598pt>
+File: ../scores/det0.pdf Graphic file (type pdf)
+ <use ../scores/det0.pdf>
+Package pdftex.def Info: ../scores/det0.pdf used on input line 906.
+(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+
+<../scores/det1.pdf, id=206, 578.16pt x 563.70598pt>
+File: ../scores/det1.pdf Graphic file (type pdf)
+ <use ../scores/det1.pdf>
+Package pdftex.def Info: ../scores/det1.pdf used on input line 929.
+(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+
+<../scores/det2bis.pdf, id=207, 578.16pt x 563.70598pt>
+File: ../scores/det2bis.pdf Graphic file (type pdf)
+
+<use ../scores/det2bis.pdf>
+Package pdftex.def Info: ../scores/det2bis.pdf used on input line 953.
+(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+
+<../scores/det3.pdf, id=208, 578.16pt x 563.70598pt>
+File: ../scores/det3.pdf Graphic file (type pdf)
+ <use ../scores/det3.pdf>
+Package pdftex.def Info: ../scores/det3.pdf used on input line 976.
+(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+
+[8 <../scores/det0.pdf> <../scores/det1.pdf
+
+pdfTeX warning: pdflatex (file ../scores/det1.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+> <../scores/det2bis.pdf
+
+pdfTeX warning: pdflatex (file ../scores/det2bis.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
+> <../scores/det3.pdf
+
+pdfTeX warning: pdflatex (file ../scores/det3.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>] <../scores/det4.pdf, id=375, 578.16pt x 563.70598pt>
+File: ../scores/det4.pdf Graphic file (type pdf)
+
+<use ../scores/det4.pdf>
+Package pdftex.def Info: ../scores/det4.pdf used on input line 1000.
+(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
+ <../scores/det7.pdf, id=376, 578.16pt x 563.70598pt>
+File: ../scores/det7.pdf Graphic file (type pdf)
+
+<use ../scores/det7.pdf>
+Package pdftex.def Info: ../scores/det7.pdf used on input line 1048.
+(pdftex.def)             Requested size: 213.39566pt x 208.06046pt.
 
 
 ** Conference Paper **
@@ -1651,19 +1613,25 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[8 <../scores/det7.pdf>] (./Rapport.aux)
+[9
+
+ <../scores/det4.pdf> <../scores/det7.pdf
+
+pdfTeX warning: pdflatex (file ../scores/det7.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>] (./Rapport.aux)
 Package logreq Info: Writing requests to 'Rapport.run.xml'.
 \openout1 = `Rapport.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25217 strings out of 494883
- 506148 string characters out of 6178693
- 1019527 words of memory out of 5000000
- 28044 multiletter control sequences out of 15000+600000
- 109645 words of font info for 123 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 55i,9n,76p,1456b,1416s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 26259 strings out of 493029
+ 524946 string characters out of 6136234
+ 1037676 words of memory out of 5000000
+ 29309 multiletter control sequences out of 15000+600000
+ 110266 words of font info for 125 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 55i,9n,92p,1456b,1423s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/
@@ -1673,14 +1641,15 @@ blic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/times/utmri8a.pfb>
-Output written on Rapport.pdf (8 pages, 345266 bytes).
+usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on Rapport.pdf (9 pages, 363894 bytes).
 PDF statistics:
- 443 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
+ 508 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  73 words of extra memory for PDF output out of 10000 (max. 10000000)
 

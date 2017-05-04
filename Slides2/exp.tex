@@ -13,6 +13,8 @@
 \usepackage{rotating}
 \usepackage{lipsum}
 
+\usepackage{varwidth}
+
 \usepackage[style=alphabetic]{biblatex}
 \beamertemplatenavigationsymbolsempty
 
@@ -62,7 +64,7 @@
 \author[Hutin,Truffet]{Rémi Hutin, Raphaël Truffet \\ Supervisors : Guillaume Gravier and Vedran Vukoti\'c}
 
 
-\date{December 8, 2016}
+\date{May 9, 2017}
 
 
 \AtBeginSection[]{
@@ -800,7 +802,7 @@ Deep neural networks are interesting because:
     \column{0.6\textwidth}
     \begin{itemize}
 \setlength\itemsep{2em}
-    \item \textbf{Raw data:} 15311 numeric sound files from BFMTV with labeled speakers
+    \item \textbf{Raw data:} 15308 numeric sound files from BFMTV with labeled speakers
     \item \textbf{Pre-processed data:} 3 678 470 pairs $(v_1,v_2)$ of supervectors
       spoken by the same person
     \item \textbf{Input:} Supervector $v_1$ of length 2304
@@ -966,5 +968,55 @@ tasks.\\ We seek to offer an alternative with deep neural networks.\\
     }
   \end{itemize}
 \end{frame}
+
+
+\section{Results}
+
+
+\begin{frame}
+  \frametitle{Repartition histograms}
+  \begin{figure}[!h]
+      \centering
+      \includegraphics[width=8cm]{cosine_same.pdf}
+      \caption{%
+        \begin{varwidth}[t]{10cm}
+        Repartition of the cosine distance between \\
+        deep vectors from the same speaker
+        \end{varwidth}}
+      \label{cos_same}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Repartition histograms}
+  \begin{figure}[!h]
+      \centering
+      \includegraphics[width=8cm]{cosine_diff.pdf}
+      \caption{%
+        \begin{varwidth}[t]{10cm}
+        Repartition of the cosine distance between \\
+        deep vectors from different speakers
+        \end{varwidth}}
+  	\label{cos_diff}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Repartition histograms}
+  \begin{figure}[!h]
+      \centering
+      \includegraphics[width=8cm]{cosine_both.pdf}
+      \caption{%
+        \begin{varwidth}[t]{10cm}
+        Repartition of the cosine distance between deep vectors\\
+
+        \end{varwidth}}
+
+  	\label{cos_diff}
+  \end{figure}
+\end{frame}
+
+\section{Further work}
+ plop
 
 \end{document}

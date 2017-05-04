@@ -525,6 +525,57 @@
       \field{labeltitlesource}{title}
       \field{title}{An i-vector Extractor Suitable for Speaker Recognition with both Microphone and Telephone Speech}
     \endentry
+    \entry{Srivastava:2014:DSW:2627435.2670313}{article}{}
+      \name{author}{5}{}{%
+        {{hash=6a147afa4569ce6cf23c0436e65d8486}{%
+           family={Srivastava},
+           family_i={S\bibinitperiod},
+           given={Nitish},
+           given_i={N\bibinitperiod}}}%
+        {{hash=9a8750ccdb2a4cf14d2655face1ce016}{%
+           family={Hinton},
+           family_i={H\bibinitperiod},
+           given={Geoffrey},
+           given_i={G\bibinitperiod}}}%
+        {{hash=c5e3a676e2ac1164b3afcd539c131fc9}{%
+           family={Krizhevsky},
+           family_i={K\bibinitperiod},
+           given={Alex},
+           given_i={A\bibinitperiod}}}%
+        {{hash=8d569d1d5b8b5a7836017a98b430f959}{%
+           family={Sutskever},
+           family_i={S\bibinitperiod},
+           given={Ilya},
+           given_i={I\bibinitperiod}}}%
+        {{hash=bd2be300d445e9f6db7808f9533e66cb}{%
+           family={Salakhutdinov},
+           family_i={S\bibinitperiod},
+           given={Ruslan},
+           given_i={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JMLR.org}%
+      }
+      \strng{namehash}{4d6dba595c04c09619c7c1c0038d5b6b}
+      \strng{fullhash}{2850768171a28ccacd146c300f66f57d}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1532-4435}
+      \field{journaltitle}{J. Mach. Learn. Res.}
+      \field{month}{01}
+      \field{number}{1}
+      \field{title}{Dropout: A Simple Way to Prevent Neural Networks from Overfitting}
+      \field{volume}{15}
+      \field{year}{2014}
+      \field{pages}{1929\bibrangedash 1958}
+      \range{pages}{30}
+      \verb{url}
+      \verb http://dl.acm.org/citation.cfm?id=2627435.2670313
+      \endverb
+      \keyw{deep learning,model combination,neural networks,regularization}
+    \endentry
     \entry{vukotic:hal-01314302}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=c54f972977036ececd9066f6af5bff0e}{%

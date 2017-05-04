@@ -13,8 +13,8 @@ print("Loading data...")
 
 #data = pd.io.parsers.read_csv("data.csv")
 #data = data.as_matrix()
-data = pickle.load(open("train_data.p", "rb"))
-labels = pickle.load(open("train_labels.p", "rb"))
+data = pickle.load(open("train_data2.p", "rb"))
+labels = pickle.load(open("train_labels2.p", "rb"))
 
 print("Preparing data...")
 
@@ -39,9 +39,9 @@ print("Generating neural network...")
 n_samp = len(input) # 2304
 n_input = len(input[0])
 
-n_layer1 = 720
-n_layer2 = 225
-n_hidden = 70
+n_layer1 = 800
+n_layer2 = 200
+n_hidden = 40
 
 print("Model will be saved to : " + "exp_" + str(n_input) + "_" + str(n_layer1) + "_" + str(n_layer2) + "_" + str(n_hidden) + "_model.ckpt")
 
@@ -76,7 +76,7 @@ l4_drop = tf.nn.dropout(l4, keep_prob=0.90)
 
 # Weights and biases to seventh layer tied to first
 
-Wl5 = tf.Variable(tf.random_uniform((n_layer2, n_layer1), -1.0 / math.sqrt(n_layer2), 1.0 / math.sqrt(n_layer2)))
+Wl5 = tf.transpose(Wl2)
 bl5 = tf.Variable(tf.zeros([n_layer1]))
 l5 = tf.nn.tanh(tf.matmul(l4_drop,Wl5) + bl5)
 l5_drop = tf.nn.dropout(l5, keep_prob=0.90)
