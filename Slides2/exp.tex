@@ -912,6 +912,83 @@ tasks.\\ We seek to offer an alternative with deep neural networks.\\
 \end{frame}
 
 
+
+\newsavebox{\trainingdata}
+\sbox{\trainingdata}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{8}{|c|}{Training data} \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    \end{tabular}
+}
+
+
+
+\newsavebox{\validationdata}
+\sbox{\validationdata}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{8}{|c|}{Validation data} \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    \end{tabular}
+}
+
+\newsavebox{\dataset}
+\sbox{\dataset}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{8}{|c|}{Data set} \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    \end{tabular}
+}
+
+
+
+\begin{frame}
+  \frametitle{Dataset}
+    \begin{figure}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},
+                        vec/.style={draw,rectangle,align=center, text width=0.1cm, text height=0.1cm},
+                        bb2/.style={draw,rectangle,align=center, text width=0.35cm, text height=0.35cm}]
+
+        \node[box,fill=blue!16] (tp) at (0,0 cm) {Training phase};
+        \node[box,fill=green!16] (vp) at (6,0 cm) {Validation phase};
+
+        \visible<2>
+        {
+        \node[box,fill=blue!16] (ds1) at (0,-4 cm) {\usebox{\trainingdata}};
+        \node[box,fill=green!16] (ds2) at (6,-4 cm) {\usebox{\validationdata}};
+
+        \draw[->] (ds1) -- (tp);
+        \draw[->] (ds2) -- (vp);
+        }
+
+        \visible<3>
+        {
+        \node[box,fill=cyan!16] (ds) at (3,-4 cm) {\usebox{\dataset}};
+
+        \draw[->] (ds) -- (tp);
+        \draw[->] (ds) -- (vp);
+        }
+    \end{tikzpicture}
+    \end{figure}
+
+
+\end{frame}
+
+
+
+
 \begin{frame}
   \frametitle{Repartition histograms}
   \begin{figure}[!h]
@@ -1006,6 +1083,22 @@ tasks.\\ We seek to offer an alternative with deep neural networks.\\
 
 
 \section{Further work}
- plop
+
+\begin{frame}
+  \frametitle{Deep-vectors vs. i-vectors}
+  \begin{figure}[!h]
+      \centering
+      \includegraphics[width=7cm]{../scores/exp7_et_gabi.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Deep-vectors vs. i-vectors}
+  \begin{itemize}
+    \item Run additional experiment
+    \item ...
+  \end{itemize}
+\end{frame}
 
 \end{document}
