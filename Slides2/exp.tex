@@ -389,25 +389,25 @@ Deep neural networks are interesting because:
     % Draw the hidden layer nodes
     \foreach \name / \y in {1,...,5}
         {
-        \visible<-11>{\path[yshift=0.5cm]
+        \visible<1>{\path[yshift=0.5cm]
             node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};}
-        \visible<12->{\path[yshift=0.5cm]
+        \visible<2>{\path[yshift=0.5cm]
             node[hidden neuron back] (H1-\name) at (\layersep,-\y cm) {};}
         }
 
     \foreach \name / \y in {1,...,4}
         {
-        \visible<-10>{\path
+        \visible<1>{\path
             node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};}
-        \visible<11->{\path
+        \visible<2>{\path
             node[hidden neuron back] (H2-\name) at (2*\layersep,-\y cm) {};}
         }
 
     \foreach \name / \y in {1,...,5}
         {
-        \visible<-9>{\path[yshift=0.5cm]
+        \visible<1>{\path[yshift=0.5cm]
             node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};}
-        \visible<10->{\path[yshift=0.5cm]
+        \visible<2->{\path[yshift=0.5cm]
             node[hidden neuron back] (H3-\name) at (3*\layersep,-\y cm) {};}
         }
     % Draw the output layer node
@@ -418,33 +418,24 @@ Deep neural networks are interesting because:
 
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
-            {\only<\dest>{\path (I-\source) edge (H1-\dest);}}
+            {\path (I-\source) edge (H1-\dest);}
 
 
-    \visible<6->{
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
             \path (I-\source) edge (H1-\dest);
-    }
 
-
-    \visible<7->{
     \foreach \source in {1,...,5}
         \foreach \dest in {1,...,4}
             \path (H1-\source) edge (H2-\dest);
-    }
-
-    \visible<8->{
+    
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
             \path (H2-\source) edge (H3-\dest);
-    }
-
-    \visible<9->{
+    
     \foreach \source in {1,...,5}
         \path (H3-\source) edge (O);
-    }
-
+    
 
     % Annotate the layers
     \node[annot,above of=H1-1, node distance=1cm] (hl1) {Hidden layer 1};
@@ -453,9 +444,9 @@ Deep neural networks are interesting because:
     \node[annot,right of=hl3] {Output layer};
     \node[annot,left of=hl1] {Input layer};
 
-    \node[annot,below of=H1-5, node distance=1cm] (wb1) {$W\visible<12->{'}_1$, $b\visible<12->{'}_1$};
-    \node[annot,right of=wb1] (wb2) {$W\visible<11->{'}_2$, $b\visible<11->{'}_2$};
-    \node[annot,right of=wb2] (wb3) {$W\visible<10->{'}_3$, $b\visible<10->{'}_3$};
+    \node[annot,below of=H1-5, node distance=1cm] (wb1) {$W\visible<2>{'}_1$, $b\visible<2>{'}_1$};
+    \node[annot,right of=wb1] (wb2) {$W\visible<2>{'}_2$, $b\visible<2>{'}_2$};
+    \node[annot,right of=wb2] (wb3) {$W\visible<2>{'}_3$, $b\visible<2>{'}_3$};
 \end{tikzpicture}
 
 \end{figure}
@@ -565,7 +556,7 @@ Deep neural networks are interesting because:
     \visible<4->{
   	$x_{latent} = encoder(x_{input})$  \\
   	$x_{output} = decoder(x_{latent}) \simeq x_{input}$ \\
-  	 
+  	 
     }
     \blfootnote{G.E. Hinton and R.R. Salakhutdinov, Reducing the Dimensionality of Data with Neural Networks, Science, 28 July 2006, Vol. 313. no. 5786, pp. 504 - 507}
 
