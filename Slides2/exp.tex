@@ -428,14 +428,14 @@ Deep neural networks are interesting because:
     \foreach \source in {1,...,5}
         \foreach \dest in {1,...,4}
             \path (H1-\source) edge (H2-\dest);
-    
+
     \foreach \source in {1,...,4}
         \foreach \dest in {1,...,5}
             \path (H2-\source) edge (H3-\dest);
-    
+
     \foreach \source in {1,...,5}
         \path (H3-\source) edge (O);
-    
+
 
     % Annotate the layers
     \node[annot,above of=H1-1, node distance=1cm] (hl1) {Hidden layer 1};
@@ -556,7 +556,7 @@ Deep neural networks are interesting because:
     \visible<4->{
   	$x_{latent} = encoder(x_{input})$  \\
   	$x_{output} = decoder(x_{latent}) \simeq x_{input}$ \\
-  	 
+
     }
     \blfootnote{G.E. Hinton and R.R. Salakhutdinov, Reducing the Dimensionality of Data with Neural Networks, Science, 28 July 2006, Vol. 313. no. 5786, pp. 504 - 507}
 
@@ -824,7 +824,6 @@ Deep neural networks are interesting because:
     \node[annot,left =-0.4cm of iv] (il) {Supervector $v_1$};
 
 \end{tikzpicture}
-
 \end{figure}
 
 
@@ -893,13 +892,247 @@ tasks.\\ We seek to offer an alternative with deep neural networks.\\
 
 \begin{frame}
   \frametitle{Parameters}
+
+  \begin{columns}
+    \column{0.35\textwidth}
+
   \begin{itemize}
     \item{Number of layer}
-    \item{Size of the layers}
-    \item{Tied weights}
-    \item{Optimizer}
-    \item{Dropout}
+    \visible<2->{\item{Size of the layers}}
+    \visible<3->{\item{Tied weights}}
+    \visible<4->{\item{Optimizer}}
+    \visible<5->{\item{Dropout}}
   \end{itemize}
+
+    \column{0.6\textwidth}
+  \def\layersep{1.2cm}
+
+  \only<1>{
+  \begin{figure}
+  \centering
+  \begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+      \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+      \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+      \tikzstyle{input neuron}=[neuron, fill=green!50];
+      \tikzstyle{output neuron}=[neuron, fill=red!50];
+      \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+      \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
+      \tikzstyle{annot} = [text width=10em, text centered]
+
+      % Draw the input layer nodes
+      \foreach \name / \y in {1,...,4}
+      % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+      	{
+          	\node[input neuron, pin=left:] (I-\name) at (0,-\y) {};
+  		}
+      % Draw the hidden layer nodes
+      \foreach \name / \y in {1,...,4}
+          {
+          	\path
+              node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};
+          }
+
+      \foreach \name / \y in {1,...,4}
+          {
+              \path
+              node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};
+
+          }
+
+      \foreach \name / \y in {1,...,4}
+          {
+          	\path
+              node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};
+          }
+
+      % Draw the output layer nodes
+      \foreach \name / \y in {1,...,4}
+          {
+          	\path
+              node[output neuron,pin={[pin edge={->}]right:}] (H4-\name) at (4*\layersep,-\y cm) {};
+          }
+
+      % Connect every node in the input layer with every node in the
+      % hidden layer.
+
+
+      \foreach \source in {1,...,4}
+          \foreach \dest in {1,...,4}
+              \path (I-\source) edge (H1-\dest);
+
+
+
+      \foreach \source in {1,...,4}
+          \foreach \dest in {1,...,4}
+              \path (H1-\source) edge (H2-\dest);
+
+
+      \foreach \source in {1,...,4}
+          \foreach \dest in {1,...,4}
+              \path (H2-\source) edge (H3-\dest);
+
+      \foreach \source in {1,...,4}
+          \foreach \dest in {1,...,4}
+              \path (H3-\source) edge (H4-\dest);
+
+
+  \end{tikzpicture}
+  \end{figure}
+  }
+
+  \only<2-4>
+  {
+  \begin{figure}
+  \centering
+  \begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+      \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+      \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+      \tikzstyle{input neuron}=[neuron, fill=green!50];
+      \tikzstyle{output neuron}=[neuron, fill=red!50];
+      \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+      \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
+      \tikzstyle{annot} = [text width=10em, text centered]
+
+      % Draw the input layer nodes
+      \foreach \name / \y in {1,...,5}
+      % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+      	{
+          	\node[input neuron, pin=left:] (I-\name) at (0,-\y) {};
+  		}
+      % Draw the hidden layer nodes
+      \foreach \name / \y in {1,...,4}
+          {
+               \only<2-3>{\path[yshift=-0.5cm] node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};}
+               \only<4>{\path[yshift=-0.5cm] node[hidden neuron back] (H1-\name) at (\layersep,-\y cm) {};}
+          }
+
+      \foreach \name / \y in {1,...,3}
+          {
+              \only<2-3>{\path[yshift=-1cm] node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};}
+              \only<4>{\path[yshift=-1cm] node[hidden neuron back] (H2-\name) at (2*\layersep,-\y cm) {};}
+
+          }
+
+      \foreach \name / \y in {1,...,4}
+          {
+          	 \only<2-3>{\path[yshift=-0.5cm] node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};}
+             \only<4>{\path[yshift=-0.5cm] node[hidden neuron back] (H3-\name) at (3*\layersep,-\y cm) {};}
+          }
+
+      % Draw the output layer nodes
+      \foreach \name / \y in {1,...,5}
+          {
+          	\path
+              node[output neuron,pin={[pin edge={->}]right:}] (H4-\name) at (4*\layersep,-\y cm) {};
+          }
+
+      % Connect every node in the input layer with every node in the
+      % hidden layer.
+
+
+      \foreach \source in {1,...,5}
+          \foreach \dest in {1,...,4}
+          {
+              \only<2,4>{\path (I-\source) edge (H1-\dest);}
+              \only<3>{\path[color=red] (I-\source) edge (H1-\dest);}
+          }
+
+
+
+      \foreach \source in {1,...,4}
+          \foreach \dest in {1,...,3}
+              \path (H1-\source) edge (H2-\dest);
+
+
+      \foreach \source in {1,...,3}
+          \foreach \dest in {1,...,4}
+              \path (H2-\source) edge (H3-\dest);
+
+      \foreach \source in {1,...,4}
+          \foreach \dest in {1,...,5}
+          {
+              \only<2,4>{\path (H3-\source) edge (H4-\dest);}
+              \only<3>{\path[color=red] (H3-\source) edge (H4-\dest);}
+          }
+
+
+
+  \end{tikzpicture}
+  \end{figure}
+  }
+
+  \only<5>
+  {
+  \begin{figure}
+  \centering
+  \begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+      \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+      \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+      \tikzstyle{input neuron}=[neuron, fill=green!50];
+      \tikzstyle{output neuron}=[neuron, fill=red!50];
+      \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+      \tikzstyle{hidden neuron back}=[neuron, fill=orange!50];
+      \tikzstyle{hidden neuron dropout}=[neuron, fill=blue!20];
+      \tikzstyle{annot} = [text width=10em, text centered]
+
+      % Draw the input layer nodes
+      \foreach \name / \y in {1,...,5}
+      % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+      	{
+          	\node[input neuron, pin=left:] (I-\name) at (0,-\y) {};
+  		}
+      % Draw the hidden layer nodes
+      \foreach \name / \y in {1,3,4}
+          {
+               \path[yshift=-0.5cm] node[hidden neuron] (H1-\name) at (\layersep,-\y cm) {};
+          }
+          \path[yshift=-0.5cm] node[hidden neuron dropout] (H1-2) at (\layersep,-2 cm) {};
+
+      \foreach \name / \y in {1,2}
+          {
+              \path[yshift=-1cm] node[hidden neuron] (H2-\name) at (2*\layersep,-\y cm) {};
+          }
+          \path[yshift=-1cm] node[hidden neuron dropout] (H2-3) at (2*\layersep,-3 cm) {};
+
+      \foreach \name / \y in {1,2,4}
+          {
+            \path[yshift=-0.5cm] node[hidden neuron] (H3-\name) at (3*\layersep,-\y cm) {};
+          }
+          \path[yshift=-0.5cm] node[hidden neuron dropout] (H3-3) at (3*\layersep,-3 cm) {};
+
+      % Draw the output layer nodes
+      \foreach \name / \y in {1,...,5}
+          {
+          	\path
+              node[output neuron,pin={[pin edge={->}]right:}] (H4-\name) at (4*\layersep,-\y cm) {};
+          }
+
+      % Connect every node in the input layer with every node in the
+      % hidden layer.
+
+
+      \foreach \source in {1,...,5}
+          \foreach \dest in {1,3,4}
+              \path (I-\source) edge (H1-\dest);
+
+      \foreach \source in {1,3,4}
+          \foreach \dest in {1,2}
+              \path (H1-\source) edge (H2-\dest);
+
+      \foreach \source in {1,2}
+          \foreach \dest in {1,2,4}
+              \path (H2-\source) edge (H3-\dest);
+
+      \foreach \source in {1,2,4}
+          \foreach \dest in {1,...,5}
+              \path (H3-\source) edge (H4-\dest);
+
+  \end{tikzpicture}
+  \end{figure}
+  }
+
+
+  \end{columns}
 \end{frame}
 
 
@@ -1025,11 +1258,20 @@ tasks.\\ We seek to offer an alternative with deep neural networks.\\
 
 
 \begin{frame}
-  \frametitle{tSNE}
+  \frametitle{t-SNE}
   \begin{figure}[!h]
       \centering
       \includegraphics[width=8cm]{../secondNet/tSNE_HOUDIN_TRUCHOT.pdf}
       \caption{t-SNE of the deep vectors of two different speakers}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Detection Error Tradeoff (DET) graph}
+  \begin{figure}[!h]
+      \centering
+      \includegraphics[width=7.5cm]{../scores/det.pdf}
   \end{figure}
 \end{frame}
 
