@@ -830,6 +830,7 @@ Deep neural networks are interesting because:
 \end{frame}
 
 
+
 \begin{frame}
   \frametitle{Intermediate vector evaluation}
   \begin{columns}
@@ -853,45 +854,85 @@ Deep neural networks are interesting because:
 
 \end{frame}
 
-\section{Discussion}
+
+
+\newsavebox{\trainingdata}
+\sbox{\trainingdata}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{8}{|c|}{Training data} \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    \end{tabular}
+}
+
+
+
+\newsavebox{\validationdata}
+\sbox{\validationdata}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{8}{|c|}{Validation data} \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    \end{tabular}
+}
+
+\newsavebox{\dataset}
+\sbox{\dataset}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{8}{|c|}{Data set} \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    & & & & & & & \\ \hline
+    \end{tabular}
+}
+
+
 
 \begin{frame}
-  \frametitle{Goals \only<2>{and expected issues}}
-Numeric signals represented by i-vectors for speaker recognition
-tasks.\\ We seek to offer an alternative with deep neural networks.\\
-  \textcolor{red}{What does it mean to improve on i-vectors?}
-  \begin{itemize}
-\setlength\itemsep{1em}
-  \item Better compression
-    \visible<2>{
-      \begin{itemize}
-      \item Compression size
-      \item Hyperparameters
-      \item Compromise with results
-      \end{itemize}
-    }
-  \item Better results on angular threshold
-    \visible<2>{
-      \begin{itemize}
-      \item Optimization method
-      \item Compromise with compression
-      \end{itemize}
-    }
-  \item State-of-the-art results for speaker recognition
-    \visible<2>{
-      \begin{itemize}
-      \item Different training sets
-      \item More complicated evaluation methods
-      \end{itemize}
-    }
-  \end{itemize}
+  \frametitle{Dataset}
+    \begin{figure}
+    \centering
+    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},
+                        vec/.style={draw,rectangle,align=center, text width=0.1cm, text height=0.1cm},
+                        bb2/.style={draw,rectangle,align=center, text width=0.35cm, text height=0.35cm}]
+
+        \node[box,fill=blue!16] (tp) at (0,0 cm) {Training phase};
+        \node[box,fill=green!16] (vp) at (6,0 cm) {Validation phase};
+
+        \visible<2>
+        {
+        \node[box,fill=blue!16] (ds1) at (0,-4 cm) {\usebox{\trainingdata}};
+        \node[box,fill=green!16] (ds2) at (6,-4 cm) {\usebox{\validationdata}};
+
+        \draw[->] (ds1) -- (tp);
+        \draw[->] (ds2) -- (vp);
+        }
+
+        \visible<3>
+        {
+        \node[box,fill=cyan!16] (ds) at (3,-4 cm) {\usebox{\dataset}};
+
+        \draw[->] (ds) -- (tp);
+        \draw[->] (ds) -- (vp);
+        }
+    \end{tikzpicture}
+    \end{figure}
+
+
 \end{frame}
 
 
-\section{Results}
 
 \begin{frame}
-  \frametitle{Parameters}
+  \frametitle{Hyper-parameters}
 
   \begin{columns}
     \column{0.35\textwidth}
@@ -1137,79 +1178,7 @@ tasks.\\ We seek to offer an alternative with deep neural networks.\\
 
 
 
-\newsavebox{\trainingdata}
-\sbox{\trainingdata}{
-    \begin{tabular}{|c|c|c|c|c|c|c|c|}
-    \hline
-    \multicolumn{8}{|c|}{Training data} \\ \hline
-    & & & & & & & \\ \hline
-    & & & & & & & \\ \hline
-    & & & & & & & \\ \hline
-    & & & & & & & \\ \hline
-    \end{tabular}
-}
-
-
-
-\newsavebox{\validationdata}
-\sbox{\validationdata}{
-    \begin{tabular}{|c|c|c|c|c|c|c|c|}
-    \hline
-    \multicolumn{8}{|c|}{Validation data} \\ \hline
-    & & & & & & & \\ \hline
-    & & & & & & & \\ \hline
-    & & & & & & & \\ \hline
-    & & & & & & & \\ \hline
-    \end{tabular}
-}
-
-\newsavebox{\dataset}
-\sbox{\dataset}{
-    \begin{tabular}{|c|c|c|c|c|c|c|c|}
-    \hline
-    \multicolumn{8}{|c|}{Data set} \\ \hline
-    & & & & & & & \\ \hline
-    & & & & & & & \\ \hline
-    & & & & & & & \\ \hline
-    & & & & & & & \\ \hline
-    \end{tabular}
-}
-
-
-
-\begin{frame}
-  \frametitle{Dataset}
-    \begin{figure}
-    \centering
-    \begin{tikzpicture}[box/.style={draw,rounded corners,align=center},
-                        vec/.style={draw,rectangle,align=center, text width=0.1cm, text height=0.1cm},
-                        bb2/.style={draw,rectangle,align=center, text width=0.35cm, text height=0.35cm}]
-
-        \node[box,fill=blue!16] (tp) at (0,0 cm) {Training phase};
-        \node[box,fill=green!16] (vp) at (6,0 cm) {Validation phase};
-
-        \visible<2>
-        {
-        \node[box,fill=blue!16] (ds1) at (0,-4 cm) {\usebox{\trainingdata}};
-        \node[box,fill=green!16] (ds2) at (6,-4 cm) {\usebox{\validationdata}};
-
-        \draw[->] (ds1) -- (tp);
-        \draw[->] (ds2) -- (vp);
-        }
-
-        \visible<3>
-        {
-        \node[box,fill=cyan!16] (ds) at (3,-4 cm) {\usebox{\dataset}};
-
-        \draw[->] (ds) -- (tp);
-        \draw[->] (ds) -- (vp);
-        }
-    \end{tikzpicture}
-    \end{figure}
-
-
-\end{frame}
-
+\section{Results}
 
 
 
@@ -1330,7 +1299,8 @@ tasks.\\ We seek to offer an alternative with deep neural networks.\\
   \frametitle{Deep-vectors vs. i-vectors}
   \begin{itemize}
     \item Run additional experiment
-    \item ...
+    \item Adjust the hyper-parameters
+    \item Run more experiments with disjoint training set and evaluation set
   \end{itemize}
 \end{frame}
 
