@@ -61,7 +61,7 @@
 \subtitle{Extracting meaningful signal representation for Speaker Recognition
 \\  using deep architectures}
 
-\author[Hutin,Truffet]{Rémi Hutin, Raphaël Truffet \\ Supervisors : Guillaume Gravier and Vedran Vukoti\'c}
+\author[Hutin,Sun,Truffet]{Rémi Hutin, Rémy Sun, Raphaël Truffet \\ Supervisors : Guillaume Gravier and Vedran Vukoti\'c}
 
 
 \date{May 9, 2017}
@@ -734,10 +734,10 @@ Deep neural networks are interesting because:
     \only<2>{
       \begin{equation*}
         \begin{bmatrix}
-          v_1^{0,0} \\   v_1^{0,1} \\ ... \\ v_1^{0,255} \\ v_1^{1,0} \\ .. \\ v_1^{N,255}
+          v_1^{0,0} \\   v_1^{0,1} \\ ... \\ v_1^{0,63} \\ v_1^{1,0} \\ .. \\ v_1^{N,63}
         \end{bmatrix}
         \begin{bmatrix}
-          v_2^{0,0} \\   v_2^{0,1} \\ ... \\ v_2^{0,255} \\ v_2^{1,0} \\ .. \\ v_2^{N,255}
+          v_2^{0,0} \\   v_2^{0,1} \\ ... \\ v_2^{0,63} \\ v_2^{1,0} \\ .. \\ v_2^{N,63}
         \end{bmatrix}
       \end{equation*}
     }
@@ -1240,7 +1240,8 @@ Deep neural networks are interesting because:
   \frametitle{Detection Error Tradeoff (DET) graph}
   \begin{figure}[!h]
       \centering
-      \includegraphics[width=7.5cm]{../scores/det.pdf}
+      \only<1>{\includegraphics[width=7.5cm]{../scores/det_.pdf}}
+      \only<2>{\includegraphics[width=7.5cm]{../scores/det__.pdf}}
   \end{figure}
 \end{frame}
 
@@ -1284,7 +1285,7 @@ Deep neural networks are interesting because:
 \experiment{7}{5}{2304 & 500 & 80 & 500 & 2304}{No}{Adam}{0.80}
 
 
-\section{Further work}
+\section{Conclusion}
 
 \begin{frame}
   \frametitle{Deep-vectors vs. i-vectors}
@@ -1296,9 +1297,9 @@ Deep neural networks are interesting because:
 
 
 \begin{frame}
-  \frametitle{Deep-vectors vs. i-vectors}
+  \frametitle{Further work}
   \begin{itemize}
-    \item Run additional experiment
+    \item Run additional experiments
     \item Adjust the hyper-parameters
     \item Run more experiments with disjoint training set and evaluation set
   \end{itemize}
